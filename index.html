@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RENPHO Style Guide (2025)</title>
+<title>RENPHO Style Guide (2026)</title>
 <style>
 :root { color-scheme: light; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,20 +17,14 @@ body {
 }
 h1 { font-size: 22px; margin-bottom: 4px; color: #111; }
 .subtitle { color: #666; font-size: 13px; margin-bottom: 20px; }
-.toc { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 16px; margin-bottom: 24px; }
-.toc h2 { font-size: 14px; color: #444; margin-bottom: 8px; }
-.toc a { display: block; color: #2563eb; text-decoration: none; padding: 3px 0; font-size: 13px; }
-.toc a:hover { text-decoration: underline; }
-.search-box { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; margin-bottom: 20px; outline: none; }
+.search-box { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; margin-bottom: 16px; outline: none; }
 .search-box:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.1); }
 .section { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 20px; margin-bottom: 16px; }
 .section h2 { font-size: 16px; color: #111; margin-bottom: 12px; border-bottom: 2px solid #2563eb; padding-bottom: 6px; }
 .section h3 { font-size: 14px; color: #333; margin: 14px 0 8px; }
 .rule { display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f0f0f0; align-items: flex-start; }
 .rule:last-child { border-bottom: none; }
-.correct { color: #16a34a; font-weight: 500; }
-.incorrect { color: #dc2626; font-weight: 500; }
-.tag { display: inline-block; font-size: 11px; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+.tag { display: inline-block; font-size: 11px; padding: 2px 6px; border-radius: 3px; font-weight: 600; flex-shrink: 0; }
 .tag-do { background: #dcfce7; color: #166534; }
 .tag-dont { background: #fee2e2; color: #991b1b; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; }
@@ -40,39 +34,40 @@ tr:hover td { background: #f0f7ff; }
 ul { padding-left: 18px; margin: 6px 0; }
 li { margin: 4px 0; }
 .chip { display: inline-block; background: #e0e7ff; color: #3730a3; font-size: 11px; padding: 2px 8px; border-radius: 12px; margin: 2px 4px 2px 0; }
-.highlight { background: #fef08a; }
 .collapsed .section-body { display: none; }
 .section-header { cursor: pointer; user-select: none; }
 .section-header::before { content: '▼ '; font-size: 11px; color: #888; }
 .collapsed .section-header::before { content: '▶ '; }
-.tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 2px solid #e5e5e5; }
+.tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 2px solid #e5e5e5; flex-wrap: wrap; }
 .tab { padding: 8px 16px; cursor: pointer; font-size: 13px; font-weight: 500; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
 .tab.active { color: #2563eb; border-bottom-color: #2563eb; }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+.tab:hover { color: #333; }
 </style>
 </head>
 <body>
 
 <h1>RENPHO Packaging & Manual Style Guide</h1>
-<p class="subtitle">2025 Edition &mdash; Product Copywriting 101 | Show, Don't Tell</p>
+<p class="subtitle">2026 Edition &mdash; Product Copywriting 101 | Show, Don't Tell</p>
 
 <input type="text" class="search-box" id="searchBox" placeholder="Search rules, terms, or examples... (e.g. USB-C, temperature, RPM)">
 
 <div class="tabs">
-  <div class="tab active" data-tab="all">All</div>
-  <div class="tab" data-tab="format">Format & Caps</div>
-  <div class="tab" data-tab="units">Units</div>
-  <div class="tab" data-tab="terms">Terminology</div>
+  <div class="tab active" data-tab="general">General</div>
   <div class="tab" data-tab="packaging">Packaging</div>
   <div class="tab" data-tab="amazon">Amazon</div>
+  <div class="tab" data-tab="eye-massager">Eye Massager</div>
+  <div class="tab" data-tab="scale">Scale</div>
+  <div class="tab" data-tab="foot-massager">Foot Massager</div>
+  <div class="tab" data-tab="massage-gun">Massage Gun</div>
 </div>
 
 <div id="content">
 
-<!-- Section 1: Principles -->
-<div class="section" data-categories="all">
-  <h2 class="section-header" onclick="toggleSection(this)">1. Writing Principles</h2>
+<!-- ==================== GENERAL ==================== -->
+
+<!-- Principles -->
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Writing Principles</h2>
   <div class="section-body">
     <ul>
       <li><strong>Show, Don't Tell</strong> &mdash; Use product design images and specs, not emotional slogans</li>
@@ -85,9 +80,9 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Section 2: Grammar -->
-<div class="section" data-categories="all format">
-  <h2 class="section-header" onclick="toggleSection(this)">2. Grammar & Style</h2>
+<!-- Grammar & Style -->
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Grammar & Style</h2>
   <div class="section-body">
     <h3>Voice & Person</h3>
     <ul>
@@ -96,12 +91,8 @@ li { margin: 4px 0; }
       <li>Use <strong>active voice</strong> and <strong>second person</strong> (you/your)</li>
     </ul>
     <h3>Oxford Comma</h3>
-    <div class="rule">
-      <span class="tag tag-do">DO</span> <span>Knee, shoulder<strong>, and</strong> elbow</span>
-    </div>
-    <div class="rule">
-      <span class="tag tag-dont">DON'T</span> <span>Knee, shoulder and elbow</span>
-    </div>
+    <div class="rule"><span class="tag tag-do">DO</span> <span>Knee, shoulder<strong>, and</strong> elbow</span></div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> <span>Knee, shoulder and elbow</span></div>
     <h3>Inclusive Language</h3>
     <table>
       <tr><th>Correct</th><th>Avoid</th></tr>
@@ -112,26 +103,26 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Section 3: Capitalization -->
-<div class="section" data-categories="all format">
-  <h2 class="section-header" onclick="toggleSection(this)">3. Capitalization & Format</h2>
+<!-- Capitalization & Format -->
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Capitalization & Format</h2>
   <div class="section-body">
-    <h3>3.1 Titles vs Sub-headers</h3>
+    <h3>Titles vs Sub-headers</h3>
     <table>
       <tr><th>Context</th><th>Correct</th><th>Wrong</th></tr>
       <tr><td>Main Title</td><td>Long-Term / Wide-Angle Oscillation</td><td>Long-term / Wide-angle Oscillation</td></tr>
       <tr><td>Sub-header</td><td>Long-term</td><td>Long-Term</td></tr>
     </table>
-    <h3>3.2 Descriptive Text</h3>
+    <h3>Descriptive Text</h3>
     <table>
       <tr><th>Correct</th><th>Wrong</th><th>Rule</th></tr>
       <tr><td>6 Different combs for xyz</td><td>6 different combs for xyz</td><td>Feature name = capitalize</td></tr>
       <tr><td>3 heat levels to...</td><td>3 Heat levels to...</td><td>Generic descriptor = lowercase</td></tr>
     </table>
-    <h3>3.3 Button/Function Names</h3>
+    <h3>Button / Function Names</h3>
     <div class="rule"><span class="tag tag-do">DO</span> Press the Power button</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> Press the Power Button / Press the power button</div>
-    <h3>3.4 Hyphenation</h3>
+    <h3>Hyphenation</h3>
     <table>
       <tr><th>Correct</th><th>Wrong</th></tr>
       <tr><td>Auto-mode</td><td>Auto mode</td></tr>
@@ -141,24 +132,24 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Section 4: Units -->
-<div class="section" data-categories="all units">
-  <h2 class="section-header" onclick="toggleSection(this)">4. Numbers, Units & Measurements</h2>
+<!-- Units & Measurements -->
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Units & Measurements</h2>
   <div class="section-body">
-    <h3>4.1 Time</h3>
+    <h3>Time</h3>
     <table>
       <tr><th>Unit</th><th>Correct</th><th>Wrong</th></tr>
       <tr><td>Minutes</td><td>20 min</td><td>20 mins</td></tr>
       <tr><td>Hours</td><td>2 hrs or 2 h (space)</td><td>2 hr or 2h</td></tr>
       <tr><td>Seconds</td><td>2 secs or 2 s (space)</td><td>2 sec or 2s</td></tr>
     </table>
-    <h3>4.2 Dimensions (incl. amplitude)</h3>
+    <h3>Dimensions (incl. amplitude)</h3>
     <div class="rule"><span class="tag tag-do">DO</span> 10 cm / 2 in. / 10 mm (space between number and unit)</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> 10cm / 2in</div>
-    <h3>4.3 Weight</h3>
+    <h3>Weight</h3>
     <div class="rule"><span class="tag tag-do">DO</span> 5 lbs / 2.4 kg &nbsp;&bull;&nbsp; 100 lbs</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> 5lb/2.4kg &nbsp;&bull;&nbsp; 100lbs</div>
-    <h3>4.4 Temperature</h3>
+    <h3>Temperature</h3>
     <table>
       <tr><th>Scenario</th><th>Correct</th><th>Wrong</th></tr>
       <tr><td>Range</td><td>4&#8457;-131&#8457;</td><td>4&ndash;131&#8457; (no en dash)</td></tr>
@@ -166,29 +157,29 @@ li { margin: 4px 0; }
       <tr><td>Dual units</td><td>15&#8451; (59&#8457;)</td><td>15&#8451; / 59&#8457;</td></tr>
       <tr><td>Dual range</td><td>59&#8457; - 66&#8457; (15&#8451; - 19&#8451;)</td><td>59&#8457; - 66&#8457; / 15&#8451; - 19&#8451;</td></tr>
     </table>
-    <h3>4.5 Speed (RPM)</h3>
+    <h3>Speed (RPM)</h3>
     <div class="rule"><span class="tag tag-do">DO</span> 3200 RPM &nbsp;&bull;&nbsp; 1600 to 2800 RPM</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> 3,200RPM / 3200RPM / 3200 r/min / 1600&ndash;2800RPM</div>
-    <h3>4.6 Heart Rate</h3>
+    <h3>Heart Rate</h3>
     <div class="rule"><span class="tag tag-do">DO</span> Beats/min</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> Beat/minute / Beats/minute</div>
-    <h3>4.7 Decibels</h3>
+    <h3>Decibels</h3>
     <div class="rule"><span class="tag tag-do">DO</span> 55dB (no space)</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> 55 dB / 55DB</div>
-    <h3>4.8 Battery Capacity</h3>
+    <h3>Battery Capacity</h3>
     <div class="rule"><span class="tag tag-do">DO</span> 2000mAh 14.8Wh (space between)</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> 2000mAh/14.8Wh</div>
-    <h3>4.9 Age Range</h3>
+    <h3>Age Range</h3>
     <div class="rule"><span class="tag tag-do">DO</span> aged 6&ndash;12 and above</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> aged 6 to 12 and above / aged 6&ndash;12+</div>
   </div>
 </div>
 
-<!-- Section 5: Instructions -->
-<div class="section" data-categories="all format terms">
-  <h2 class="section-header" onclick="toggleSection(this)">5. Instruction Terminology</h2>
+<!-- Instruction Terminology -->
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Instruction Terminology</h2>
   <div class="section-body">
-    <h3>5.1 Button Actions</h3>
+    <h3>Button Actions</h3>
     <table>
       <tr><th>Action</th><th>Correct</th><th>Wrong</th></tr>
       <tr><td>Long press</td><td>Press and hold to...</td><td>Long press to...</td></tr>
@@ -196,7 +187,7 @@ li { margin: 4px 0; }
       <tr><td>Touch double-tap</td><td>Double tap</td><td>Double press</td></tr>
       <tr><td>Physical double-press</td><td>Double press</td><td>Double tap</td></tr>
     </table>
-    <h3>5.2 Word Choices</h3>
+    <h3>Word Choices</h3>
     <table>
       <tr><th>Correct</th><th>Wrong</th></tr>
       <tr><td>Seek technical assistance</td><td>Get professional help</td></tr>
@@ -206,11 +197,11 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Section 6: Technical Terms -->
-<div class="section" data-categories="all terms">
-  <h2 class="section-header" onclick="toggleSection(this)">6. Technical Terminology</h2>
+<!-- Technical Terminology -->
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Technical Terminology</h2>
   <div class="section-body">
-    <h3>6.1 Connectors & Connectivity</h3>
+    <h3>Connectors & Connectivity</h3>
     <table>
       <tr><th>Correct</th><th>Wrong</th></tr>
       <tr><td>USB-C</td><td>Type-C</td></tr>
@@ -219,7 +210,7 @@ li { margin: 4px 0; }
       <tr><td>Wi-Fi</td><td>Wifi</td></tr>
       <tr><td>Bluetooth / Wireless Connectivity</td><td>Wireless Connection / BT / BlueTooth</td></tr>
     </table>
-    <h3>6.2 Functions</h3>
+    <h3>Functions</h3>
     <table>
       <tr><th>Correct</th><th>Wrong</th></tr>
       <tr><td>Heating function / Heat level</td><td>Heat function / Heating level</td></tr>
@@ -228,31 +219,56 @@ li { margin: 4px 0; }
       <tr><td>RENPHO Health App</td><td>Renpho Health app / RENPHO Health app</td></tr>
       <tr><td>Well-being</td><td>Wellbeing</td></tr>
     </table>
-    <h3>6.3 Materials & Accessories</h3>
+    <h3>Materials & Accessories</h3>
     <table>
       <tr><th>Correct</th><th>Wrong</th></tr>
       <tr><td>Hook-and-loop fastener</td><td>Velcro</td></tr>
       <tr><td>2-chain zipper</td><td>Double-zipper</td></tr>
       <tr><td>Spandex</td><td>Lycra</td></tr>
     </table>
-    <h3>6.4 Compliance</h3>
+    <h3>Compliance</h3>
     <table>
       <tr><th>Correct</th><th>Wrong</th></tr>
       <tr><td>Limited Liability Warranty</td><td>Warranty</td></tr>
       <tr><td>FSA Eligible HSA</td><td>FSA/HSA Eligible</td></tr>
       <tr><td>Meets FDA Standards / Pharmaceutical-Grade / Laboratory Tested / Clinically Tested</td><td>FDA-Approved</td></tr>
     </table>
-    <h3>6.5 Quantity Format</h3>
+    <h3>Quantity Format</h3>
     <div class="rule"><span class="tag tag-do">DO</span> Eye Massager x 1 (space around x)</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> Eye Massager x1</div>
   </div>
 </div>
 
-<!-- Section 7: Packaging Structure -->
-<div class="section" data-categories="all packaging">
-  <h2 class="section-header" onclick="toggleSection(this)">7. Packaging Structure</h2>
+<!-- Quick Reference -->
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Quick Reference Card</h2>
   <div class="section-body">
-    <h3>7.1 Front of Box</h3>
+    <table>
+      <tr><th style="color:#16a34a">Correct</th><th style="color:#dc2626">Wrong</th></tr>
+      <tr><td>Wide-Angle Oscillation</td><td>Wide-angle Oscillation</td></tr>
+      <tr><td>6 Different combs</td><td>6 different combs</td></tr>
+      <tr><td>3 heat levels</td><td>3 Heat levels</td></tr>
+      <tr><td>20 min</td><td>20 mins</td></tr>
+      <tr><td>3200 RPM</td><td>3200RPM</td></tr>
+      <tr><td>55dB</td><td>55 dB</td></tr>
+      <tr><td>USB-C</td><td>Type-C</td></tr>
+      <tr><td>Press and hold</td><td>Long press</td></tr>
+      <tr><td>Double tap (touch)</td><td>Double press</td></tr>
+      <tr><td>Auto-mode</td><td>Auto mode</td></tr>
+      <tr><td>RENPHO Health App</td><td>Renpho Health app</td></tr>
+      <tr><td>15&#8451; (59&#8457;)</td><td>15&#8451; / 59&#8457;</td></tr>
+      <tr><td>Spandex</td><td>Lycra</td></tr>
+      <tr><td>Simulate</td><td>Mimic</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== PACKAGING ==================== -->
+
+<!-- Front of Box -->
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" onclick="toggleSection(this)">Front of Box</h2>
+  <div class="section-body">
     <table>
       <tr><th>Element</th><th>Description</th></tr>
       <tr><td>Marketing Name</td><td>From product design team, trademarked, for brand TOMA</td></tr>
@@ -266,7 +282,13 @@ li { margin: 4px 0; }
     <div class="rule"><span class="tag tag-do">DO</span> 50+ Body Metrics, 8 Electrodes, LED Display Readings</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> Relaxation for Your Eyes (too abstract)</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> The Scale for Modern Travelers (benefit-focused)</div>
-    <h3>7.2 Back of Box</h3>
+  </div>
+</div>
+
+<!-- Back of Box -->
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" onclick="toggleSection(this)">Back of Box</h2>
+  <div class="section-body">
     <table>
       <tr><th>Element</th><th>Description</th></tr>
       <tr><td>Short Description</td><td>Expand key features; remove emotion/storytelling; add light benefit if too short</td></tr>
@@ -274,58 +296,47 @@ li { margin: 4px 0; }
       <tr><td>USP Modules</td><td>Plug-and-play from Sales Sheet; distill into short clear title</td></tr>
     </table>
     <p style="margin-top:10px"><strong>Symbol rule:</strong> Back uses <code>and</code>, not <code>&amp;</code></p>
+    <h3>Short Description Examples</h3>
+    <div class="rule"><span class="tag tag-do">DO</span> Focused mist and adjustable temple massage to enhance comfort (Eyeris Zen)</div>
+    <div class="rule"><span class="tag tag-do">DO</span> Smart-app connectivity with dial control for creating and storing 8 offline user profiles on the scale directly. (Elis 3X)</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> Refresh your eyes with a massage designed to target your acupoints with a gentle combination of soothing massage... (too story-like)</div>
+    <h3>Icons Quick Reference</h3>
+    <div class="rule"><span class="tag tag-do">DO</span> Amplitude Adjustable (Active Evo, Ascend) &mdash; generic, reusable</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> Amplitude Dial (Active Evo) &mdash; too product-specific</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> Amplitude Adjust Nub (Ascend) &mdash; too product-specific</div>
   </div>
 </div>
 
-<!-- Section 8: Product-Specific -->
-<div class="section" data-categories="all terms packaging">
-  <h2 class="section-header" onclick="toggleSection(this)">8. Product-Specific Terms</h2>
+<!-- Front vs Back quick ref -->
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" onclick="toggleSection(this)">Front vs Back &mdash; Quick Rules</h2>
   <div class="section-body">
-    <h3>Eye Massager</h3>
-    <p><span class="chip">Ambient tracks</span><span class="chip">Freezable Gel Mask</span><span class="chip">Acupressure</span><span class="chip">Auto-save Memory</span></p>
-    <h3>Scale</h3>
-    <p><span class="chip">Bluetooth Connectivity</span><span class="chip">Wi-Fi Connectivity</span></p>
-    <ul>
-      <li><strong>BT:</strong> Access the RENPHO Health App to sync readings and chart health daily/weekly/monthly/yearly.</li>
-      <li><strong>Wi-Fi:</strong> Auto-syncs without opening app each time. *Shared Wi-Fi and BT signal required.</li>
-    </ul>
-    <h3>Foot Massager</h3>
-    <p><span class="chip">Foot Enabled On/Off Pressure Trigger</span> (e.g. R-WMF04 Solheel Slim)</p>
-    <h3>Massage Gun &mdash; Standard</h3>
     <table>
-      <tr><th>Level</th><th>RPM</th><th>Term Type</th></tr>
-      <tr><td>Kneading</td><td>300</td><td>Massage</td></tr>
-      <tr><td>Warm Up</td><td>1500&ndash;1800</td><td>Pre-exercise</td></tr>
-      <tr><td>Fascial Relief</td><td>1850&ndash;2100</td><td>Tissue layer</td></tr>
-      <tr><td>Deep Tissue Massage</td><td>2150&ndash;2350</td><td>Massage</td></tr>
-      <tr><td>Lactic Acid Break Down</td><td>2400&ndash;2550</td><td>Post-exercise</td></tr>
-      <tr><td>Muscle Mobility</td><td>2600&ndash;2900</td><td>Muscle layer</td></tr>
-      <tr><td>Professional Impact</td><td>3000&ndash;3200</td><td>High tolerance</td></tr>
-    </table>
-    <div class="rule"><span class="tag tag-do">DO</span> Realistically simulates a hand-kneaded massage</div>
-    <div class="rule"><span class="tag tag-dont">DON'T</span> Human-like kneading</div>
-    <h3>Massage Gun &mdash; Micro/Weak</h3>
-    <table>
-      <tr><th>Level</th><th>RPM</th></tr>
-      <tr><td>Warm Up</td><td>2200&ndash;2750</td></tr>
-      <tr><td>Relaxation</td><td>2800&ndash;3350</td></tr>
-      <tr><td>Strong / Firm</td><td>3400&ndash;3950</td></tr>
-      <tr><td>Intense Pulse</td><td>4000&ndash;4550</td></tr>
+      <tr><th>Location</th><th>Use</th><th>Don't Use</th></tr>
+      <tr><td>Front of Box</td><td><strong>&amp;</strong></td><td>and</td></tr>
+      <tr><td>Back of Box</td><td><strong>and</strong></td><td>&amp;</td></tr>
     </table>
   </div>
 </div>
 
-<!-- Section 9: Amazon -->
-<div class="section" data-categories="all amazon">
-  <h2 class="section-header" onclick="toggleSection(this)">9. Amazon Platform Rules</h2>
+<!-- ==================== AMAZON ==================== -->
+
+<!-- FSA/HSA -->
+<div class="section" data-categories="amazon">
+  <h2 class="section-header" onclick="toggleSection(this)">FSA / HSA Statement Template</h2>
   <div class="section-body">
-    <h3>9.1 FSA / HSA Statement Template</h3>
     <div style="background:#f0f7ff; padding:12px; border-radius:6px; margin:8px 0; font-size:13px;">
       <strong>FSA / HSA Eligible Health Savings</strong><br><br>
       RENPHO offers a range of wellness products that are eligible for purchase with most Flexible Spending Accounts (FSA) and Health Savings Accounts (HSA).<br><br>
       Simply add your FSA or HSA card as a payment option in Your Payments when ordering.
     </div>
-    <h3>9.2 Prohibited Keywords</h3>
+  </div>
+</div>
+
+<!-- Prohibited Keywords -->
+<div class="section" data-categories="amazon">
+  <h2 class="section-header" onclick="toggleSection(this)">Prohibited Keywords</h2>
+  <div class="section-body">
     <table>
       <tr><th>Banned</th><th>Replacement</th></tr>
       <tr><td>99.97%</td><td>High-efficiency</td></tr>
@@ -350,33 +361,88 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Quick Reference -->
-<div class="section" data-categories="all format units terms packaging amazon">
-  <h2 class="section-header" onclick="toggleSection(this)">Quick Reference Card</h2>
+<!-- Bullet Point Guidelines -->
+<div class="section" data-categories="amazon">
+  <h2 class="section-header" onclick="toggleSection(this)">Bullet Point Guidelines (Amazon Style)</h2>
   <div class="section-body">
-    <h3>Front vs Back Symbol Rules</h3>
+    <p style="color:#888; font-style:italic;">Sign-in required &mdash; refer to internal SharePoint document.</p>
+  </div>
+</div>
+
+<!-- ==================== EYE MASSAGER ==================== -->
+
+<div class="section" data-categories="eye-massager">
+  <h2 class="section-header" onclick="toggleSection(this)">Eye Massager</h2>
+  <div class="section-body">
+    <h3>Standard Terms</h3>
+    <p><span class="chip">Ambient tracks</span><span class="chip">Freezable Gel Mask</span><span class="chip">Acupressure</span><span class="chip">Auto-save Memory</span></p>
+    <h3>Notes</h3>
+    <ul>
+      <li><strong>Freezable Gel Mask</strong> &mdash; alt. "Cooling Mask"</li>
+      <li>Music feature = "Ambient tracks", not "music" or "songs"</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== SCALE ==================== -->
+
+<div class="section" data-categories="scale">
+  <h2 class="section-header" onclick="toggleSection(this)">Scale</h2>
+  <div class="section-body">
+    <h3>Bluetooth Connectivity</h3>
+    <div style="background:#f0f7ff; padding:12px; border-radius:6px; margin:8px 0; font-size:13px;">
+      Access the RENPHO Health App on your phone to sync your readings. Connect to the scale and chart your body health in daily, weekly, monthly or yearly increments.
+    </div>
+    <h3>Wi-Fi Connectivity</h3>
+    <div style="background:#f0f7ff; padding:12px; border-radius:6px; margin:8px 0; font-size:13px;">
+      Saves data within the scale and automatically syncs to the user's RENPHO Health App on next use, provided an internet connection is available. For those who seek to track their health daily without needing to sync up with the RENPHO Health App on each use! Simply connect the scale to Wi-Fi to send all unpaired scale readings in one sync* upon opening the app next time.<br><br>
+      <em>*Shared Wi-Fi and Bluetooth signal between phone and scale required</em>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOT MASSAGER ==================== -->
+
+<div class="section" data-categories="foot-massager">
+  <h2 class="section-header" onclick="toggleSection(this)">Foot Massager</h2>
+  <div class="section-body">
+    <h3>Key Terms</h3>
+    <p><span class="chip">Foot Enabled On/Off Pressure Trigger</span></p>
+    <p>Designed for easy use (e.g. R-WMF04 Solheel Slim)</p>
+  </div>
+</div>
+
+<!-- ==================== MASSAGE GUN ==================== -->
+
+<div class="section" data-categories="massage-gun">
+  <h2 class="section-header" onclick="toggleSection(this)">Massage Gun &mdash; Standard</h2>
+  <div class="section-body">
+    <p style="margin-bottom:8px; color:#666;">For performance and recovery products.</p>
     <table>
-      <tr><th>Location</th><th>Use</th><th>Don't Use</th></tr>
-      <tr><td>Front of Box</td><td>&amp;</td><td>and</td></tr>
-      <tr><td>Back of Box</td><td>and</td><td>&amp;</td></tr>
+      <tr><th>Level</th><th>RPM</th><th>Term Type</th></tr>
+      <tr><td>Kneading</td><td>300</td><td>Massage</td></tr>
+      <tr><td>Warm Up</td><td>1500&ndash;1800</td><td>Pre-exercise</td></tr>
+      <tr><td>Fascial Relief</td><td>1850&ndash;2100</td><td>Tissue layer</td></tr>
+      <tr><td>Deep Tissue Massage</td><td>2150&ndash;2350</td><td>Massage</td></tr>
+      <tr><td>Lactic Acid Break Down</td><td>2400&ndash;2550</td><td>Post-exercise</td></tr>
+      <tr><td>Muscle Mobility</td><td>2600&ndash;2900</td><td>Muscle layer</td></tr>
+      <tr><td>Professional Impact</td><td>3000&ndash;3200</td><td>High tolerance</td></tr>
     </table>
-    <h3>Common Mistakes Cheat Sheet</h3>
+    <div class="rule" style="margin-top:10px"><span class="tag tag-do">DO</span> Realistically simulates a hand-kneaded massage</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> Human-like kneading</div>
+  </div>
+</div>
+
+<div class="section" data-categories="massage-gun">
+  <h2 class="section-header" onclick="toggleSection(this)">Massage Gun &mdash; Micro / Weak</h2>
+  <div class="section-body">
+    <p style="margin-bottom:8px; color:#666;">Generalized for broader target audience (e.g. WMG16 Micro).</p>
     <table>
-      <tr><th style="color:#16a34a">Correct</th><th style="color:#dc2626">Wrong</th></tr>
-      <tr><td>Wide-Angle Oscillation</td><td>Wide-angle Oscillation</td></tr>
-      <tr><td>6 Different combs</td><td>6 different combs</td></tr>
-      <tr><td>3 heat levels</td><td>3 Heat levels</td></tr>
-      <tr><td>20 min</td><td>20 mins</td></tr>
-      <tr><td>3200 RPM</td><td>3200RPM</td></tr>
-      <tr><td>55dB</td><td>55 dB</td></tr>
-      <tr><td>USB-C</td><td>Type-C</td></tr>
-      <tr><td>Press and hold</td><td>Long press</td></tr>
-      <tr><td>Double tap (touch)</td><td>Double press</td></tr>
-      <tr><td>Auto-mode</td><td>Auto mode</td></tr>
-      <tr><td>RENPHO Health App</td><td>Renpho Health app</td></tr>
-      <tr><td>15&#8451; (59&#8457;)</td><td>15&#8451; / 59&#8457;</td></tr>
-      <tr><td>Spandex</td><td>Lycra</td></tr>
-      <tr><td>Simulate</td><td>Mimic</td></tr>
+      <tr><th>Level</th><th>RPM</th></tr>
+      <tr><td>Warm Up</td><td>2200&ndash;2750</td></tr>
+      <tr><td>Relaxation</td><td>2800&ndash;3350</td></tr>
+      <tr><td>Strong / Firm</td><td>3400&ndash;3950</td></tr>
+      <tr><td>Intense Pulse</td><td>4000&ndash;4550</td></tr>
     </table>
   </div>
 </div>
@@ -392,7 +458,7 @@ document.querySelectorAll('.tab').forEach(tab => {
     const category = tab.dataset.tab;
     document.querySelectorAll('.section').forEach(section => {
       const cats = section.dataset.categories || '';
-      section.style.display = (category === 'all' || cats.includes(category)) ? 'block' : 'none';
+      section.style.display = cats.includes(category) ? 'block' : 'none';
     });
   });
 });
@@ -402,17 +468,16 @@ function toggleSection(header) {
   header.parentElement.classList.toggle('collapsed');
 }
 
-// Search
+// Search - overrides tabs
 document.getElementById('searchBox').addEventListener('input', function() {
   const query = this.value.toLowerCase().trim();
+  if (!query) {
+    // Restore tab state
+    const activeTab = document.querySelector('.tab.active');
+    if (activeTab) activeTab.click();
+    return;
+  }
   document.querySelectorAll('.section').forEach(section => {
-    if (!query) {
-      section.style.display = 'block';
-      section.querySelectorAll('.highlight').forEach(el => {
-        el.outerHTML = el.textContent;
-      });
-      return;
-    }
     const text = section.textContent.toLowerCase();
     if (text.includes(query)) {
       section.style.display = 'block';
