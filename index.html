@@ -36,18 +36,21 @@ li { margin: 4px 0; }
 .chip { display: inline-block; background: #e0e7ff; color: #3730a3; font-size: 11px; padding: 2px 8px; border-radius: 12px; margin: 2px 4px 2px 0; }
 .collapsed .section-body { display: none; }
 .section-header { cursor: pointer; user-select: none; }
-.section-header::before { content: '▼ '; font-size: 11px; color: #888; }
-.collapsed .section-header::before { content: '▶ '; }
+.section-header::before { content: '\25BC'; font-size: 11px; color: #888; margin-right: 8px; }
+.collapsed .section-header::before { content: '\25B6'; margin-right: 8px; }
 .tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 2px solid #e5e5e5; flex-wrap: wrap; }
 .tab { padding: 8px 16px; cursor: pointer; font-size: 13px; font-weight: 500; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
 .tab.active { color: #2563eb; border-bottom-color: #2563eb; }
 .tab:hover { color: #333; }
+.callout-warn { background: #fff1f2; border: 1px solid #fecdd3; border-radius: 6px; padding: 10px 14px; font-size: 13px; color: #be123c; font-weight: 500; margin-bottom: 12px; }
+.template-block { background: #f0f7ff; padding: 12px; border-radius: 6px; margin: 8px 0; font-size: 13px; }
+mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px; }
 </style>
 </head>
 <body>
 
 <h1>RENPHO Packaging & Manual Style Guide</h1>
-<p class="subtitle">2026 Edition &mdash; Product Copywriting 101 | Show, Don't Tell</p>
+<p class="subtitle">2026 Edition</p>
 
 <input type="text" class="search-box" id="searchBox" placeholder="Search rules, terms, or examples... (e.g. USB-C, temperature, RPM)">
 
@@ -55,32 +58,32 @@ li { margin: 4px 0; }
   <div class="tab active" data-tab="general">General</div>
   <div class="tab" data-tab="packaging">Packaging</div>
   <div class="tab" data-tab="amazon">Amazon</div>
-  <div class="tab" data-tab="eye-massager">Eye Massager</div>
-  <div class="tab" data-tab="scale">Scale</div>
-  <div class="tab" data-tab="foot-massager">Foot Massager</div>
-  <div class="tab" data-tab="massage-gun">Massage Gun</div>
+  <div class="tab" data-tab="compliance">Compliance</div>
+  <div class="tab" data-tab="templates">Templates</div>
+  <div class="tab" data-tab="products">Products</div>
 </div>
 
 <div id="content">
 
 <!-- ==================== GENERAL ==================== -->
 
-<!-- Principles -->
 <div class="section" data-categories="general">
-  <h2 class="section-header" onclick="toggleSection(this)">Writing Principles</h2>
+  <h2 class="section-header" onclick="toggleSection(this)">Quick Reference: Spacing Rules</h2>
   <div class="section-body">
-    <ul>
-      <li><strong>Show, Don't Tell</strong> &mdash; Use product design images and specs, not emotional slogans</li>
-      <li><strong>USP First</strong> &mdash; Highlight unique selling point features, not abstract benefits</li>
-      <li><strong>Concise & Precise</strong> &mdash; Remove storytelling/emotion-driven content, focus on features</li>
-      <li><strong>Consistency</strong> &mdash; Terminology, format, capitalization unified throughout</li>
-    </ul>
-    <h3>Scope</h3>
-    <p>Packaging (color box front/back/side) &bull; User manuals &bull; Amazon listings &bull; Sales Sheets</p>
+    <table>
+      <tr><th>Unit Type</th><th>Space?</th><th>Example</th></tr>
+      <tr><td>Time (min, hrs, h, secs, s)</td><td>Yes</td><td>20 min &bull; 2 h</td></tr>
+      <tr><td>Dimensions (cm, in., mm)</td><td>Yes</td><td>10 cm &bull; 2 in.</td></tr>
+      <tr><td>Weight (lbs, kg)</td><td>Yes</td><td>5 lbs &bull; 2.4 kg</td></tr>
+      <tr><td>RPM</td><td>Yes</td><td>3200 RPM</td></tr>
+      <tr><td>Decibels (dB)</td><td>No</td><td>55dB</td></tr>
+      <tr><td>Temperature (&deg;F, &deg;C)</td><td>No</td><td>4&deg;F-131&deg;F</td></tr>
+      <tr><td>Battery (mAh, Wh)</td><td>No (within) / Yes (between)</td><td>2000mAh 14.8Wh</td></tr>
+      <tr><td>Quantity (x)</td><td>Yes</td><td>Eye Massager x 1</td></tr>
+    </table>
   </div>
 </div>
 
-<!-- Grammar & Style -->
 <div class="section" data-categories="general">
   <h2 class="section-header" onclick="toggleSection(this)">Grammar & Style</h2>
   <div class="section-body">
@@ -103,7 +106,6 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Capitalization & Format -->
 <div class="section" data-categories="general">
   <h2 class="section-header" onclick="toggleSection(this)">Capitalization & Format</h2>
   <div class="section-body">
@@ -122,17 +124,9 @@ li { margin: 4px 0; }
     <h3>Button / Function Names</h3>
     <div class="rule"><span class="tag tag-do">DO</span> Press the Power button</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> Press the Power Button / Press the power button</div>
-    <h3>Hyphenation</h3>
-    <table>
-      <tr><th>Correct</th><th>Wrong</th></tr>
-      <tr><td>Auto-mode</td><td>Auto mode</td></tr>
-      <tr><td>Hook-and-loop fastener</td><td>Velcro</td></tr>
-      <tr><td>2-chain zipper</td><td>Double-zipper</td></tr>
-    </table>
   </div>
 </div>
 
-<!-- Units & Measurements -->
 <div class="section" data-categories="general">
   <h2 class="section-header" onclick="toggleSection(this)">Units & Measurements</h2>
   <div class="section-body">
@@ -147,18 +141,18 @@ li { margin: 4px 0; }
     <div class="rule"><span class="tag tag-do">DO</span> 10 cm / 2 in. / 10 mm (space between number and unit)</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> 10cm / 2in</div>
     <h3>Weight</h3>
-    <div class="rule"><span class="tag tag-do">DO</span> 5 lbs / 2.4 kg &nbsp;&bull;&nbsp; 100 lbs</div>
-    <div class="rule"><span class="tag tag-dont">DON'T</span> 5lb/2.4kg &nbsp;&bull;&nbsp; 100lbs</div>
+    <div class="rule"><span class="tag tag-do">DO</span> 5 lbs / 2.4 kg &bull; 100 lbs</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> 5lb/2.4kg &bull; 100lbs</div>
     <h3>Temperature</h3>
     <table>
       <tr><th>Scenario</th><th>Correct</th><th>Wrong</th></tr>
-      <tr><td>Range</td><td>4&#8457;-131&#8457;</td><td>4&ndash;131&#8457; (no en dash)</td></tr>
-      <tr><td>Negative range</td><td>-4&#8457; to 131&#8457;</td><td>-4&ndash;131&#8457;</td></tr>
-      <tr><td>Dual units</td><td>15&#8451; (59&#8457;)</td><td>15&#8451; / 59&#8457;</td></tr>
-      <tr><td>Dual range</td><td>59&#8457; - 66&#8457; (15&#8451; - 19&#8451;)</td><td>59&#8457; - 66&#8457; / 15&#8451; - 19&#8451;</td></tr>
+      <tr><td>Range</td><td>4&deg;F-131&deg;F</td><td>4&ndash;131&deg;F (no en dash)</td></tr>
+      <tr><td>Negative range</td><td>-4&deg;F to 131&deg;F</td><td>-4&ndash;131&deg;F</td></tr>
+      <tr><td>Dual units</td><td>15&deg;C (59&deg;F)</td><td>15&deg;C / 59&deg;F</td></tr>
+      <tr><td>Dual range</td><td>59&deg;F - 66&deg;F (15&deg;C - 19&deg;C)</td><td>59&deg;F - 66&deg;F / 15&deg;C - 19&deg;C</td></tr>
     </table>
     <h3>Speed (RPM)</h3>
-    <div class="rule"><span class="tag tag-do">DO</span> 3200 RPM &nbsp;&bull;&nbsp; 1600 to 2800 RPM</div>
+    <div class="rule"><span class="tag tag-do">DO</span> 3200 RPM &bull; 1600 to 2800 RPM</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> 3,200RPM / 3200RPM / 3200 r/min / 1600&ndash;2800RPM</div>
     <h3>Heart Rate</h3>
     <div class="rule"><span class="tag tag-do">DO</span> Beats/min</div>
@@ -175,7 +169,6 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Instruction Terminology -->
 <div class="section" data-categories="general">
   <h2 class="section-header" onclick="toggleSection(this)">Instruction Terminology</h2>
   <div class="section-body">
@@ -197,7 +190,6 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Technical Terminology -->
 <div class="section" data-categories="general">
   <h2 class="section-header" onclick="toggleSection(this)">Technical Terminology</h2>
   <div class="section-body">
@@ -226,7 +218,7 @@ li { margin: 4px 0; }
       <tr><td>2-chain zipper</td><td>Double-zipper</td></tr>
       <tr><td>Spandex</td><td>Lycra</td></tr>
     </table>
-    <h3>Compliance</h3>
+    <h3>Compliance Terms</h3>
     <table>
       <tr><th>Correct</th><th>Wrong</th></tr>
       <tr><td>Limited Liability Warranty</td><td>Warranty</td></tr>
@@ -239,33 +231,20 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Quick Reference -->
-<div class="section" data-categories="general">
-  <h2 class="section-header" onclick="toggleSection(this)">Quick Reference Card</h2>
+<!-- ==================== PACKAGING ==================== -->
+
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" onclick="toggleSection(this)">Writing Principles</h2>
   <div class="section-body">
-    <table>
-      <tr><th style="color:#16a34a">Correct</th><th style="color:#dc2626">Wrong</th></tr>
-      <tr><td>Wide-Angle Oscillation</td><td>Wide-angle Oscillation</td></tr>
-      <tr><td>6 Different combs</td><td>6 different combs</td></tr>
-      <tr><td>3 heat levels</td><td>3 Heat levels</td></tr>
-      <tr><td>20 min</td><td>20 mins</td></tr>
-      <tr><td>3200 RPM</td><td>3200RPM</td></tr>
-      <tr><td>55dB</td><td>55 dB</td></tr>
-      <tr><td>USB-C</td><td>Type-C</td></tr>
-      <tr><td>Press and hold</td><td>Long press</td></tr>
-      <tr><td>Double tap (touch)</td><td>Double press</td></tr>
-      <tr><td>Auto-mode</td><td>Auto mode</td></tr>
-      <tr><td>RENPHO Health App</td><td>Renpho Health app</td></tr>
-      <tr><td>15&#8451; (59&#8457;)</td><td>15&#8451; / 59&#8457;</td></tr>
-      <tr><td>Spandex</td><td>Lycra</td></tr>
-      <tr><td>Simulate</td><td>Mimic</td></tr>
-    </table>
+    <ul>
+      <li><strong>Show, Don't Tell</strong> &mdash; Use product design images and specs, not emotional slogans</li>
+      <li><strong>USP First</strong> &mdash; Highlight unique selling point features, not abstract benefits</li>
+      <li><strong>Concise & Precise</strong> &mdash; Remove storytelling/emotion-driven content, focus on features</li>
+      <li><strong>Consistency</strong> &mdash; Terminology, format, capitalization unified throughout</li>
+    </ul>
   </div>
 </div>
 
-<!-- ==================== PACKAGING ==================== -->
-
-<!-- Front of Box -->
 <div class="section" data-categories="packaging">
   <h2 class="section-header" onclick="toggleSection(this)">Front of Box</h2>
   <div class="section-body">
@@ -285,7 +264,6 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Back of Box -->
 <div class="section" data-categories="packaging">
   <h2 class="section-header" onclick="toggleSection(this)">Back of Box</h2>
   <div class="section-body">
@@ -307,7 +285,6 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Front vs Back quick ref -->
 <div class="section" data-categories="packaging">
   <h2 class="section-header" onclick="toggleSection(this)">Front vs Back &mdash; Quick Rules</h2>
   <div class="section-body">
@@ -321,11 +298,10 @@ li { margin: 4px 0; }
 
 <!-- ==================== AMAZON ==================== -->
 
-<!-- FSA/HSA -->
 <div class="section" data-categories="amazon">
   <h2 class="section-header" onclick="toggleSection(this)">FSA / HSA Statement Template</h2>
   <div class="section-body">
-    <div style="background:#f0f7ff; padding:12px; border-radius:6px; margin:8px 0; font-size:13px;">
+    <div class="template-block">
       <strong>FSA / HSA Eligible Health Savings</strong><br><br>
       RENPHO offers a range of wellness products that are eligible for purchase with most Flexible Spending Accounts (FSA) and Health Savings Accounts (HSA).<br><br>
       Simply add your FSA or HSA card as a payment option in Your Payments when ordering.
@@ -333,7 +309,6 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Prohibited Keywords -->
 <div class="section" data-categories="amazon">
   <h2 class="section-header" onclick="toggleSection(this)">Prohibited Keywords</h2>
   <div class="section-body">
@@ -361,7 +336,6 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- Bullet Point Guidelines -->
 <div class="section" data-categories="amazon">
   <h2 class="section-header" onclick="toggleSection(this)">Bullet Point Guidelines (Amazon Style)</h2>
   <div class="section-body">
@@ -369,9 +343,140 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- ==================== EYE MASSAGER ==================== -->
+<!-- ==================== COMPLIANCE ==================== -->
 
-<div class="section" data-categories="eye-massager">
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" onclick="toggleSection(this)">Banned Medical Terms</h2>
+  <div class="section-body">
+    <div class="callout-warn">These terms can classify a product as a medical device, losing exemption qualification. Avoid completely.</div>
+    <table>
+      <tr><th>Banned Term</th><th>Reason</th></tr>
+      <tr><td>Treat / Treatment</td><td>Implies medical use</td></tr>
+      <tr><td>Pain treatment</td><td>Medical claim</td></tr>
+      <tr><td>Medical</td><td>Defines as medical device</td></tr>
+      <tr><td>Rehabilitation / Rehab</td><td>Medical claim</td></tr>
+      <tr><td>Diagnose / Diagnosis</td><td>Medical claim</td></tr>
+      <tr><td>Chronic pain</td><td>Disease-specific</td></tr>
+      <tr><td>Arthritis / Inflammation</td><td>Disease name</td></tr>
+      <tr><td>Disease names (sciatica, fibromyalgia, tendonitis)</td><td>Disease-specific</td></tr>
+      <tr><td>Doctor recommended</td><td>Implies medical endorsement</td></tr>
+      <tr><td>Clinically proven</td><td>Requires Global Marketing approval</td></tr>
+      <tr><td>Physiotherapy device</td><td>Defines as medical device</td></tr>
+      <tr><td>FDA approved</td><td>Product uses FDA exemption, not certification</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" onclick="toggleSection(this)">FDA Terminology</h2>
+  <div class="section-body">
+    <p style="margin-bottom:10px;">FDA does not allow its name or logo to be used by the private sector unless specifically authorized in writing.</p>
+    <table>
+      <tr><th>Correct</th><th>Wrong</th></tr>
+      <tr><td>Meets FDA Standards</td><td>FDA Approved</td></tr>
+      <tr><td>Pharmaceutical-Grade</td><td>FDA Cleared (unless certified)</td></tr>
+      <tr><td>Laboratory Tested</td><td>FDA Certified</td></tr>
+      <tr><td>Clinically Tested</td><td>Clinically Proven (needs approval)</td></tr>
+    </table>
+    <h3>"Clinically Proven" Guidance</h3>
+    <p style="font-size:13px;">What it sounds like: strict clinical trials on large samples. What it actually means: anywhere from 1 person to a million have tested the product. Compliance Team rejects this term; seek <strong>Global Marketing approval first</strong> if you wish to use it.</p>
+  </div>
+</div>
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" onclick="toggleSection(this)">LED Mask &mdash; Regional Naming Rules</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Region</th><th>Product Name</th><th>LED Description</th></tr>
+      <tr><td>US / CA / AU only</td><td>LED Light Therapy Mask</td><td>Medical-grade LEDs</td></tr>
+      <tr><td>All other regions</td><td>LED Light Soft Mask</td><td>Multi-wavelength LEDs</td></tr>
+    </table>
+    <p style="margin-top:8px; font-size:13px; color:#666;">Since this equipment is not used in professional medical-grade hospitals, claims about pharmacological effects should be avoided.</p>
+  </div>
+</div>
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" onclick="toggleSection(this)">Scales, Wearables & Non-Medical Devices</h2>
+  <div class="section-body">
+    <h3>Permitted (under FDA General Wellness guidance)</h3>
+    <div class="rule"><span class="tag tag-do">DO</span> "Track your trends. Take control of your wellness."</div>
+    <div class="rule"><span class="tag tag-do">DO</span> "Empowers healthy aging through daily cardiovascular tracking."</div>
+    <div class="rule"><span class="tag tag-do">DO</span> "Proactive wellness management for a balanced lifestyle."</div>
+    <h3>Not Permitted</h3>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> Diagnose hypertension / high blood pressure</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> Detect heart disease or cardiovascular issues</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> Determine if you have a medical condition</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> "Longevity" claims</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> Medical-grade accuracy / Clinical precision</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> "98% accuracy of a DEXA scan" (cannot conflate correlation with accuracy)</div>
+    <h3>General Rule</h3>
+    <p style="font-size:13px;">Claims must remain broad (e.g. "track trends for heart health") and must NOT diagnose conditions. Confirm all promotional documents with PM and compliance department.</p>
+  </div>
+</div>
+
+<!-- ==================== TEMPLATES ==================== -->
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">FSA / HSA Statement</h2>
+  <div class="section-body">
+    <div class="template-block">
+      <strong>FSA / HSA Eligible Health Savings</strong><br><br>
+      RENPHO offers a range of wellness products that are eligible for purchase with most Flexible Spending Accounts (FSA) and Health Savings Accounts (HSA).<br><br>
+      Simply add your FSA or HSA card as a payment option in Your Payments when ordering.
+    </div>
+    <p style="margin-top:8px; font-size:12px; color:#666;">Applicable to: Eye Massagers, Massage Guns, Blood Pressure Monitors, Smart Ring (subject to Amazon Sales lead request)</p>
+  </div>
+</div>
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">2-Year Warranty</h2>
+  <div class="section-body">
+    <h3>Long Version</h3>
+    <div class="template-block">2-Year Warranty: Extended coverage provides twice the standard protection for extra peace of mind.</div>
+    <h3>Short Version</h3>
+    <div class="template-block">2-Year Warranty: Double the industry-standard coverage, delivering extra peace of mind.</div>
+  </div>
+</div>
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">IMA Endorsement</h2>
+  <div class="section-body">
+    <h3>Long Version</h3>
+    <div class="template-block">Recommended by IMA: RENPHO partners with IMA, reinforcing its commitment to bringing professional-grade recovery tools for daily wellness. With direct insights from IMA's therapist network, RENPHO massage products delivers technology that meets real needs and provides a relaxing at-home comfort.<br><br><em>Note: IMA = International Massage Association</em></div>
+    <h3>Short Version</h3>
+    <div class="template-block">Recommended by IMA: Professional-grade massage solution officially endorsed by the International Massage Association.</div>
+  </div>
+</div>
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">Climate Pledge Friendly</h2>
+  <div class="section-body">
+    <div class="template-block">Climate Pledge Friendly: RENPHO massage guns are certified Climate Pledge Friendly, meeting standards for Recycled Materials, Safer Chemicals, and Worker Well-being. Wellness goes hand in hand with caring for the planet, which is why we're committed to fostering a more sustainable future.</div>
+  </div>
+</div>
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">App Download & Scale Connection</h2>
+  <div class="section-body">
+    <h3>App Download Instruction</h3>
+    <div class="template-block">Scan the QR code or search "RENPHO Health" in the App Store or Google Play to download the app.</div>
+    <h3>Scale Connection Disclaimer</h3>
+    <div class="template-block">Note: Connect to the scale via the RENPHO Health App, it cannot be paired via your device settings.</div>
+    <h3>Guest Mode Disclaimer</h3>
+    <div class="template-block">*Clearing app data or uninstalling the app will erase Guest Mode data.</div>
+  </div>
+</div>
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">Community / Social Promo</h2>
+  <div class="section-body">
+    <div class="template-block">Thank you for being part of the RENPHO Health App community.<br>To celebrate, we're offering a limited-time, first-come, first-served offer.<br>Enjoy it&mdash;and don't forget, your feedback helps us improve. So feel free to share your thoughts after purchase!</div>
+  </div>
+</div>
+
+<!-- ==================== PRODUCTS ==================== -->
+
+<div class="section" data-categories="products">
   <h2 class="section-header" onclick="toggleSection(this)">Eye Massager</h2>
   <div class="section-body">
     <h3>Standard Terms</h3>
@@ -384,26 +489,17 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- ==================== SCALE ==================== -->
-
-<div class="section" data-categories="scale">
+<div class="section" data-categories="products">
   <h2 class="section-header" onclick="toggleSection(this)">Scale</h2>
   <div class="section-body">
     <h3>Bluetooth Connectivity</h3>
-    <div style="background:#f0f7ff; padding:12px; border-radius:6px; margin:8px 0; font-size:13px;">
-      Access the RENPHO Health App on your phone to sync your readings. Connect to the scale and chart your body health in daily, weekly, monthly or yearly increments.
-    </div>
+    <div class="template-block">Access the RENPHO Health App on your phone to sync your readings. Connect to the scale and chart your body health in daily, weekly, monthly or yearly increments.</div>
     <h3>Wi-Fi Connectivity</h3>
-    <div style="background:#f0f7ff; padding:12px; border-radius:6px; margin:8px 0; font-size:13px;">
-      Saves data within the scale and automatically syncs to the user's RENPHO Health App on next use, provided an internet connection is available. For those who seek to track their health daily without needing to sync up with the RENPHO Health App on each use! Simply connect the scale to Wi-Fi to send all unpaired scale readings in one sync* upon opening the app next time.<br><br>
-      <em>*Shared Wi-Fi and Bluetooth signal between phone and scale required</em>
-    </div>
+    <div class="template-block">Saves data within the scale and automatically syncs to the user's RENPHO Health App on next use, provided an internet connection is available. For those who seek to track their health daily without needing to sync up with the RENPHO Health App on each use! Simply connect the scale to Wi-Fi to send all unpaired scale readings in one sync* upon opening the app next time.<br><br><em>*Shared Wi-Fi and Bluetooth signal between phone and scale required</em></div>
   </div>
 </div>
 
-<!-- ==================== FOOT MASSAGER ==================== -->
-
-<div class="section" data-categories="foot-massager">
+<div class="section" data-categories="products">
   <h2 class="section-header" onclick="toggleSection(this)">Foot Massager</h2>
   <div class="section-body">
     <h3>Key Terms</h3>
@@ -412,9 +508,7 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<!-- ==================== MASSAGE GUN ==================== -->
-
-<div class="section" data-categories="massage-gun">
+<div class="section" data-categories="products">
   <h2 class="section-header" onclick="toggleSection(this)">Massage Gun &mdash; Standard</h2>
   <div class="section-body">
     <p style="margin-bottom:8px; color:#666;">For performance and recovery products.</p>
@@ -433,7 +527,7 @@ li { margin: 4px 0; }
   </div>
 </div>
 
-<div class="section" data-categories="massage-gun">
+<div class="section" data-categories="products">
   <h2 class="section-header" onclick="toggleSection(this)">Massage Gun &mdash; Micro / Weak</h2>
   <div class="section-body">
     <p style="margin-bottom:8px; color:#666;">Generalized for broader target audience (e.g. WMG16 Micro).</p>
@@ -450,7 +544,6 @@ li { margin: 4px 0; }
 </div>
 
 <script>
-// Tab switching
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -463,25 +556,80 @@ document.querySelectorAll('.tab').forEach(tab => {
   });
 });
 
-// Section collapse/expand
 function toggleSection(header) {
   header.parentElement.classList.toggle('collapsed');
 }
 
-// Search - overrides tabs
+// Highlight helper
+function clearHighlights() {
+  document.querySelectorAll('.section-body mark').forEach(m => {
+    const parent = m.parentNode;
+    parent.replaceChild(document.createTextNode(m.textContent), m);
+    parent.normalize();
+  });
+}
+
+function highlightText(el, keywords) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach(node => {
+    let html = node.textContent;
+    let hasMatch = false;
+    keywords.forEach(kw => {
+      const regex = new RegExp('(' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      if (regex.test(html)) {
+        hasMatch = true;
+        html = html.replace(regex, '<mark>$1</mark>');
+      }
+    });
+    if (hasMatch) {
+      const span = document.createElement('span');
+      span.innerHTML = html;
+      node.parentNode.replaceChild(span, node);
+    }
+  });
+}
+
+// Jump to next match on Enter
+let currentMatchIndex = -1;
+document.getElementById('searchBox').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const marks = document.querySelectorAll('.section-body mark');
+    if (marks.length === 0) return;
+    // Remove previous active highlight
+    marks.forEach(m => m.style.outline = 'none');
+    currentMatchIndex = (currentMatchIndex + 1) % marks.length;
+    const target = marks[currentMatchIndex];
+    target.style.outline = '2px solid #f97316';
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+// Search
 document.getElementById('searchBox').addEventListener('input', function() {
-  const query = this.value.toLowerCase().trim();
-  if (!query) {
-    // Restore tab state
+  currentMatchIndex = -1;
+  const raw = this.value.trim();
+  clearHighlights();
+
+  if (!raw) {
     const activeTab = document.querySelector('.tab.active');
     if (activeTab) activeTab.click();
     return;
   }
+
+  const keywords = raw.toLowerCase().split(/\s+/).filter(k => k.length > 0);
+
   document.querySelectorAll('.section').forEach(section => {
     const text = section.textContent.toLowerCase();
-    if (text.includes(query)) {
+    const allMatch = keywords.every(kw => text.includes(kw));
+    if (allMatch) {
       section.style.display = 'block';
       section.classList.remove('collapsed');
+      const body = section.querySelector('.section-body');
+      if (body) highlightText(body, keywords);
     } else {
       section.style.display = 'none';
     }
