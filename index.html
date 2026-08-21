@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="favicon.png?v=2">
+<link rel="shortcut icon" type="image/png" href="favicon.png?v=2">
 <title>RENPHO Style Guide (2026)</title>
 <meta property="og:title" content="RENPHO Style Guide (2026)">
 <meta property="og:description" content="Internal style guide for RENPHO packaging, manuals, and Amazon listings. Terminology, formatting, compliance, and product-specific rules.">
@@ -446,14 +447,15 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
 <div class="section" data-categories="compliance">
   <h2 class="section-header" onclick="toggleSection(this)">FDA Terminology</h2>
   <div class="section-body">
-    <p style="margin-bottom:10px;">FDA does not allow its name or logo to be used by the private sector unless specifically authorized in writing.</p>
-    <table>
-      <tr><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
-      <tr><td>Meets FDA Standards</td><td>FDA Approved</td></tr>
-      <tr><td>Pharmaceutical-Grade</td><td>FDA Cleared (unless certified)</td></tr>
-      <tr><td>Laboratory Tested</td><td>FDA Certified</td></tr>
-      <tr><td>Clinically Tested</td><td>Clinically Proven (needs approval)</td></tr>
-    </table>
+    <p style="margin-bottom:10px;">Reference: <a href="https://www.fda.gov/medical-devices/consumers-medical-devices/are-there-fda-registered-or-fda-certified-medical-devices-how-do-i-know-what-fda-approved" target="_blank">FDA Official Guidance</a></p>
+    <h3>What We CAN Say</h3>
+    <div class="rule"><span class="tag tag-do">DO</span> FDA clearance &mdash; ONLY for products with 510(k) clearance</div>
+    <h3>What We CANNOT Say</h3>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> FDA-approval (PMA generally refers to Class III devices &mdash; not our products)</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> FDA Registered / FDA Registration</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> FDA Certified</div>
+    <div class="rule"><span class="tag tag-dont">DON'T</span> Printing the FDA LOGO on packaging</div>
+    <div class="callout-warn" style="margin-top:12px;">FDA does NOT issue device registration certificates. Firms that display "FDA registration certificates" alongside products to imply FDA review/approval are in violation of the Federal Food, Drug, and Cosmetic Act. Do not use FDA logo on any materials.</div>
     <h3>"Clinically Proven" Guidance</h3>
     <p style="font-size:13px;">What it sounds like: strict clinical trials on large samples. What it actually means: anywhere from 1 person to a million have tested the product. Compliance Team rejects this term; seek <strong>Global Marketing approval first</strong> if you wish to use it.</p>
   </div>
