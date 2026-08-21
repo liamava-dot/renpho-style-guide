@@ -22,10 +22,15 @@ body {
   padding: 20px;
   font-size: 14px;
 }
-h1 { font-size: 22px; margin-bottom: 4px; color: #111; }
-.subtitle { color: #666; font-size: 13px; margin-bottom: 20px; }
-.search-box { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; margin-bottom: 16px; outline: none; }
-.search-box:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.1); }
+.header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+.header-row h1 { font-size: 20px; font-weight: 700; color: #111; }
+.search-wrap { position: relative; width: 240px; }
+.search-wrap input { width: 100%; padding: 8px 12px 8px 34px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; outline: none; background: #f9f9f9; transition: all 0.2s; }
+.search-wrap input:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.1); background: #fff; }
+.search-wrap input::placeholder { color: #aaa; }
+.search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.search-icon svg { width: 15px; height: 15px; stroke: #999; fill: none; stroke-width: 2; }
+.match-info { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #888; pointer-events: none; }
 .section { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 20px; margin-bottom: 16px; }
 .section h2 { font-size: 16px; color: #111; margin-bottom: 12px; border-bottom: 2px solid #2563eb; padding-bottom: 6px; }
 .section h3 { font-size: 14px; color: #333; margin: 14px 0 8px; }
@@ -58,10 +63,14 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
 </head>
 <body>
 
-<h1>RENPHO Packaging & Manual Style Guide</h1>
-<p class="subtitle">2026 Edition</p>
-
-<input type="text" class="search-box" id="searchBox" placeholder="Search rules, terms, or examples... (e.g. USB-C, temperature, RPM)">
+<div class="header-row">
+  <h1>RENPHO Style Guide</h1>
+  <div class="search-wrap">
+    <span class="search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+    <input type="text" id="searchBox" placeholder="Search...">
+    <span class="match-info" id="matchInfo"></span>
+  </div>
+</div>
 
 <div class="tabs">
   <div class="tab active" data-tab="general">General</div>
@@ -694,12 +703,15 @@ document.getElementById('searchBox').addEventListener('keydown', function(e) {
 });
 
 // Search
+const matchInfoEl = document.getElementById('matchInfo');
+
 document.getElementById('searchBox').addEventListener('input', function() {
   currentMatchIndex = -1;
   const raw = this.value.trim();
   clearHighlights();
 
   if (!raw) {
+    matchInfoEl.textContent = '';
     const activeTab = document.querySelector('.tab.active');
     if (activeTab) activeTab.click();
     return;
@@ -719,6 +731,8 @@ document.getElementById('searchBox').addEventListener('input', function() {
       section.style.display = 'none';
     }
   });
+  const marks = document.querySelectorAll('.section-body mark');
+  matchInfoEl.textContent = marks.length ? marks.length + ' found' : 'No results';
 });
 </script>
 </body>
