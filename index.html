@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RENPHO Style Guide (2026)</title>
+<meta property="og:title" content="RENPHO Style Guide (2026)">
+<meta property="og:description" content="Internal style guide for RENPHO packaging, manuals, and Amazon listings. Terminology, formatting, compliance, and product-specific rules.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://liamava-dot.github.io/renpho-style-guide/">
+<meta name="description" content="RENPHO Packaging & Manual Style Guide 2026 — terminology, units, compliance, and product-specific copywriting rules.">
 <style>
 :root { color-scheme: light; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,6 +34,8 @@ h1 { font-size: 22px; margin-bottom: 4px; color: #111; }
 .tag-dont { background: #fee2e2; color: #991b1b; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; }
 th { background: #f8f9fa; text-align: left; padding: 8px 10px; border: 1px solid #e5e5e5; font-weight: 600; }
+th.col-correct { color: #166534; }
+th.col-wrong { color: #991b1b; }
 td { padding: 8px 10px; border: 1px solid #e5e5e5; }
 tr:hover td { background: #f0f7ff; }
 ul { padding-left: 18px; margin: 6px 0; }
@@ -72,9 +79,9 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
   <div class="section-body">
     <table>
       <tr><th>Unit Type</th><th>Space?</th><th>Example</th></tr>
-      <tr><td>Time (min, hrs, h, secs, s)</td><td>Yes</td><td>20 min &bull; 2 h</td></tr>
-      <tr><td>Dimensions (cm, in., mm)</td><td>Yes</td><td>10 cm &bull; 2 in.</td></tr>
-      <tr><td>Weight (lbs, kg)</td><td>Yes</td><td>5 lbs &bull; 2.4 kg</td></tr>
+      <tr><td>Time (min, hrs, h, secs, s)</td><td>Yes</td><td>20 min<br>2 h</td></tr>
+      <tr><td>Dimensions (cm, in, mm)</td><td>Yes</td><td>10 cm<br>2 in</td></tr>
+      <tr><td>Weight (lbs, kg)</td><td>Yes</td><td>5 lbs<br>2.4 kg</td></tr>
       <tr><td>RPM</td><td>Yes</td><td>3200 RPM</td></tr>
       <tr><td>Decibels (dB)</td><td>No</td><td>55dB</td></tr>
       <tr><td>Temperature (&deg;F, &deg;C)</td><td>No</td><td>4&deg;F-131&deg;F</td></tr>
@@ -98,7 +105,7 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
     <div class="rule"><span class="tag tag-dont">DON'T</span> <span>Knee, shoulder and elbow</span></div>
     <h3>Inclusive Language</h3>
     <table>
-      <tr><th>Correct</th><th>Avoid</th></tr>
+      <tr><th class="col-correct">Correct</th><th class="col-wrong">Avoid</th></tr>
       <tr><td>...persons (including children) with reduced physical, sensory or mental capabilities...</td><td>invalids, mental disorder, disabled people, reduced cognitive capabilities</td></tr>
       <tr><td>...children or persons with disabilities</td><td>children, invalids, and disabled persons</td></tr>
       <tr><td>Persons with skin infections and/or have sensitive skin</td><td>People with skin infections...</td></tr>
@@ -111,13 +118,13 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
   <div class="section-body">
     <h3>Titles vs Sub-headers</h3>
     <table>
-      <tr><th>Context</th><th>Correct</th><th>Wrong</th></tr>
+      <tr><th>Context</th><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
       <tr><td>Main Title</td><td>Long-Term / Wide-Angle Oscillation</td><td>Long-term / Wide-angle Oscillation</td></tr>
       <tr><td>Sub-header</td><td>Long-term</td><td>Long-Term</td></tr>
     </table>
     <h3>Descriptive Text</h3>
     <table>
-      <tr><th>Correct</th><th>Wrong</th><th>Rule</th></tr>
+      <tr><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th><th>Rule</th></tr>
       <tr><td>6 Different combs for xyz</td><td>6 different combs for xyz</td><td>Feature name = capitalize</td></tr>
       <tr><td>3 heat levels to...</td><td>3 Heat levels to...</td><td>Generic descriptor = lowercase</td></tr>
     </table>
@@ -132,20 +139,20 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
   <div class="section-body">
     <h3>Time</h3>
     <table>
-      <tr><th>Unit</th><th>Correct</th><th>Wrong</th></tr>
+      <tr><th>Unit</th><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
       <tr><td>Minutes</td><td>20 min</td><td>20 mins</td></tr>
       <tr><td>Hours</td><td>2 hrs or 2 h (space)</td><td>2 hr or 2h</td></tr>
       <tr><td>Seconds</td><td>2 secs or 2 s (space)</td><td>2 sec or 2s</td></tr>
     </table>
     <h3>Dimensions (incl. amplitude)</h3>
-    <div class="rule"><span class="tag tag-do">DO</span> 10 cm / 2 in. / 10 mm (space between number and unit)</div>
+    <div class="rule"><span class="tag tag-do">DO</span> 10 cm / 2 in / 10 mm (space between number and unit)</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> 10cm / 2in</div>
     <h3>Weight</h3>
     <div class="rule"><span class="tag tag-do">DO</span> 5 lbs / 2.4 kg &bull; 100 lbs</div>
     <div class="rule"><span class="tag tag-dont">DON'T</span> 5lb/2.4kg &bull; 100lbs</div>
     <h3>Temperature</h3>
     <table>
-      <tr><th>Scenario</th><th>Correct</th><th>Wrong</th></tr>
+      <tr><th>Scenario</th><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
       <tr><td>Range</td><td>4&deg;F-131&deg;F</td><td>4&ndash;131&deg;F (no en dash)</td></tr>
       <tr><td>Negative range</td><td>-4&deg;F to 131&deg;F</td><td>-4&ndash;131&deg;F</td></tr>
       <tr><td>Dual units</td><td>15&deg;C (59&deg;F)</td><td>15&deg;C / 59&deg;F</td></tr>
@@ -174,7 +181,7 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
   <div class="section-body">
     <h3>Button Actions</h3>
     <table>
-      <tr><th>Action</th><th>Correct</th><th>Wrong</th></tr>
+      <tr><th>Action</th><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
       <tr><td>Long press</td><td>Press and hold to...</td><td>Long press to...</td></tr>
       <tr><td>Short press</td><td>Press to...</td><td>Short press to...</td></tr>
       <tr><td>Touch double-tap</td><td>Double tap</td><td>Double press</td></tr>
@@ -182,7 +189,7 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
     </table>
     <h3>Word Choices</h3>
     <table>
-      <tr><th>Correct</th><th>Wrong</th></tr>
+      <tr><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
       <tr><td>Seek technical assistance</td><td>Get professional help</td></tr>
       <tr><td>Batteries are weak or depleted</td><td>Batteries have run out / are dead</td></tr>
       <tr><td>Simulate</td><td>Mimic</td></tr>
@@ -195,7 +202,7 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
   <div class="section-body">
     <h3>Connectors & Connectivity</h3>
     <table>
-      <tr><th>Correct</th><th>Wrong</th></tr>
+      <tr><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
       <tr><td>USB-C</td><td>Type-C</td></tr>
       <tr><td>USB-C Charging Cable (other end is USB-A)</td><td>USB C / USB A-C / USB-C to USB-A</td></tr>
       <tr><td>USB-C to USB-C Charging Cable (both ends)</td><td>USB C / USB A-C</td></tr>
@@ -204,7 +211,7 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
     </table>
     <h3>Functions</h3>
     <table>
-      <tr><th>Correct</th><th>Wrong</th></tr>
+      <tr><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
       <tr><td>Heating function / Heat level</td><td>Heat function / Heating level</td></tr>
       <tr><td>Cooling function / Cooling level</td><td>Cool function / Cool heat</td></tr>
       <tr><td>Auto-mode</td><td>Auto mode</td></tr>
@@ -213,14 +220,14 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
     </table>
     <h3>Materials & Accessories</h3>
     <table>
-      <tr><th>Correct</th><th>Wrong</th></tr>
+      <tr><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
       <tr><td>Hook-and-loop fastener</td><td>Velcro</td></tr>
       <tr><td>2-chain zipper</td><td>Double-zipper</td></tr>
       <tr><td>Spandex</td><td>Lycra</td></tr>
     </table>
     <h3>Compliance Terms</h3>
     <table>
-      <tr><th>Correct</th><th>Wrong</th></tr>
+      <tr><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
       <tr><td>Limited Liability Warranty</td><td>Warranty</td></tr>
       <tr><td>FSA Eligible HSA</td><td>FSA/HSA Eligible</td></tr>
       <tr><td>Meets FDA Standards / Pharmaceutical-Grade / Laboratory Tested / Clinically Tested</td><td>FDA-Approved</td></tr>
@@ -289,10 +296,12 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
   <h2 class="section-header" onclick="toggleSection(this)">Front vs Back &mdash; Quick Rules</h2>
   <div class="section-body">
     <table>
-      <tr><th>Location</th><th>Use</th><th>Don't Use</th></tr>
+      <tr><th>Location</th><th class="col-correct">Use</th><th class="col-wrong">Don't Use</th></tr>
       <tr><td>Front of Box</td><td><strong>&amp;</strong></td><td>and</td></tr>
-      <tr><td>Back of Box</td><td><strong>and</strong></td><td>&amp;</td></tr>
+      <tr><td>Back of Box (text)</td><td><strong>and</strong></td><td>&amp;</td></tr>
+      <tr><td>Back of Box (icons)</td><td><strong>&amp;</strong></td><td>&mdash;</td></tr>
     </table>
+    <p style="margin-top:8px; font-size:12px; color:#666;">Note: Icon text on back of box may use <code>&amp;</code> for brevity.</p>
   </div>
 </div>
 
@@ -336,12 +345,6 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
   </div>
 </div>
 
-<div class="section" data-categories="amazon">
-  <h2 class="section-header" onclick="toggleSection(this)">Bullet Point Guidelines (Amazon Style)</h2>
-  <div class="section-body">
-    <p style="color:#888; font-style:italic;">Sign-in required &mdash; refer to internal SharePoint document.</p>
-  </div>
-</div>
 
 <!-- ==================== COMPLIANCE ==================== -->
 
@@ -444,7 +447,7 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
   <div class="section-body">
     <p style="margin-bottom:10px;">FDA does not allow its name or logo to be used by the private sector unless specifically authorized in writing.</p>
     <table>
-      <tr><th>Correct</th><th>Wrong</th></tr>
+      <tr><th class="col-correct">Correct</th><th class="col-wrong">Wrong</th></tr>
       <tr><td>Meets FDA Standards</td><td>FDA Approved</td></tr>
       <tr><td>Pharmaceutical-Grade</td><td>FDA Cleared (unless certified)</td></tr>
       <tr><td>Laboratory Tested</td><td>FDA Certified</td></tr>
@@ -616,6 +619,7 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
 </div>
 
 <script>
+// Tab click handler
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -626,6 +630,12 @@ document.querySelectorAll('.tab').forEach(tab => {
       section.style.display = cats.includes(category) ? 'block' : 'none';
     });
   });
+});
+
+// Initialize: only show General tab content on page load
+document.querySelectorAll('.section').forEach(section => {
+  const cats = section.dataset.categories || '';
+  section.style.display = cats.includes('general') ? 'block' : 'none';
 });
 
 function toggleSection(header) {
