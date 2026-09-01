@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png?v=2">
+<link rel="shortcut icon" type="image/png" href="favicon.png?v=2">
+<title>RENPHO Style Guide (2026)</title>
+<meta property="og:title" content="RENPHO Style Guide (2026)">
+<meta property="og:description" content="Internal style guide for RENPHO packaging, manuals, and Amazon listings. Terminology, formatting, compliance, and product-specific rules.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://liamava-dot.github.io/renpho-style-guide/">
+<meta name="description" content="RENPHO Packaging & Manual Style Guide 2026 — terminology, units, compliance, and product-specific copywriting rules.">
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #fafafa;
+  color: #1a1a1a;
+  line-height: 1.6;
+  padding: 20px;
+  font-size: 14px;
+}
+.header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+.header-row h1 { font-size: 20px; font-weight: 700; color: #111; }
+.search-wrap { position: relative; width: 240px; }
+.search-wrap input { width: 100%; padding: 8px 12px 8px 34px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; outline: none; background: #f9f9f9; transition: all 0.2s; }
+.search-wrap input:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.1); background: #fff; }
+.search-wrap input::placeholder { color: #aaa; }
+.search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.search-icon svg { width: 15px; height: 15px; stroke: #999; fill: none; stroke-width: 2; }
+.match-info { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #888; pointer-events: none; }
+.section { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+.section h2 { font-size: 16px; color: #111; margin-bottom: 12px; border-bottom: 2px solid #2563eb; padding-bottom: 6px; }
+.section h3 { font-size: 14px; color: #333; margin: 14px 0 8px; }
+.rule { display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f0f0f0; align-items: flex-start; }
+.rule:last-child { border-bottom: none; }
+.tag { display: inline-block; font-size: 11px; padding: 2px 6px; border-radius: 3px; font-weight: 600; flex-shrink: 0; }
+.tag-do { background: #dcfce7; color: #166534; }
+.tag-dont { background: #fee2e2; color: #991b1b; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; table-layout: fixed; }
+th { background: #f8f9fa; text-align: left; padding: 8px 10px; border: 1px solid #e5e5e5; font-weight: 600; }
+th.col-do { color: #166534; }
+th.col-dont { color: #991b1b; }
+td { padding: 8px 10px; border: 1px solid #e5e5e5; }
+tr:hover td { background: #f0f7ff; }
+ul { padding-left: 18px; margin: 6px 0; }
+li { margin: 4px 0; }
+.chip { display: inline-block; background: #e0e7ff; color: #3730a3; font-size: 11px; padding: 2px 8px; border-radius: 12px; margin: 2px 4px 2px 0; }
+.collapsed .section-body { display: none; }
+.section-header { cursor: pointer; user-select: none; display: flex; align-items: center; }
+.section-header::before { content: '\25BC'; font-size: 11px; color: #888; margin-right: 8px; line-height: 1; }
+.collapsed .section-header::before { content: '\25B6'; margin-right: 8px; }
+.tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 2px solid #e5e5e5; flex-wrap: wrap; }
+.tab { padding: 8px 16px; cursor: pointer; font-size: 13px; font-weight: 500; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+.tab.active { color: #2563eb; border-bottom-color: #2563eb; }
+.tab:hover { color: #333; }
+.callout-warn { background: #fff1f2; border: 1px solid #fecdd3; border-radius: 6px; padding: 10px 14px; font-size: 13px; color: #be123c; font-weight: 500; margin-bottom: 12px; }
+.template-block { background: #f0f7ff; padding: 12px; border-radius: 6px; margin: 8px 0; font-size: 13px; }
+mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<div class="header-row">
+  <h1>RENPHO Style Guide</h1>
+  <div class="search-wrap">
+    <span class="search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+    <input type="text" id="searchBox" placeholder="Search...">
+    <span class="match-info" id="matchInfo"></span>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" data-tab="general">General</div>
+  <div class="tab" data-tab="packaging">Packaging</div>
+  <div class="tab" data-tab="amazon">Amazon</div>
+  <div class="tab" data-tab="compliance">Compliance</div>
+  <div class="tab" data-tab="templates">Templates</div>
+  <div class="tab" data-tab="products">Products</div>
+</div>
+
+<div id="content">
+
+<!-- ==================== GENERAL ==================== -->
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Quick Reference: Spacing Rules</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Unit Type</th><th>Space?</th><th>Example</th></tr>
+      <tr><td>Time (min, hrs, h, secs, s)</td><td>Yes</td><td>20 min; 2 h</td></tr>
+      <tr><td>Dimensions (cm, in, mm)</td><td>Yes</td><td>10 cm; 2 in</td></tr>
+      <tr><td>Weight (lbs, kg)</td><td>Yes</td><td>5 lbs; 2.4 kg</td></tr>
+      <tr><td>RPM</td><td>Yes</td><td>3200 RPM</td></tr>
+      <tr><td>Decibels (dB)</td><td>No</td><td>55dB</td></tr>
+      <tr><td>Temperature (&deg;F, &deg;C)</td><td>No</td><td>4&deg;F&ndash;131&deg;F</td></tr>
+      <tr><td>Battery (mAh, Wh)</td><td>No (within) / Yes (between)</td><td>2000mAh 14.8Wh</td></tr>
+      <tr><td>Quantity (x)</td><td>Yes</td><td>Eye Massager x 1</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Grammar & Style</h2>
+  <div class="section-body">
+    <h3>Voice & Person</h3>
+    <ul>
+      <li>Instructions: <strong>imperative mood</strong> (tell user what to do directly)</li>
+      <li>Feature intros: <em>The XX function allows/enables&hellip;</em></li>
+      <li>Use <strong>active voice</strong> and <strong>second person</strong> (you/your)</li>
+    </ul>
+    <h3>Oxford Comma</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> <span>Knee, shoulder<strong>, and</strong> elbow</span></div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> <span>Knee, shoulder and elbow</span></div>
+    <h3>Inclusive Language</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>...persons (including children) with reduced physical, sensory or mental capabilities...</td><td>invalids, mental disorder, disabled people, reduced cognitive capabilities</td></tr>
+      <tr><td>...children or persons with disabilities</td><td>children, invalids, and disabled persons</td></tr>
+      <tr><td>Persons with skin infections and/or have sensitive skin</td><td>People with skin infections...</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Capitalization & Format</h2>
+  <div class="section-body">
+    <h3>Titles vs Sub-headers</h3>
+    <table>
+      <tr><th>Context</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Main Title</td><td>Long-Term / Wide-Angle Oscillation</td><td>Long-term / Wide-angle Oscillation</td></tr>
+      <tr><td>Sub-header</td><td>Long-term</td><td>Long-Term</td></tr>
+    </table>
+    <h3>Descriptive Text</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th><th>Rule</th></tr>
+      <tr><td>6 Different combs for xyz</td><td>6 different combs for xyz</td><td>Feature name = capitalize</td></tr>
+      <tr><td>3 heat levels to...</td><td>3 Heat levels to...</td><td>Generic descriptor = lowercase</td></tr>
+    </table>
+    <h3>Button / Function Names</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Press the Power button</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Press the Power Button / Press the power button</div>
+  </div>
+</div>
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Units & Measurements</h2>
+  <div class="section-body">
+    <h3>Time</h3>
+    <table>
+      <tr><th>Unit</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Minutes</td><td>20 min</td><td>20 mins</td></tr>
+      <tr><td>Hours</td><td>2 hrs or 2 h (space)</td><td>2 hr or 2h</td></tr>
+      <tr><td>Seconds</td><td>2 secs or 2 s (space)</td><td>2 sec or 2s</td></tr>
+    </table>
+    <h3>Dimensions (incl. amplitude)</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> 10 cm / 2 in / 10 mm (space between number and unit)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> 10cm / 2in</div>
+    <h3>Weight</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> 5 lbs / 2.4 kg; 100 lbs</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> 5lb/2.4kg; 100lbs</div>
+    <h3>Temperature</h3>
+    <table>
+      <tr><th>Scenario</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Range</td><td>4&deg;F&ndash;131&deg;F</td><td>4&ndash;131&deg;F</td></tr>
+      <tr><td>Negative range</td><td>-4&deg;F to 131&deg;F</td><td>-4&ndash;131&deg;F</td></tr>
+      <tr><td>Dual units</td><td>15&deg;C (59&deg;F)</td><td>15&deg;C / 59&deg;F</td></tr>
+      <tr><td>Dual range</td><td>59&deg;F&ndash;66&deg;F (15&deg;C&ndash;19&deg;C)</td><td>59&deg;F&ndash;66&deg;F / 15&deg;C&ndash;19&deg;C</td></tr>
+    </table>
+    <h3>Speed (RPM)</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> 3200 RPM; 1600 to 2800 RPM</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> 3,200RPM / 3200RPM / 3200 r/min / 1600&ndash;2800RPM</div>
+    <h3>Heart Rate</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Beats/min</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Beat/minute / Beats/minute</div>
+    <h3>Decibels</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> 55dB (no space)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> 55 dB / 55DB</div>
+    <h3>Battery Capacity</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> 2000mAh 14.8Wh (space between)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> 2000mAh/14.8Wh</div>
+    <h3>Age Range</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> aged 6&ndash;12 and above</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> aged 6 to 12 and above / aged 6&ndash;12+</div>
+  </div>
+</div>
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Instruction Terminology</h2>
+  <div class="section-body">
+    <h3>Button Actions</h3>
+    <table>
+      <tr><th>Action</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Long press</td><td>Press and hold to...</td><td>Long press to...</td></tr>
+      <tr><td>Short press</td><td>Press to...</td><td>Short press to...</td></tr>
+      <tr><td>Touch double-tap</td><td>Double tap</td><td>Double press</td></tr>
+      <tr><td>Physical double-press</td><td>Double press</td><td>Double tap</td></tr>
+    </table>
+    <h3>Word Choices</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Seek technical assistance</td><td>Get professional help</td></tr>
+      <tr><td>Batteries are weak or depleted</td><td>Batteries have run out / are dead</td></tr>
+      <tr><td>Simulate</td><td>Mimic</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Technical Terminology</h2>
+  <div class="section-body">
+    <h3>Connectors & Connectivity</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>USB-C</td><td>Type-C</td></tr>
+      <tr><td>USB-C Charging Cable (other end is USB-A)</td><td>USB C / USB A-C / USB-C to USB-A</td></tr>
+      <tr><td>USB-C to USB-C Charging Cable (both ends)</td><td>USB C / USB A-C</td></tr>
+      <tr><td>Wi-Fi</td><td>Wifi</td></tr>
+      <tr><td>Bluetooth / Wireless Connectivity</td><td>Wireless Connection / BT / BlueTooth</td></tr>
+    </table>
+    <h3>Functions</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Heating function / Heat level</td><td>Heat function / Heating level</td></tr>
+      <tr><td>Cooling function / Cooling level</td><td>Cool function / Cool heat</td></tr>
+      <tr><td>Auto-mode</td><td>Auto mode</td></tr>
+      <tr><td>RENPHO Health App</td><td>Renpho Health app / RENPHO Health app</td></tr>
+      <tr><td>Well-being</td><td>Wellbeing</td></tr>
+    </table>
+    <h3>Materials & Accessories</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Hook-and-loop fastener</td><td>Velcro</td></tr>
+      <tr><td>2-chain zipper</td><td>Double-zipper</td></tr>
+      <tr><td>Spandex</td><td>Lycra</td></tr>
+    </table>
+    <h3>Compliance Terms</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Limited Liability Warranty</td><td>Warranty</td></tr>
+      <tr><td>FSA Eligible HSA</td><td>FSA/HSA Eligible</td></tr>
+      <tr><td>Meets FDA Standards / Pharmaceutical-Grade / Laboratory Tested / Clinically Tested</td><td>FDA-Approved</td></tr>
+    </table>
+    <h3>Quantity Format</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Eye Massager x 1 (space around x)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Eye Massager x1</div>
+  </div>
+</div>
+
+<!-- ==================== PACKAGING ==================== -->
+
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" onclick="toggleSection(this)">Writing Principles</h2>
+  <div class="section-body">
+    <ul>
+      <li><strong>Show, Don't Tell</strong> &mdash; Use product design images and specs, not emotional slogans</li>
+      <li><strong>USP First</strong> &mdash; Highlight unique selling point features, not abstract benefits</li>
+      <li><strong>Concise & Precise</strong> &mdash; Remove storytelling/emotion-driven content, focus on features</li>
+      <li><strong>Consistency</strong> &mdash; Terminology, format, capitalization unified throughout</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" onclick="toggleSection(this)">Front of Box</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Element</th><th>Description</th></tr>
+      <tr><td>Marketing Name</td><td>From product design team, trademarked, for brand TOMA</td></tr>
+      <tr><td>Product Name</td><td>From PM, for SKU certification before marketing name finalized</td></tr>
+      <tr><td>USP Summary</td><td><strong>5 words max</strong> &mdash; instant summary of stand-out features</td></tr>
+    </table>
+    <p style="margin-top:10px"><strong>Symbol rule:</strong> Front uses <strong>&amp;</strong>, not <strong>and</strong></p>
+    <h3>USP Summary Examples</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Silent Ultrasonic Motor (Eyeris Zen)</div>
+    <div class="rule"><span class="tag tag-do">Do</span> Customizable Warmth & Comfort (Solheel Slim Thermal)</div>
+    <div class="rule"><span class="tag tag-do">Do</span> 50+ Body Metrics, 8 Electrodes, LED Display Readings</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Relaxation for Your Eyes (too abstract)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> The Scale for Modern Travelers (benefit-focused)</div>
+  </div>
+</div>
+
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" onclick="toggleSection(this)">Back of Box</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Element</th><th>Description</th></tr>
+      <tr><td>Short Description</td><td>Expand key features; remove emotion/storytelling; add light benefit if too short</td></tr>
+      <tr><td>Icons Quick Reference</td><td>From Sales Sheet; must be generic enough to reuse across products</td></tr>
+      <tr><td>USP Modules</td><td>Plug-and-play from Sales Sheet; distill into short clear title</td></tr>
+    </table>
+    <p style="margin-top:10px"><strong>Symbol rule:</strong> Back uses <strong>and</strong>, not <strong>&amp;</strong></p>
+    <h3>Short Description Examples</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Focused mist and adjustable temple massage to enhance comfort (Eyeris Zen)</div>
+    <div class="rule"><span class="tag tag-do">Do</span> Smart-app connectivity with dial control for creating and storing 8 offline user profiles on the scale directly. (Elis 3X)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Refresh your eyes with a massage designed to target your acupoints with a gentle combination of soothing massage... (too story-like)</div>
+    <h3>Icons Quick Reference</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Amplitude Adjustable (Active Evo, Ascend) &mdash; generic, reusable</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Amplitude Dial (Active Evo) &mdash; too product-specific</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Amplitude Adjust Nub (Ascend) &mdash; too product-specific</div>
+  </div>
+</div>
+
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" onclick="toggleSection(this)">Front vs Back &mdash; Quick Rules</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Location</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Front of Box</td><td><strong>&amp;</strong></td><td>and</td></tr>
+      <tr><td>Back of Box (text)</td><td><strong>and</strong></td><td>&amp;</td></tr>
+      <tr><td>Back of Box (icons)</td><td><strong>&amp;</strong></td><td>&mdash;</td></tr>
+    </table>
+    <p style="margin-top:8px; font-size:12px; color:#666;">Note: Icon text on back of box may use <strong>&amp;</strong> for brevity.</p>
+  </div>
+</div>
+
+<!-- ==================== AMAZON ==================== -->
+
+<div class="section" data-categories="amazon">
+  <h2 class="section-header" onclick="toggleSection(this)">FSA / HSA Statement Template</h2>
+  <div class="section-body">
+    <div class="template-block">
+      <strong>FSA / HSA Eligible Health Savings</strong><br><br>
+      RENPHO offers a range of wellness products that are eligible for purchase with most Flexible Spending Accounts (FSA) and Health Savings Accounts (HSA).<br><br>
+      Simply add your FSA or HSA card as a payment option in Your Payments when ordering.
+    </div>
+  </div>
+</div>
+
+<div class="section" data-categories="amazon">
+  <h2 class="section-header" onclick="toggleSection(this)">Prohibited Keywords</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Banned</th><th>Replacement</th></tr>
+      <tr><td>99.97%</td><td>High-efficiency</td></tr>
+      <tr><td>Air / Air compression</td><td>Air-compress / compress</td></tr>
+      <tr><td>Antibacterial / Bacteria / Mite / Mold / VOCs / H13</td><td>&mdash; (no replacement)</td></tr>
+      <tr><td>Blood circulation</td><td>&mdash; (no replacement)</td></tr>
+      <tr><td>Edema / RLS / varicose veins / Plantar Fasciitis</td><td>&mdash; (no replacement)</td></tr>
+      <tr><td>Free</td><td>Complimentary / Without charge</td></tr>
+      <tr><td>Gift</td><td>Present / Bonus item</td></tr>
+      <tr><td>Grass / Weed / Pots</td><td>Plant</td></tr>
+      <tr><td>Inflating and deflating</td><td>&mdash; (no replacement)</td></tr>
+      <tr><td>Medical</td><td>Health care</td></tr>
+      <tr><td>Odor</td><td>Smell</td></tr>
+      <tr><td>Pain Relief</td><td>Soreness Alleviation</td></tr>
+      <tr><td>Recovery</td><td>Revitalization</td></tr>
+      <tr><td>Swelling</td><td>&mdash; (no replacement)</td></tr>
+      <tr><td>Treatment / Therapy</td><td>Care</td></tr>
+      <tr><td>Tube</td><td>Hose</td></tr>
+      <tr><td>Warranty</td><td>Guarantee / Service agreement</td></tr>
+      <tr><td>FDA-Approved</td><td>Meets FDA Standards</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- ==================== COMPLIANCE ==================== -->
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" onclick="toggleSection(this)">Product-Specific Restricted Phrases</h2>
+  <div class="section-body">
+    <p style="margin-bottom:10px; font-size:13px;">RED = high risk. Products under FDA clearance may use phrases consistent with "FDA Summary - indication for use" only.</p>
+    <h3>Body Composition Scale</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>DEXA</td><td style="color:#be123c">High</td><td>Provides advanced body composition analysis and metrics tracking</td></tr>
+      <tr><td>High Precision Measurements</td><td style="color:#d97706">Medium</td><td>Consistent and reliable measurement tracking</td></tr>
+      <tr><td>high-precision / Accurate</td><td style="color:#d97706">Medium</td><td>Reliable / Consistent monitoring</td></tr>
+      <tr><td>accurate health overview</td><td style="color:#be123c">Med-High</td><td>Comprehensive body trend insights and metric overview</td></tr>
+    </table>
+    <h3>Eye Massager</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>xerophthalmus / xeroma</td><td style="color:#be123c">High</td><td>Soothes and comforts severe dryness around the eye area</td></tr>
+      <tr><td>dry eyes</td><td style="color:#be123c">Med-High</td><td>Refreshes tired eyes and soothes eye area dryness</td></tr>
+      <tr><td>improve circulation</td><td style="color:#be123c">High</td><td>Invigorating massage to help refresh and stimulate the eye area</td></tr>
+      <tr><td>improve sleep quality</td><td style="color:#be123c">Med-High</td><td>Promotes a sense of deep relaxation to help you unwind for better rest</td></tr>
+      <tr><td>reduce styes, sore eyes, dark circles</td><td style="color:#d97706">Low-Med</td><td>Relieves eye fatigue, comforts strained eyes, and refreshes under-eye skin</td></tr>
+      <tr><td>MGD</td><td style="color:#be123c">High</td><td>Provides soothing warmth and targeted relaxation around the eye area</td></tr>
+      <tr><td>reduce dark circles</td><td style="color:#be123c">Med-High</td><td>Refreshes and revitalizes the appearance of under-eye skin</td></tr>
+      <tr><td>promote better sleep</td><td style="color:#be123c">Med-High</td><td>Supports a relaxing bedtime routine and helps soothe the mind</td></tr>
+      <tr><td>help ease puffiness</td><td style="color:#16a34a">Low</td><td>Diminishes the look of puffiness and revitalizes tired-looking skin</td></tr>
+    </table>
+    <h3>Foot Massager</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>Plantar Fasciitis</td><td style="color:#be123c">High</td><td>Eases everyday foot tension and soothes intense sole discomfort</td></tr>
+      <tr><td>relieve pain / pain relief</td><td style="color:#be123c">Med-High</td><td>Soothes muscle stiffness and alleviates daily muscle tension</td></tr>
+      <tr><td>improving sleep quality</td><td style="color:#be123c">Med-High</td><td>Promotes full-body relaxation to prepare you for a restful sleep</td></tr>
+    </table>
+    <h3>Heating Pad</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>cramp</td><td style="color:#be123c">Med-High</td><td>Eases sudden muscle tightness and comforts tense muscles</td></tr>
+      <tr><td>menstrual soreness</td><td style="color:#be123c">High</td><td>Provides comforting warmth and deeply relaxing relief for lower body tension</td></tr>
+      <tr><td>physical therapy</td><td style="color:#be123c">High</td><td>Supports post-workout recovery, muscle rehabilitation, and relaxation</td></tr>
+      <tr><td>pain relief / relieving pain</td><td style="color:#be123c">High</td><td>Promotes muscle comfort and everyday tension relief</td></tr>
+      <tr><td>Helps relieve back pain, menstrual cramps</td><td style="color:#be123c">Med-High</td><td>Soothes lower back tension and alleviates deep muscle stiffness</td></tr>
+      <tr><td>improves blood circulation</td><td style="color:#be123c">High</td><td>Invigorates and refreshes the body with a stimulating massage experience</td></tr>
+      <tr><td>promotes healing of injured tissue</td><td style="color:#be123c">High</td><td>Supports post-workout recovery and helps soothe overworked muscles</td></tr>
+    </table>
+    <h3>Massage Gun</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>accelerate recovery</td><td style="color:#be123c">High</td><td>Assists with post-activity downtime and supports your daily physical routine</td></tr>
+      <tr><td>accelerate lactic acid release, promote body circulation</td><td style="color:#be123c">High</td><td>Eases post-workout muscle tightness and helps revive tired muscles</td></tr>
+      <tr><td>relieve pains</td><td style="color:#be123c">High</td><td>Alleviates daily muscle tension and provides comforting relief from everyday stiffness</td></tr>
+      <tr><td>help reduce swelling</td><td style="color:#be123c">High</td><td>Soothes and comforts puffy or tired areas while easing the sensation of heaviness</td></tr>
+      <tr><td>relieves muscle fatigue</td><td style="color:#be123c">Med-High</td><td>Refreshes tired muscles and restores a feeling of comfort to overworked areas</td></tr>
+      <tr><td>pain therapy / muscle treatment</td><td style="color:#be123c">High</td><td>&mdash;</td></tr>
+      <tr><td>reduce arthritis pain</td><td style="color:#be123c">High</td><td>&mdash;</td></tr>
+      <tr><td>improves circulation</td><td style="color:#be123c">High</td><td>&mdash;</td></tr>
+      <tr><td>relieve muscle soreness</td><td style="color:#be123c">Med-High</td><td>&mdash;</td></tr>
+      <tr><td>speed up recovery</td><td style="color:#be123c">Med-High</td><td>&mdash;</td></tr>
+      <tr><td>reduce stiffness</td><td style="color:#16a34a">Low-Med</td><td>&mdash;</td></tr>
+      <tr><td>deep tissue percussion</td><td style="color:#16a34a">Low</td><td>&mdash;</td></tr>
+    </table>
+    <h3>Yoga Roller</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>for Back Pain / backache</td><td style="color:#be123c">Med-High</td><td>Soothes lower back tightness and targets deep muscle stiffness in the back</td></tr>
+    </table>
+    <h3>Beauty Wand</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>electroporation</td><td style="color:#be123c">Med-High</td><td>&mdash; (professional medical/biology term, avoid)</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" onclick="toggleSection(this)">Banned Medical Terms</h2>
+  <div class="section-body">
+    <div class="callout-warn">These terms can classify a product as a medical device, losing exemption qualification. Avoid completely.</div>
+    <table>
+      <tr><th>Banned Term</th><th>Reason</th></tr>
+      <tr><td>Treat / Treatment</td><td>Implies medical use</td></tr>
+      <tr><td>Pain treatment</td><td>Medical claim</td></tr>
+      <tr><td>Medical</td><td>Defines as medical device</td></tr>
+      <tr><td>Rehabilitation / Rehab</td><td>Medical claim</td></tr>
+      <tr><td>Diagnose / Diagnosis</td><td>Medical claim</td></tr>
+      <tr><td>Chronic pain</td><td>Disease-specific</td></tr>
+      <tr><td>Arthritis / Inflammation</td><td>Disease name</td></tr>
+      <tr><td>Disease names (sciatica, fibromyalgia, tendonitis)</td><td>Disease-specific</td></tr>
+      <tr><td>Doctor recommended</td><td>Implies medical endorsement</td></tr>
+      <tr><td>Clinically proven</td><td>Requires Global Marketing approval</td></tr>
+      <tr><td>Physiotherapy device</td><td>Defines as medical device</td></tr>
+      <tr><td>FDA approved</td><td>Product uses FDA exemption, not certification</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" onclick="toggleSection(this)">FDA Terminology</h2>
+  <div class="section-body">
+    <p style="margin-bottom:10px;">Reference: <a href="https://www.fda.gov/medical-devices/consumers-medical-devices/are-there-fda-registered-or-fda-certified-medical-devices-how-do-i-know-what-fda-approved" target="_blank">FDA Official Guidance</a></p>
+    <h3>What We CAN Say</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> FDA clearance &mdash; ONLY for products with 510(k) clearance</div>
+    <h3>What We CANNOT Say</h3>
+    <div class="rule"><span class="tag tag-dont">Don't</span> FDA-approval (PMA generally refers to Class III devices &mdash; not our products)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> FDA Registered / FDA Registration</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> FDA Certified</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Printing the FDA LOGO on packaging</div>
+    <div class="callout-warn" style="margin-top:12px;">FDA does NOT issue device registration certificates. Firms that display "FDA registration certificates" alongside products to imply FDA review/approval are in violation of the Federal Food, Drug, and Cosmetic Act. Do not use FDA logo on any materials.</div>
+    <h3>"Clinically Proven" Guidance</h3>
+    <p style="font-size:13px;">What it sounds like: strict clinical trials on large samples. What it actually means: anywhere from 1 person to a million have tested the product. Compliance Team rejects this term; seek <strong>Global Marketing approval first</strong> if you wish to use it.</p>
+  </div>
+</div>
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" onclick="toggleSection(this)">LED Mask &mdash; Regional Naming Rules</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Region</th><th>Product Name</th><th>LED Description</th></tr>
+      <tr><td>US / CA / AU only</td><td>LED Light Therapy Mask</td><td>Medical-grade LEDs</td></tr>
+      <tr><td>All other regions</td><td>LED Light Soft Mask</td><td>Multi-wavelength LEDs</td></tr>
+    </table>
+    <p style="margin-top:8px; font-size:13px; color:#666;">Since this equipment is not used in professional medical-grade hospitals, claims about pharmacological effects should be avoided.</p>
+  </div>
+</div>
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" onclick="toggleSection(this)">Scales, Wearables & Non-Medical Devices</h2>
+  <div class="section-body">
+    <h3>Permitted (under FDA General Wellness guidance)</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> "Track your trends. Take control of your wellness."</div>
+    <div class="rule"><span class="tag tag-do">Do</span> "Empowers healthy aging through daily cardiovascular tracking."</div>
+    <div class="rule"><span class="tag tag-do">Do</span> "Proactive wellness management for a balanced lifestyle."</div>
+    <h3>Not Permitted</h3>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Diagnose hypertension / high blood pressure</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Detect heart disease or cardiovascular issues</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Determine if you have a medical condition</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> "Longevity" claims</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Medical-grade accuracy / Clinical precision</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> "98% accuracy of a DEXA scan" (cannot conflate correlation with accuracy)</div>
+    <h3>General Rule</h3>
+    <p style="font-size:13px;">Claims must remain broad (e.g. "track trends for heart health") and must NOT diagnose conditions. Confirm all promotional documents with PM and compliance department.</p>
+  </div>
+</div>
+
+<!-- ==================== TEMPLATES ==================== -->
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">FSA / HSA Statement</h2>
+  <div class="section-body">
+    <div class="template-block">
+      <strong>FSA / HSA Eligible Health Savings</strong><br><br>
+      RENPHO offers a range of wellness products that are eligible for purchase with most Flexible Spending Accounts (FSA) and Health Savings Accounts (HSA).<br><br>
+      Simply add your FSA or HSA card as a payment option in Your Payments when ordering.
+    </div>
+    <p style="margin-top:8px; font-size:12px; color:#666;">Applicable to: Eye Massagers, Massage Guns, Blood Pressure Monitors, Smart Ring (subject to Amazon Sales lead request)</p>
+  </div>
+</div>
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">2-Year Warranty</h2>
+  <div class="section-body">
+    <h3>Long Version</h3>
+    <div class="template-block">2-Year Warranty: Extended coverage provides twice the standard protection for extra peace of mind.</div>
+    <h3>Short Version</h3>
+    <div class="template-block">2-Year Warranty: Double the industry-standard coverage, delivering extra peace of mind.</div>
+  </div>
+</div>
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">IMA Endorsement</h2>
+  <div class="section-body">
+    <h3>Long Version</h3>
+    <div class="template-block">Recommended by IMA: RENPHO partners with IMA, reinforcing its commitment to bringing professional-grade recovery tools for daily wellness. With direct insights from IMA's therapist network, RENPHO massage products delivers technology that meets real needs and provides a relaxing at-home comfort.<br><br><em>Note: IMA = International Massage Association</em></div>
+    <h3>Short Version</h3>
+    <div class="template-block">Recommended by IMA: Professional-grade massage solution officially endorsed by the International Massage Association.</div>
+  </div>
+</div>
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">Climate Pledge Friendly</h2>
+  <div class="section-body">
+    <div class="template-block">Climate Pledge Friendly: RENPHO massage guns are certified Climate Pledge Friendly, meeting standards for Recycled Materials, Safer Chemicals, and Worker Well-being. Wellness goes hand in hand with caring for the planet, which is why we're committed to fostering a more sustainable future.</div>
+  </div>
+</div>
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">App Download & Scale Connection</h2>
+  <div class="section-body">
+    <h3>App Download Instruction</h3>
+    <div class="template-block">Scan the QR code or search "RENPHO Health" in the App Store or Google Play to download the app.</div>
+    <h3>Scale Connection Disclaimer</h3>
+    <div class="template-block">Note: Connect to the scale via the RENPHO Health App, it cannot be paired via your device settings.</div>
+    <h3>Guest Mode Disclaimer</h3>
+    <div class="template-block">*Clearing app data or uninstalling the app will erase Guest Mode data.</div>
+  </div>
+</div>
+
+<div class="section" data-categories="templates">
+  <h2 class="section-header" onclick="toggleSection(this)">Community / Social Promo</h2>
+  <div class="section-body">
+    <div class="template-block">Thank you for being part of the RENPHO Health App community.<br>To celebrate, we're offering a limited-time, first-come, first-served offer.<br>Enjoy it&mdash;and don't forget, your feedback helps us improve. So feel free to share your thoughts after purchase!</div>
+  </div>
+</div>
+
+<!-- ==================== PRODUCTS ==================== -->
+
+<div class="section" data-categories="products">
+  <h2 class="section-header" onclick="toggleSection(this)">Eye Massager</h2>
+  <div class="section-body">
+    <h3>Standard Terms</h3>
+    <p><span class="chip">Ambient tracks</span><span class="chip">Freezable Gel Mask</span><span class="chip">Acupressure</span><span class="chip">Auto-save Memory</span></p>
+    <h3>Notes</h3>
+    <ul>
+      <li><strong>Freezable Gel Mask</strong> &mdash; alt. "Cooling Mask"</li>
+      <li>Music feature = "Ambient tracks", not "music" or "songs"</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section" data-categories="products">
+  <h2 class="section-header" onclick="toggleSection(this)">Scale</h2>
+  <div class="section-body">
+    <h3>Bluetooth Connectivity</h3>
+    <div class="template-block">Access the RENPHO Health App on your phone to sync your readings. Connect to the scale and chart your body health in daily, weekly, monthly or yearly increments.</div>
+    <h3>Wi-Fi Connectivity</h3>
+    <div class="template-block">Saves data within the scale and automatically syncs to the user's RENPHO Health App on next use, provided an internet connection is available. For those who seek to track their health daily without needing to sync up with the RENPHO Health App on each use! Simply connect the scale to Wi-Fi to send all unpaired scale readings in one sync* upon opening the app next time.<br><br><em>*Shared Wi-Fi and Bluetooth signal between phone and scale required</em></div>
+  </div>
+</div>
+
+<div class="section" data-categories="products">
+  <h2 class="section-header" onclick="toggleSection(this)">Foot Massager</h2>
+  <div class="section-body">
+    <h3>Key Terms</h3>
+    <p><span class="chip">Foot Enabled On/Off Pressure Trigger</span></p>
+    <p>Designed for easy use (e.g. R-WMF04 Solheel Slim)</p>
+  </div>
+</div>
+
+<div class="section" data-categories="products">
+  <h2 class="section-header" onclick="toggleSection(this)">Massage Gun &mdash; Standard</h2>
+  <div class="section-body">
+    <p style="margin-bottom:8px; color:#666;">For performance and recovery products.</p>
+    <table>
+      <tr><th>Level</th><th>RPM</th><th>Term Type</th></tr>
+      <tr><td>Kneading</td><td>300</td><td>Massage</td></tr>
+      <tr><td>Warm Up</td><td>1500&ndash;1800</td><td>Pre-exercise</td></tr>
+      <tr><td>Fascial Relief</td><td>1850&ndash;2100</td><td>Tissue layer</td></tr>
+      <tr><td>Deep Tissue Massage</td><td>2150&ndash;2350</td><td>Massage</td></tr>
+      <tr><td>Lactic Acid Break Down</td><td>2400&ndash;2550</td><td>Post-exercise</td></tr>
+      <tr><td>Muscle Mobility</td><td>2600&ndash;2900</td><td>Muscle layer</td></tr>
+      <tr><td>Professional Impact</td><td>3000&ndash;3200</td><td>High tolerance</td></tr>
+    </table>
+    <div class="rule" style="margin-top:10px"><span class="tag tag-do">Do</span> Realistically simulates a hand-kneaded massage</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Human-like kneading</div>
+  </div>
+</div>
+
+<div class="section" data-categories="products">
+  <h2 class="section-header" onclick="toggleSection(this)">Massage Gun &mdash; Micro / Weak</h2>
+  <div class="section-body">
+    <p style="margin-bottom:8px; color:#666;">Generalized for broader target audience (e.g. WMG16 Micro).</p>
+    <table>
+      <tr><th>Level</th><th>RPM</th></tr>
+      <tr><td>Warm Up</td><td>2200&ndash;2750</td></tr>
+      <tr><td>Relaxation</td><td>2800&ndash;3350</td></tr>
+      <tr><td>Strong / Firm</td><td>3400&ndash;3950</td></tr>
+      <tr><td>Intense Pulse</td><td>4000&ndash;4550</td></tr>
+    </table>
+  </div>
+</div>
+
+</div>
+
+<script>
+// Tab click handler
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const category = tab.dataset.tab;
+    document.querySelectorAll('.section').forEach(section => {
+      const cats = section.dataset.categories || '';
+      section.style.display = cats.includes(category) ? 'block' : 'none';
+    });
+  });
+});
+
+// Initialize: only show General tab content on page load
+document.querySelectorAll('.section').forEach(section => {
+  const cats = section.dataset.categories || '';
+  section.style.display = cats.includes('general') ? 'block' : 'none';
+});
+
+function toggleSection(header) {
+  header.parentElement.classList.toggle('collapsed');
+}
+
+// Highlight helper
+function clearHighlights() {
+  document.querySelectorAll('.section-body mark').forEach(m => {
+    const parent = m.parentNode;
+    parent.replaceChild(document.createTextNode(m.textContent), m);
+    parent.normalize();
+  });
+}
+
+function highlightText(el, keywords) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach(node => {
+    let html = node.textContent;
+    let hasMatch = false;
+    keywords.forEach(kw => {
+      const regex = new RegExp('(' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      if (regex.test(html)) {
+        hasMatch = true;
+        html = html.replace(regex, '<mark>$1</mark>');
+      }
+    });
+    if (hasMatch) {
+      const span = document.createElement('span');
+      span.innerHTML = html;
+      node.parentNode.replaceChild(span, node);
+    }
+  });
+}
+
+// Jump to next match on Enter
+let currentMatchIndex = -1;
+document.getElementById('searchBox').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const marks = document.querySelectorAll('.section-body mark');
+    if (marks.length === 0) return;
+    // Remove previous active highlight
+    marks.forEach(m => m.style.outline = 'none');
+    currentMatchIndex = (currentMatchIndex + 1) % marks.length;
+    const target = marks[currentMatchIndex];
+    target.style.outline = '2px solid #f97316';
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+// Search
+const matchInfoEl = document.getElementById('matchInfo');
+
+document.getElementById('searchBox').addEventListener('input', function() {
+  currentMatchIndex = -1;
+  const raw = this.value.trim();
+  clearHighlights();
+
+  if (!raw) {
+    matchInfoEl.textContent = '';
+    const activeTab = document.querySelector('.tab.active');
+    if (activeTab) activeTab.click();
+    return;
+  }
+
+  const keywords = raw.toLowerCase().split(/\s+/).filter(k => k.length > 0);
+
+  document.querySelectorAll('.section').forEach(section => {
+    const text = section.textContent.toLowerCase();
+    const allMatch = keywords.every(kw => text.includes(kw));
+    if (allMatch) {
+      section.style.display = 'block';
+      section.classList.remove('collapsed');
+      const body = section.querySelector('.section-body');
+      if (body) highlightText(body, keywords);
+    } else {
+      section.style.display = 'none';
+    }
+  });
+  const marks = document.querySelectorAll('.section-body mark');
+  matchInfoEl.textContent = marks.length ? marks.length + ' found' : 'No results';
+});
+</script>
+</body>
+</html>
