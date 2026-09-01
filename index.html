@@ -12,17 +12,25 @@
 <meta property="og:url" content="https://liamava-dot.github.io/renpho-style-guide/">
 <meta name="description" content="RENPHO Packaging & Manual Style Guide 2026 — terminology, units, compliance, and product-specific copywriting rules.">
 <style>
-:root { color-scheme: light; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #fafafa;
   color: #1a1a1a;
   line-height: 1.6;
-  padding: 20px;
   font-size: 14px;
+  color-scheme: light;
 }
-.header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fafafa;
+  padding: 16px 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+#content { padding: 16px 20px 20px; }
+.header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 12px; }
 .header-row h1 { font-size: 20px; font-weight: 700; color: #111; }
 .search-wrap { position: relative; width: 240px; }
 .search-wrap input { width: 100%; padding: 8px 12px 8px 34px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; outline: none; background: #f9f9f9; transition: all 0.2s; }
@@ -51,8 +59,8 @@ li { margin: 4px 0; }
 .collapsed .section-body { display: none; }
 .section-header { cursor: pointer; user-select: none; display: flex; align-items: center; }
 .section-header::before { content: '\25BC'; font-size: 11px; color: #888; margin-right: 8px; line-height: 1; }
-.collapsed .section-header::before { content: '\25B6'; margin-right: 8px; }
-.tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 2px solid #e5e5e5; flex-wrap: wrap; }
+.collapsed .section-header::before { content: '\25B6'; }
+.tabs { display: flex; border-bottom: 2px solid #e5e5e5; flex-wrap: wrap; }
 .tab { padding: 8px 16px; cursor: pointer; font-size: 13px; font-weight: 500; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
 .tab.active { color: #2563eb; border-bottom-color: #2563eb; }
 .tab:hover { color: #333; }
@@ -63,22 +71,23 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
 </head>
 <body>
 
-<div class="header-row">
-  <h1>RENPHO Style Guide</h1>
-  <div class="search-wrap">
-    <span class="search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
-    <input type="text" id="searchBox" placeholder="Search...">
-    <span class="match-info" id="matchInfo"></span>
+<div class="sticky-header">
+  <div class="header-row">
+    <h1>RENPHO Style Guide</h1>
+    <div class="search-wrap">
+      <span class="search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+      <input type="text" id="searchBox" placeholder="Search...">
+      <span class="match-info" id="matchInfo"></span>
+    </div>
   </div>
-</div>
-
-<div class="tabs">
-  <div class="tab active" data-tab="general">General</div>
-  <div class="tab" data-tab="packaging">Packaging</div>
-  <div class="tab" data-tab="amazon">Amazon</div>
-  <div class="tab" data-tab="compliance">Compliance</div>
-  <div class="tab" data-tab="templates">Templates</div>
-  <div class="tab" data-tab="products">Products</div>
+  <div class="tabs">
+    <div class="tab active" data-tab="general">General</div>
+    <div class="tab" data-tab="packaging">Packaging</div>
+    <div class="tab" data-tab="amazon">Amazon</div>
+    <div class="tab" data-tab="compliance">Compliance</div>
+    <div class="tab" data-tab="templates">Templates</div>
+    <div class="tab" data-tab="products">Products</div>
+  </div>
 </div>
 
 <div id="content">
@@ -631,52 +640,50 @@ mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px
 </div>
 
 <script>
-// Tab click handler
-document.querySelectorAll('.tab').forEach(tab => {
+const tabs = document.querySelectorAll('.tab');
+const sections = document.querySelectorAll('.section');
+const searchBox = document.getElementById('searchBox');
+const matchInfoEl = document.getElementById('matchInfo');
+const originalHTML = new Map();
+document.querySelectorAll('.section-body').forEach(b => originalHTML.set(b, b.innerHTML));
+
+let lastActiveTab = document.querySelector('.tab.active');
+let searchKeywords = [], searchMatchTabs = [], searchMatchIndex = -1, searchTabIndex = 0;
+
+function showTab(category) {
+  sections.forEach(s => {
+    s.style.display = (s.dataset.categories || '') === category ? 'block' : 'none';
+  });
+}
+
+tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    const category = tab.dataset.tab;
-    document.querySelectorAll('.section').forEach(section => {
-      const cats = section.dataset.categories || '';
-      section.style.display = cats.includes(category) ? 'block' : 'none';
-    });
+    lastActiveTab = tab;
+    showTab(tab.dataset.tab);
   });
 });
 
-// Initialize: only show General tab content on page load
-document.querySelectorAll('.section').forEach(section => {
-  const cats = section.dataset.categories || '';
-  section.style.display = cats.includes('general') ? 'block' : 'none';
-});
+showTab('general');
 
 function toggleSection(header) {
   header.parentElement.classList.toggle('collapsed');
 }
 
-// Highlight helper
 function clearHighlights() {
-  document.querySelectorAll('.section-body mark').forEach(m => {
-    const parent = m.parentNode;
-    parent.replaceChild(document.createTextNode(m.textContent), m);
-    parent.normalize();
-  });
+  originalHTML.forEach((html, body) => { body.innerHTML = html; });
 }
 
 function highlightText(el, keywords) {
   const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
   const nodes = [];
   while (walker.nextNode()) nodes.push(walker.currentNode);
-
   nodes.forEach(node => {
-    let html = node.textContent;
-    let hasMatch = false;
+    let html = node.textContent, hasMatch = false;
     keywords.forEach(kw => {
-      const regex = new RegExp('(' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
-      if (regex.test(html)) {
-        hasMatch = true;
-        html = html.replace(regex, '<mark>$1</mark>');
-      }
+      const re = new RegExp('(' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      if (re.test(html)) { hasMatch = true; html = html.replace(re, '<mark>$1</mark>'); }
     });
     if (hasMatch) {
       const span = document.createElement('span');
@@ -686,53 +693,58 @@ function highlightText(el, keywords) {
   });
 }
 
-// Jump to next match on Enter
-let currentMatchIndex = -1;
-document.getElementById('searchBox').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') {
-    e.preventDefault();
-    const marks = document.querySelectorAll('.section-body mark');
-    if (marks.length === 0) return;
-    // Remove previous active highlight
-    marks.forEach(m => m.style.outline = 'none');
-    currentMatchIndex = (currentMatchIndex + 1) % marks.length;
-    const target = marks[currentMatchIndex];
-    target.style.outline = '2px solid #f97316';
-    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-});
-
-// Search
-const matchInfoEl = document.getElementById('matchInfo');
-
-document.getElementById('searchBox').addEventListener('input', function() {
-  currentMatchIndex = -1;
-  const raw = this.value.trim();
+function showTabForSearch(tabName) {
   clearHighlights();
-
-  if (!raw) {
-    matchInfoEl.textContent = '';
-    const activeTab = document.querySelector('.tab.active');
-    if (activeTab) activeTab.click();
-    return;
-  }
-
-  const keywords = raw.toLowerCase().split(/\s+/).filter(k => k.length > 0);
-
-  document.querySelectorAll('.section').forEach(section => {
-    const text = section.textContent.toLowerCase();
-    const allMatch = keywords.every(kw => text.includes(kw));
-    if (allMatch) {
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
+  sections.forEach(section => {
+    const cat = section.dataset.categories || '';
+    if (cat === tabName && searchKeywords.every(kw => section.textContent.toLowerCase().includes(kw))) {
       section.style.display = 'block';
       section.classList.remove('collapsed');
       const body = section.querySelector('.section-body');
-      if (body) highlightText(body, keywords);
+      if (body) highlightText(body, searchKeywords);
     } else {
       section.style.display = 'none';
     }
   });
+  const count = document.querySelectorAll('.section-body mark').length;
+  matchInfoEl.textContent = count ? count + ' in ' + tabName.charAt(0).toUpperCase() + tabName.slice(1) : '';
+  window.scrollTo(0, 0);
+}
+
+searchBox.addEventListener('keydown', function(e) {
+  if (e.key !== 'Enter' || !searchMatchTabs.length) return;
+  e.preventDefault();
   const marks = document.querySelectorAll('.section-body mark');
-  matchInfoEl.textContent = marks.length ? marks.length + ' found' : 'No results';
+  marks.forEach(m => m.style.outline = 'none');
+  searchMatchIndex++;
+  if (searchMatchIndex >= marks.length) {
+    searchMatchIndex = 0;
+    searchTabIndex = (searchTabIndex + 1) % searchMatchTabs.length;
+    showTabForSearch(searchMatchTabs[searchTabIndex]);
+  }
+  const updated = document.querySelectorAll('.section-body mark');
+  if (updated[searchMatchIndex]) {
+    updated[searchMatchIndex].style.outline = '2px solid #f97316';
+    updated[searchMatchIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+searchBox.addEventListener('input', function() {
+  const raw = this.value.trim();
+  clearHighlights();
+  searchKeywords = []; searchMatchTabs = []; searchMatchIndex = -1; searchTabIndex = 0;
+  if (!raw) { matchInfoEl.textContent = ''; if (lastActiveTab) lastActiveTab.click(); return; }
+  searchKeywords = raw.toLowerCase().split(/\s+/).filter(Boolean);
+  tabs.forEach(t => {
+    let has = false;
+    sections.forEach(s => {
+      if (s.dataset.categories === t.dataset.tab && searchKeywords.every(kw => s.textContent.toLowerCase().includes(kw))) has = true;
+    });
+    if (has) searchMatchTabs.push(t.dataset.tab);
+  });
+  if (searchMatchTabs.length) showTabForSearch(searchMatchTabs[0]);
+  else { sections.forEach(s => s.style.display = 'none'); matchInfoEl.textContent = 'No results'; }
 });
 </script>
 </body>
