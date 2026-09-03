@@ -657,16 +657,19 @@ function showTab(category) {
   });
 }
 
+function activateTab(category) {
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === category));
+  lastActiveTab = document.querySelector('.tab.active');
+  showTab(category);
+  history.replaceState(null, '', '#' + category);
+}
+
 tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    lastActiveTab = tab;
-    showTab(tab.dataset.tab);
-  });
+  tab.addEventListener('click', () => activateTab(tab.dataset.tab));
 });
 
-showTab('general');
+const initTab = location.hash.slice(1) || 'general';
+activateTab([...tabs].some(t => t.dataset.tab === initTab) ? initTab : 'general');
 
 function toggleSection(header) {
   header.parentElement.classList.toggle('collapsed');
