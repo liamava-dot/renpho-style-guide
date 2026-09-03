@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RENPHO Style Guide — General</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #fafafa;
+  color: #1a1a1a;
+  line-height: 1.6;
+  font-size: 14px;
+  color-scheme: light;
+}
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fafafa;
+  padding: 16px 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+#content { padding: 16px 20px 20px; }
+.header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 12px; }
+.header-row h1 { font-size: 20px; font-weight: 700; color: #111; }
+.search-wrap { position: relative; width: 240px; }
+.search-wrap input { width: 100%; padding: 8px 12px 8px 34px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; outline: none; background: #f9f9f9; transition: all 0.2s; }
+.search-wrap input:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.1); background: #fff; }
+.search-wrap input::placeholder { color: #aaa; }
+.search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.search-icon svg { width: 15px; height: 15px; stroke: #999; fill: none; stroke-width: 2; }
+.match-info { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #888; pointer-events: none; }
+.section { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+.section h2 { font-size: 16px; color: #111; margin-bottom: 12px; border-bottom: 2px solid #2563eb; padding-bottom: 6px; }
+.section h3 { font-size: 14px; color: #333; margin: 14px 0 8px; }
+.rule { display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f0f0f0; align-items: flex-start; }
+.rule:last-child { border-bottom: none; }
+.tag { display: inline-block; font-size: 11px; padding: 2px 6px; border-radius: 3px; font-weight: 600; flex-shrink: 0; }
+.tag-do { background: #dcfce7; color: #166534; }
+.tag-dont { background: #fee2e2; color: #991b1b; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; table-layout: fixed; }
+th { background: #f8f9fa; text-align: left; padding: 8px 10px; border: 1px solid #e5e5e5; font-weight: 600; }
+th.col-do { color: #166534; }
+th.col-dont { color: #991b1b; }
+td { padding: 8px 10px; border: 1px solid #e5e5e5; }
+tr:hover td { background: #f0f7ff; }
+ul { padding-left: 18px; margin: 6px 0; }
+li { margin: 4px 0; }
+.chip { display: inline-block; background: #e0e7ff; color: #3730a3; font-size: 11px; padding: 2px 8px; border-radius: 12px; margin: 2px 4px 2px 0; }
+.collapsed .section-body { display: none; }
+.section-header { cursor: pointer; user-select: none; display: flex; align-items: center; }
+.section-header::before { content: '\25BC'; font-size: 11px; color: #888; margin-right: 8px; line-height: 1; }
+.collapsed .section-header::before { content: '\25B6'; }
+.tabs { display: flex; border-bottom: 2px solid #e5e5e5; flex-wrap: wrap; }
+.tab { padding: 8px 16px; cursor: pointer; font-size: 13px; font-weight: 500; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+.tab.active { color: #2563eb; border-bottom-color: #2563eb; }
+.tab:hover { color: #333; }
+.callout-warn { background: #fff1f2; border: 1px solid #fecdd3; border-radius: 6px; padding: 10px 14px; font-size: 13px; color: #be123c; font-weight: 500; margin-bottom: 12px; }
+.template-block { background: #f0f7ff; padding: 12px; border-radius: 6px; margin: 8px 0; font-size: 13px; }
+mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px; }
+
+.sticky-header { position: static; border-bottom: none; }
+.tabs, .search-wrap { display: none; }
+#content { padding: 20px; }
+.section-header::before { display: none; }
+.collapsed .section-body { display: block; }
+</style>
+</head>
+<body>
+<div style="padding: 16px 20px;">
+  <h1 style="font-size:20px; font-weight:700; color:#111; margin-bottom:16px;">RENPHO Style Guide — General</h1>
+</div>
+<div id="content">
+<div class="section" data-categories="general">
+  <h2 class="section-header" style="cursor:default">Quick Reference: Spacing Rules</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Unit Type</th><th>Space?</th><th>Example</th></tr>
+      <tr><td>Time (min, hrs, h, secs, s)</td><td>Yes</td><td>20 min; 2 h</td></tr>
+      <tr><td>Dimensions (cm, in, mm)</td><td>Yes</td><td>10 cm; 2 in</td></tr>
+      <tr><td>Weight (lbs, kg)</td><td>Yes</td><td>5 lbs; 2.4 kg</td></tr>
+      <tr><td>RPM</td><td>Yes</td><td>3200 RPM</td></tr>
+      <tr><td>Volume (ml, L)</td><td>Yes</td><td>50 ml; 1.5 L</td></tr>
+      <tr><td>Decibels (dB)</td><td>No</td><td>55dB</td></tr>
+      <tr><td>Temperature (&deg;F, &deg;C)</td><td>No</td><td>4&deg;F&ndash;131&deg;F</td></tr>
+      <tr><td>Battery (mAh, Wh)</td><td>No (within) / Yes (between)</td><td>2000mAh 14.8Wh</td></tr>
+      <tr><td>Quantity (x)</td><td>Yes</td><td>Eye Massager x 1</td></tr>
+    </table>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" style="cursor:default">Grammar & Style</h2>
+  <div class="section-body">
+    <h3>Voice & Person</h3>
+    <ul>
+      <li>Instructions: <strong>imperative mood</strong> (tell user what to do directly)</li>
+      <li>Feature intros: <em>The XX function allows/enables&hellip;</em></li>
+      <li>Use <strong>active voice</strong> and <strong>second person</strong> (you/your)</li>
+    </ul>
+    <h3>Oxford Comma</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> <span>Knee, shoulder<strong>, and</strong> elbow</span></div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> <span>Knee, shoulder and elbow</span></div>
+    <h3>Inclusive Language</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>...persons (including children) with reduced physical, sensory or mental capabilities...</td><td>invalids, mental disorder, disabled people, reduced cognitive capabilities</td></tr>
+      <tr><td>...children or persons with disabilities</td><td>children, invalids, and disabled persons</td></tr>
+      <tr><td>Persons with skin infections and/or have sensitive skin</td><td>People with skin infections...</td></tr>
+    </table>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" style="cursor:default">Capitalization & Format</h2>
+  <div class="section-body">
+    <h3>Titles vs Sub-headers</h3>
+    <table>
+      <tr><th>Context</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Main Title</td><td>Long-Term / Wide-Angle Oscillation</td><td>Long-term / Wide-angle Oscillation</td></tr>
+      <tr><td>Sub-header</td><td>Long-term</td><td>Long-Term</td></tr>
+    </table>
+    <h3>Descriptive Text</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th><th>Rule</th></tr>
+      <tr><td>6 Different combs for xyz</td><td>6 different combs for xyz</td><td>Feature name = capitalize</td></tr>
+      <tr><td>3 heat levels to...</td><td>3 Heat levels to...</td><td>Generic descriptor = lowercase</td></tr>
+    </table>
+    <h3>Button / Function Names</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Press the Power button</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Press the Power Button / Press the power button</div>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" style="cursor:default">Units & Measurements</h2>
+  <div class="section-body">
+    <h3>Time</h3>
+    <table>
+      <tr><th>Unit</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Minutes</td><td>20 min</td><td>20 mins</td></tr>
+      <tr><td>Hours</td><td>2 hrs or 2 h (space)</td><td>2 hr or 2h</td></tr>
+      <tr><td>Seconds</td><td>2 secs or 2 s (space)</td><td>2 sec or 2s</td></tr>
+    </table>
+    <h3>Dimensions (incl. amplitude)</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> 10 cm / 2 in / 10 mm (space between number and unit)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> 10cm / 2in</div>
+    <h3>Weight</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> 5 lbs / 2.4 kg; 100 lbs</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> 5lb/2.4kg; 100lbs</div>
+    <h3>Temperature</h3>
+    <table>
+      <tr><th>Scenario</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Range</td><td>4&deg;F&ndash;131&deg;F</td><td>4&ndash;131&deg;F</td></tr>
+      <tr><td>Negative range</td><td>-4&deg;F to 131&deg;F</td><td>-4&ndash;131&deg;F</td></tr>
+      <tr><td>Dual units</td><td>15&deg;C (59&deg;F)</td><td>15&deg;C / 59&deg;F</td></tr>
+      <tr><td>Dual range</td><td>59&deg;F&ndash;66&deg;F (15&deg;C&ndash;19&deg;C)</td><td>59&deg;F&ndash;66&deg;F / 15&deg;C&ndash;19&deg;C</td></tr>
+    </table>
+    <h3>Speed (RPM)</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> 3200 RPM; 1600 to 2800 RPM</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> 3,200RPM / 3200RPM / 3200 r/min / 1600&ndash;2800RPM</div>
+    <h3>Heart Rate</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Beats/min</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Beat/minute / Beats/minute</div>
+    <h3>Decibels</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> 55dB (no space)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> 55 dB / 55DB</div>
+    <h3>Battery Capacity</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> 2000mAh 14.8Wh (space between)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> 2000mAh/14.8Wh</div>
+    <h3>Age Range</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> aged 6&ndash;12 and above</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> aged 6 to 12 and above / aged 6&ndash;12+</div>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" style="cursor:default">Instruction Terminology</h2>
+  <div class="section-body">
+    <h3>Button Actions</h3>
+    <table>
+      <tr><th>Action</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Long press</td><td>Press and hold to...</td><td>Long press to...</td></tr>
+      <tr><td>Short press</td><td>Press to...</td><td>Short press to...</td></tr>
+      <tr><td>Touch double-tap</td><td>Double tap</td><td>Double press</td></tr>
+      <tr><td>Physical double-press</td><td>Double press</td><td>Double tap</td></tr>
+    </table>
+    <h3>Word Choices</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Seek technical assistance</td><td>Get professional help</td></tr>
+      <tr><td>Batteries are weak or depleted</td><td>Batteries have run out / are dead</td></tr>
+      <tr><td>Simulate</td><td>Mimic</td></tr>
+    </table>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" style="cursor:default">Technical Terminology</h2>
+  <div class="section-body">
+    <h3>Connectors & Connectivity</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>USB-C</td><td>Type-C</td></tr>
+      <tr><td>USB-C Charging Cable (other end is USB-A)</td><td>USB C / USB A-C / USB-C to USB-A</td></tr>
+      <tr><td>USB-C to USB-C Charging Cable (both ends)</td><td>USB C / USB A-C</td></tr>
+      <tr><td>Wi-Fi</td><td>Wifi</td></tr>
+      <tr><td>Bluetooth / Wireless Connectivity</td><td>Wireless Connection / BT / BlueTooth</td></tr>
+    </table>
+    <h3>Functions</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Heating function / Heat level</td><td>Heat function / Heating level</td></tr>
+      <tr><td>Cooling function / Cooling level</td><td>Cool function / Cool heat</td></tr>
+      <tr><td>Auto-mode</td><td>Auto mode</td></tr>
+      <tr><td>RENPHO Health App</td><td>Renpho Health app / RENPHO Health app</td></tr>
+      <tr><td>Well-being</td><td>Wellbeing</td></tr>
+    </table>
+    <h3>Materials & Accessories</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Hook-and-loop fastener</td><td>Velcro</td></tr>
+      <tr><td>2-chain zipper</td><td>Double-zipper</td></tr>
+      <tr><td>Spandex</td><td>Lycra</td></tr>
+    </table>
+    <h3>Compliance Terms</h3>
+    <table>
+      <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Limited Liability Warranty</td><td>Warranty</td></tr>
+      <tr><td>FSA Eligible HSA</td><td>FSA/HSA Eligible</td></tr>
+      <tr><td>Meets FDA Standards / Pharmaceutical-Grade / Laboratory Tested / Clinically Tested</td><td>FDA-Approved</td></tr>
+    </table>
+    <h3>Quantity Format</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Eye Massager x 1 (space around x)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Eye Massager x1</div>
+  </div>
+</div>
+
+<!-- ==================== PACKAGING ==================== -->
+
+
+</div>
+</body>
+</html>

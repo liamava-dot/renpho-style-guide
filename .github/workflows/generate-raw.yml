@@ -1,0 +1,24 @@
+name: Generate raw tab pages
+
+on:
+  push:
+    branches: [main]
+    paths: [index.html]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node .github/scripts/generate-raw.js
+      - name: Commit and push raw pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add raw/
+          git diff --cached --quiet || git commit -m "Auto-generate raw tab pages" && git push

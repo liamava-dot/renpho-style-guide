@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RENPHO Style Guide — Packaging</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #fafafa;
+  color: #1a1a1a;
+  line-height: 1.6;
+  font-size: 14px;
+  color-scheme: light;
+}
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fafafa;
+  padding: 16px 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+#content { padding: 16px 20px 20px; }
+.header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 12px; }
+.header-row h1 { font-size: 20px; font-weight: 700; color: #111; }
+.search-wrap { position: relative; width: 240px; }
+.search-wrap input { width: 100%; padding: 8px 12px 8px 34px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; outline: none; background: #f9f9f9; transition: all 0.2s; }
+.search-wrap input:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.1); background: #fff; }
+.search-wrap input::placeholder { color: #aaa; }
+.search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.search-icon svg { width: 15px; height: 15px; stroke: #999; fill: none; stroke-width: 2; }
+.match-info { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #888; pointer-events: none; }
+.section { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+.section h2 { font-size: 16px; color: #111; margin-bottom: 12px; border-bottom: 2px solid #2563eb; padding-bottom: 6px; }
+.section h3 { font-size: 14px; color: #333; margin: 14px 0 8px; }
+.rule { display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f0f0f0; align-items: flex-start; }
+.rule:last-child { border-bottom: none; }
+.tag { display: inline-block; font-size: 11px; padding: 2px 6px; border-radius: 3px; font-weight: 600; flex-shrink: 0; }
+.tag-do { background: #dcfce7; color: #166534; }
+.tag-dont { background: #fee2e2; color: #991b1b; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; table-layout: fixed; }
+th { background: #f8f9fa; text-align: left; padding: 8px 10px; border: 1px solid #e5e5e5; font-weight: 600; }
+th.col-do { color: #166534; }
+th.col-dont { color: #991b1b; }
+td { padding: 8px 10px; border: 1px solid #e5e5e5; }
+tr:hover td { background: #f0f7ff; }
+ul { padding-left: 18px; margin: 6px 0; }
+li { margin: 4px 0; }
+.chip { display: inline-block; background: #e0e7ff; color: #3730a3; font-size: 11px; padding: 2px 8px; border-radius: 12px; margin: 2px 4px 2px 0; }
+.collapsed .section-body { display: none; }
+.section-header { cursor: pointer; user-select: none; display: flex; align-items: center; }
+.section-header::before { content: '\25BC'; font-size: 11px; color: #888; margin-right: 8px; line-height: 1; }
+.collapsed .section-header::before { content: '\25B6'; }
+.tabs { display: flex; border-bottom: 2px solid #e5e5e5; flex-wrap: wrap; }
+.tab { padding: 8px 16px; cursor: pointer; font-size: 13px; font-weight: 500; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+.tab.active { color: #2563eb; border-bottom-color: #2563eb; }
+.tab:hover { color: #333; }
+.callout-warn { background: #fff1f2; border: 1px solid #fecdd3; border-radius: 6px; padding: 10px 14px; font-size: 13px; color: #be123c; font-weight: 500; margin-bottom: 12px; }
+.template-block { background: #f0f7ff; padding: 12px; border-radius: 6px; margin: 8px 0; font-size: 13px; }
+mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px; }
+
+.sticky-header { position: static; border-bottom: none; }
+.tabs, .search-wrap { display: none; }
+#content { padding: 20px; }
+.section-header::before { display: none; }
+.collapsed .section-body { display: block; }
+</style>
+</head>
+<body>
+<div style="padding: 16px 20px;">
+  <h1 style="font-size:20px; font-weight:700; color:#111; margin-bottom:16px;">RENPHO Style Guide — Packaging</h1>
+</div>
+<div id="content">
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" style="cursor:default">Writing Principles</h2>
+  <div class="section-body">
+    <ul>
+      <li><strong>Show, Don't Tell</strong> &mdash; Use product design images and specs, not emotional slogans</li>
+      <li><strong>USP First</strong> &mdash; Highlight unique selling point features, not abstract benefits</li>
+      <li><strong>Concise & Precise</strong> &mdash; Remove storytelling/emotion-driven content, focus on features</li>
+      <li><strong>Consistency</strong> &mdash; Terminology, format, capitalization unified throughout</li>
+    </ul>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" style="cursor:default">Front of Box</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Element</th><th>Description</th></tr>
+      <tr><td>Marketing Name</td><td>From product design team, trademarked, for brand TOMA</td></tr>
+      <tr><td>Product Name</td><td>From PM, for SKU certification before marketing name finalized</td></tr>
+      <tr><td>USP Summary</td><td><strong>5 words max</strong> &mdash; instant summary of stand-out features</td></tr>
+    </table>
+    <p style="margin-top:10px"><strong>Symbol rule:</strong> Front uses <strong>&amp;</strong>, not <strong>and</strong></p>
+    <h3>USP Summary Examples</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Silent Ultrasonic Motor (Eyeris Zen)</div>
+    <div class="rule"><span class="tag tag-do">Do</span> Customizable Warmth & Comfort (Solheel Slim Thermal)</div>
+    <div class="rule"><span class="tag tag-do">Do</span> 50+ Body Metrics, 8 Electrodes, LED Display Readings</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Relaxation for Your Eyes (too abstract)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> The Scale for Modern Travelers (benefit-focused)</div>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" style="cursor:default">Back of Box</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Element</th><th>Description</th></tr>
+      <tr><td>Short Description</td><td>Expand key features; remove emotion/storytelling; add light benefit if too short</td></tr>
+      <tr><td>Icons Quick Reference</td><td>From Sales Sheet; must be generic enough to reuse across products</td></tr>
+      <tr><td>USP Modules</td><td>Plug-and-play from Sales Sheet; distill into short clear title</td></tr>
+    </table>
+    <p style="margin-top:10px"><strong>Symbol rule:</strong> Back uses <strong>and</strong>, not <strong>&amp;</strong></p>
+    <h3>Short Description Examples</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Focused mist and adjustable temple massage to enhance comfort (Eyeris Zen)</div>
+    <div class="rule"><span class="tag tag-do">Do</span> Smart-app connectivity with dial control for creating and storing 8 offline user profiles on the scale directly. (Elis 3X)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Refresh your eyes with a massage designed to target your acupoints with a gentle combination of soothing massage... (too story-like)</div>
+    <h3>Icons Quick Reference</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> Amplitude Adjustable (Active Evo, Ascend) &mdash; generic, reusable</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Amplitude Dial (Active Evo) &mdash; too product-specific</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Amplitude Adjust Nub (Ascend) &mdash; too product-specific</div>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="packaging">
+  <h2 class="section-header" style="cursor:default">Front vs Back &mdash; Quick Rules</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Location</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><td>Front of Box</td><td><strong>&amp;</strong></td><td>and</td></tr>
+      <tr><td>Back of Box (text)</td><td><strong>and</strong></td><td>&amp;</td></tr>
+      <tr><td>Back of Box (icons)</td><td><strong>&amp;</strong></td><td>&mdash;</td></tr>
+    </table>
+    <p style="margin-top:8px; font-size:12px; color:#666;">Note: Icon text on back of box may use <strong>&amp;</strong> for brevity.</p>
+  </div>
+</div>
+
+<!-- ==================== AMAZON ==================== -->
+
+
+</div>
+</body>
+</html>

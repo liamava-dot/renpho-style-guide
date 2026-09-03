@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RENPHO Style Guide — Compliance</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #fafafa;
+  color: #1a1a1a;
+  line-height: 1.6;
+  font-size: 14px;
+  color-scheme: light;
+}
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fafafa;
+  padding: 16px 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+#content { padding: 16px 20px 20px; }
+.header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 12px; }
+.header-row h1 { font-size: 20px; font-weight: 700; color: #111; }
+.search-wrap { position: relative; width: 240px; }
+.search-wrap input { width: 100%; padding: 8px 12px 8px 34px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; outline: none; background: #f9f9f9; transition: all 0.2s; }
+.search-wrap input:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.1); background: #fff; }
+.search-wrap input::placeholder { color: #aaa; }
+.search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.search-icon svg { width: 15px; height: 15px; stroke: #999; fill: none; stroke-width: 2; }
+.match-info { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #888; pointer-events: none; }
+.section { background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+.section h2 { font-size: 16px; color: #111; margin-bottom: 12px; border-bottom: 2px solid #2563eb; padding-bottom: 6px; }
+.section h3 { font-size: 14px; color: #333; margin: 14px 0 8px; }
+.rule { display: flex; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f0f0f0; align-items: flex-start; }
+.rule:last-child { border-bottom: none; }
+.tag { display: inline-block; font-size: 11px; padding: 2px 6px; border-radius: 3px; font-weight: 600; flex-shrink: 0; }
+.tag-do { background: #dcfce7; color: #166534; }
+.tag-dont { background: #fee2e2; color: #991b1b; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; table-layout: fixed; }
+th { background: #f8f9fa; text-align: left; padding: 8px 10px; border: 1px solid #e5e5e5; font-weight: 600; }
+th.col-do { color: #166534; }
+th.col-dont { color: #991b1b; }
+td { padding: 8px 10px; border: 1px solid #e5e5e5; }
+tr:hover td { background: #f0f7ff; }
+ul { padding-left: 18px; margin: 6px 0; }
+li { margin: 4px 0; }
+.chip { display: inline-block; background: #e0e7ff; color: #3730a3; font-size: 11px; padding: 2px 8px; border-radius: 12px; margin: 2px 4px 2px 0; }
+.collapsed .section-body { display: none; }
+.section-header { cursor: pointer; user-select: none; display: flex; align-items: center; }
+.section-header::before { content: '\25BC'; font-size: 11px; color: #888; margin-right: 8px; line-height: 1; }
+.collapsed .section-header::before { content: '\25B6'; }
+.tabs { display: flex; border-bottom: 2px solid #e5e5e5; flex-wrap: wrap; }
+.tab { padding: 8px 16px; cursor: pointer; font-size: 13px; font-weight: 500; color: #666; border-bottom: 2px solid transparent; margin-bottom: -2px; }
+.tab.active { color: #2563eb; border-bottom-color: #2563eb; }
+.tab:hover { color: #333; }
+.callout-warn { background: #fff1f2; border: 1px solid #fecdd3; border-radius: 6px; padding: 10px 14px; font-size: 13px; color: #be123c; font-weight: 500; margin-bottom: 12px; }
+.template-block { background: #f0f7ff; padding: 12px; border-radius: 6px; margin: 8px 0; font-size: 13px; }
+mark { background: #fef08a; color: inherit; padding: 1px 2px; border-radius: 2px; }
+
+.sticky-header { position: static; border-bottom: none; }
+.tabs, .search-wrap { display: none; }
+#content { padding: 20px; }
+.section-header::before { display: none; }
+.collapsed .section-body { display: block; }
+</style>
+</head>
+<body>
+<div style="padding: 16px 20px;">
+  <h1 style="font-size:20px; font-weight:700; color:#111; margin-bottom:16px;">RENPHO Style Guide — Compliance</h1>
+</div>
+<div id="content">
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" style="cursor:default">Product-Specific Restricted Phrases</h2>
+  <div class="section-body">
+    <p style="margin-bottom:10px; font-size:13px;">RED = high risk. Products under FDA clearance may use phrases consistent with "FDA Summary - indication for use" only.</p>
+    <h3>Body Composition Scale</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>DEXA</td><td style="color:#be123c">High</td><td>Provides advanced body composition analysis and metrics tracking</td></tr>
+      <tr><td>High Precision Measurements</td><td style="color:#d97706">Medium</td><td>Consistent and reliable measurement tracking</td></tr>
+      <tr><td>high-precision / Accurate</td><td style="color:#d97706">Medium</td><td>Reliable / Consistent monitoring</td></tr>
+      <tr><td>accurate health overview</td><td style="color:#be123c">Med-High</td><td>Comprehensive body trend insights and metric overview</td></tr>
+    </table>
+    <h3>Eye Massager</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>xerophthalmus / xeroma</td><td style="color:#be123c">High</td><td>Soothes and comforts severe dryness around the eye area</td></tr>
+      <tr><td>dry eyes</td><td style="color:#be123c">Med-High</td><td>Refreshes tired eyes and soothes eye area dryness</td></tr>
+      <tr><td>improve circulation</td><td style="color:#be123c">High</td><td>Invigorating massage to help refresh and stimulate the eye area</td></tr>
+      <tr><td>improve sleep quality</td><td style="color:#be123c">Med-High</td><td>Promotes a sense of deep relaxation to help you unwind for better rest</td></tr>
+      <tr><td>reduce styes, sore eyes, dark circles</td><td style="color:#d97706">Low-Med</td><td>Relieves eye fatigue, comforts strained eyes, and refreshes under-eye skin</td></tr>
+      <tr><td>MGD</td><td style="color:#be123c">High</td><td>Provides soothing warmth and targeted relaxation around the eye area</td></tr>
+      <tr><td>reduce dark circles</td><td style="color:#be123c">Med-High</td><td>Refreshes and revitalizes the appearance of under-eye skin</td></tr>
+      <tr><td>promote better sleep</td><td style="color:#be123c">Med-High</td><td>Supports a relaxing bedtime routine and helps soothe the mind</td></tr>
+      <tr><td>help ease puffiness</td><td style="color:#16a34a">Low</td><td>Diminishes the look of puffiness and revitalizes tired-looking skin</td></tr>
+    </table>
+    <h3>Foot Massager</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>Plantar Fasciitis</td><td style="color:#be123c">High</td><td>Eases everyday foot tension and soothes intense sole discomfort</td></tr>
+      <tr><td>relieve pain / pain relief</td><td style="color:#be123c">Med-High</td><td>Soothes muscle stiffness and alleviates daily muscle tension</td></tr>
+      <tr><td>improving sleep quality</td><td style="color:#be123c">Med-High</td><td>Promotes full-body relaxation to prepare you for a restful sleep</td></tr>
+    </table>
+    <h3>Heating Pad</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>cramp</td><td style="color:#be123c">Med-High</td><td>Eases sudden muscle tightness and comforts tense muscles</td></tr>
+      <tr><td>menstrual soreness</td><td style="color:#be123c">High</td><td>Provides comforting warmth and deeply relaxing relief for lower body tension</td></tr>
+      <tr><td>physical therapy</td><td style="color:#be123c">High</td><td>Supports post-workout recovery, muscle rehabilitation, and relaxation</td></tr>
+      <tr><td>pain relief / relieving pain</td><td style="color:#be123c">High</td><td>Promotes muscle comfort and everyday tension relief</td></tr>
+      <tr><td>Helps relieve back pain, menstrual cramps</td><td style="color:#be123c">Med-High</td><td>Soothes lower back tension and alleviates deep muscle stiffness</td></tr>
+      <tr><td>improves blood circulation</td><td style="color:#be123c">High</td><td>Invigorates and refreshes the body with a stimulating massage experience</td></tr>
+      <tr><td>promotes healing of injured tissue</td><td style="color:#be123c">High</td><td>Supports post-workout recovery and helps soothe overworked muscles</td></tr>
+    </table>
+    <h3>Massage Gun</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>accelerate recovery</td><td style="color:#be123c">High</td><td>Assists with post-activity downtime and supports your daily physical routine</td></tr>
+      <tr><td>accelerate lactic acid release, promote body circulation</td><td style="color:#be123c">High</td><td>Eases post-workout muscle tightness and helps revive tired muscles</td></tr>
+      <tr><td>relieve pains</td><td style="color:#be123c">High</td><td>Alleviates daily muscle tension and provides comforting relief from everyday stiffness</td></tr>
+      <tr><td>help reduce swelling</td><td style="color:#be123c">High</td><td>Soothes and comforts puffy or tired areas while easing the sensation of heaviness</td></tr>
+      <tr><td>relieves muscle fatigue</td><td style="color:#be123c">Med-High</td><td>Refreshes tired muscles and restores a feeling of comfort to overworked areas</td></tr>
+      <tr><td>pain therapy / muscle treatment</td><td style="color:#be123c">High</td><td>&mdash;</td></tr>
+      <tr><td>reduce arthritis pain</td><td style="color:#be123c">High</td><td>&mdash;</td></tr>
+      <tr><td>improves circulation</td><td style="color:#be123c">High</td><td>&mdash;</td></tr>
+      <tr><td>relieve muscle soreness</td><td style="color:#be123c">Med-High</td><td>&mdash;</td></tr>
+      <tr><td>speed up recovery</td><td style="color:#be123c">Med-High</td><td>&mdash;</td></tr>
+      <tr><td>reduce stiffness</td><td style="color:#16a34a">Low-Med</td><td>&mdash;</td></tr>
+      <tr><td>deep tissue percussion</td><td style="color:#16a34a">Low</td><td>&mdash;</td></tr>
+    </table>
+    <h3>Yoga Roller</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>for Back Pain / backache</td><td style="color:#be123c">Med-High</td><td>Soothes lower back tightness and targets deep muscle stiffness in the back</td></tr>
+    </table>
+    <h3>Beauty Wand</h3>
+    <table>
+      <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
+      <tr><td>electroporation</td><td style="color:#be123c">Med-High</td><td>&mdash; (professional medical/biology term, avoid)</td></tr>
+    </table>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" style="cursor:default">Banned Medical Terms</h2>
+  <div class="section-body">
+    <div class="callout-warn">These terms can classify a product as a medical device, losing exemption qualification. Avoid completely.</div>
+    <table>
+      <tr><th>Banned Term</th><th>Reason</th></tr>
+      <tr><td>Treat / Treatment</td><td>Implies medical use</td></tr>
+      <tr><td>Pain treatment</td><td>Medical claim</td></tr>
+      <tr><td>Medical</td><td>Defines as medical device</td></tr>
+      <tr><td>Rehabilitation / Rehab</td><td>Medical claim</td></tr>
+      <tr><td>Diagnose / Diagnosis</td><td>Medical claim</td></tr>
+      <tr><td>Chronic pain</td><td>Disease-specific</td></tr>
+      <tr><td>Arthritis / Inflammation</td><td>Disease name</td></tr>
+      <tr><td>Disease names (sciatica, fibromyalgia, tendonitis)</td><td>Disease-specific</td></tr>
+      <tr><td>Doctor recommended</td><td>Implies medical endorsement</td></tr>
+      <tr><td>Clinically proven</td><td>Requires Global Marketing approval</td></tr>
+      <tr><td>Physiotherapy device</td><td>Defines as medical device</td></tr>
+      <tr><td>FDA approved</td><td>Product uses FDA exemption, not certification</td></tr>
+    </table>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" style="cursor:default">FDA Terminology</h2>
+  <div class="section-body">
+    <p style="margin-bottom:10px;">Reference: <a href="https://www.fda.gov/medical-devices/consumers-medical-devices/are-there-fda-registered-or-fda-certified-medical-devices-how-do-i-know-what-fda-approved" target="_blank">FDA Official Guidance</a></p>
+    <h3>What We CAN Say</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> FDA clearance &mdash; ONLY for products with 510(k) clearance</div>
+    <h3>What We CANNOT Say</h3>
+    <div class="rule"><span class="tag tag-dont">Don't</span> FDA-approval (PMA generally refers to Class III devices &mdash; not our products)</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> FDA Registered / FDA Registration</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> FDA Certified</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Printing the FDA LOGO on packaging</div>
+    <div class="callout-warn" style="margin-top:12px;">FDA does NOT issue device registration certificates. Firms that display "FDA registration certificates" alongside products to imply FDA review/approval are in violation of the Federal Food, Drug, and Cosmetic Act. Do not use FDA logo on any materials.</div>
+    <h3>"Clinically Proven" Guidance</h3>
+    <p style="font-size:13px;">What it sounds like: strict clinical trials on large samples. What it actually means: anywhere from 1 person to a million have tested the product. Compliance Team rejects this term; seek <strong>Global Marketing approval first</strong> if you wish to use it.</p>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" style="cursor:default">LED Mask &mdash; Regional Naming Rules</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Region</th><th>Product Name</th><th>LED Description</th></tr>
+      <tr><td>US / CA / AU only</td><td>LED Light Therapy Mask</td><td>Medical-grade LEDs</td></tr>
+      <tr><td>All other regions</td><td>LED Light Soft Mask</td><td>Multi-wavelength LEDs</td></tr>
+    </table>
+    <p style="margin-top:8px; font-size:13px; color:#666;">Since this equipment is not used in professional medical-grade hospitals, claims about pharmacological effects should be avoided.</p>
+  </div>
+</div>
+
+
+
+<div class="section" data-categories="compliance">
+  <h2 class="section-header" style="cursor:default">Scales, Wearables & Non-Medical Devices</h2>
+  <div class="section-body">
+    <h3>Permitted (under FDA General Wellness guidance)</h3>
+    <div class="rule"><span class="tag tag-do">Do</span> "Track your trends. Take control of your wellness."</div>
+    <div class="rule"><span class="tag tag-do">Do</span> "Empowers healthy aging through daily cardiovascular tracking."</div>
+    <div class="rule"><span class="tag tag-do">Do</span> "Proactive wellness management for a balanced lifestyle."</div>
+    <h3>Not Permitted</h3>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Diagnose hypertension / high blood pressure</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Detect heart disease or cardiovascular issues</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Determine if you have a medical condition</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> "Longevity" claims</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> Medical-grade accuracy / Clinical precision</div>
+    <div class="rule"><span class="tag tag-dont">Don't</span> "98% accuracy of a DEXA scan" (cannot conflate correlation with accuracy)</div>
+    <h3>General Rule</h3>
+    <p style="font-size:13px;">Claims must remain broad (e.g. "track trends for heart health") and must NOT diagnose conditions. Confirm all promotional documents with PM and compliance department.</p>
+  </div>
+</div>
+
+<!-- ==================== TEMPLATES ==================== -->
+
+
+</div>
+</body>
+</html>
