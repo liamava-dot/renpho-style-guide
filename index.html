@@ -30,7 +30,6 @@ body {
   z-index: 100;
   background: #fff;
   padding: 16px 20px 0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
 }
 #content { padding: 20px 20px 40px; max-width: 1280px; margin: 0 auto; }
 .header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 12px; }
@@ -119,7 +118,7 @@ a:hover { text-decoration: underline; }
   <h2 class="section-header" onclick="toggleSection(this)">Quick Reference: Spacing Rules</h2>
   <div class="section-body">
     <table>
-      <tr><th>Unit Type</th><th>Space?</th><th>Example</th></tr>
+      <tr><th>Unit</th><th>Space?</th><th>Example</th></tr>
       <tr><td>Time (min, hrs, h, secs, s)</td><td>Yes</td><td>20 min; 2 h</td></tr>
       <tr><td>Dimensions (cm, in, mm, nm)</td><td>Yes</td><td>10 cm; 2 in; 850 nm</td></tr>
       <tr><td>Weight (lbs, kg)</td><td>Yes</td><td>5 lbs; 2.4 kg</td></tr>
@@ -146,6 +145,14 @@ a:hover { text-decoration: underline; }
     <h3>Oxford Comma</h3>
     <div class="rule"><span class="tag tag-do">Do</span> <span>Knee, shoulder<strong>, and</strong> elbow</span></div>
     <div class="rule"><span class="tag tag-dont">Don't</span> <span>Knee, shoulder and elbow</span></div>
+    <h3>Hyphens &amp; Dashes</h3>
+    <table>
+      <tr><th>Mark</th><th>Use</th><th class="col-do">Do</th></tr>
+      <tr><td>Hyphen (-)</td><td>Join words; non-date ranges. No spaces around the mark.</td><td>user-centric; 6-12; 10-20 min</td></tr>
+      <tr><td>En dash (&ndash;)</td><td>Date ranges. No spaces around the mark.</td><td>Jan 6&ndash;Jan 7; 1/6&ndash;1/7</td></tr>
+      <tr><td>Em dash (&mdash;)</td><td>Pause or emphasis. One space on each side.</td><td>Enjoy it &mdash; and share your feedback.</td></tr>
+    </table>
+    <p><strong>Exceptions:</strong> Use <em>to</em> in negative temperature ranges and all RPM ranges.</p>
     <h3>Inclusive Language</h3>
     <table>
       <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
@@ -202,6 +209,7 @@ a:hover { text-decoration: underline; }
       <tr><td>Dual range</td><td>59&deg;F-66&deg;F (15&deg;C-19&deg;C)</td><td>59&deg;F-66&deg;F / 15&deg;C-19&deg;C</td></tr>
     </table>
     <h3>Speed (RPM)</h3>
+    <p>Use <em>to</em> for RPM ranges in text and tables.</p>
     <div class="rule"><span class="tag tag-do">Do</span> 3200 RPM; 1600 to 2800 RPM</div>
     <div class="rule"><span class="tag tag-dont">Don't</span> 3,200RPM / 3200RPM / 3200 r/min / 1600-2800RPM</div>
     <h3>Heart Rate</h3>
@@ -216,6 +224,20 @@ a:hover { text-decoration: underline; }
     <h3>Age Range</h3>
     <div class="rule"><span class="tag tag-do">Do</span> aged 6-12 and above</div>
     <div class="rule"><span class="tag tag-dont">Don't</span> aged 6 to 12 and above / aged 6-12+</div>
+  </div>
+</div>
+
+<div class="section" data-categories="general">
+  <h2 class="section-header" onclick="toggleSection(this)">Currency Formatting &mdash; Editorial Only</h2>
+  <div class="section-body">
+    <table>
+      <tr><th>Currency Type</th><th>Format Rule</th><th>Example</th></tr>
+      <tr><td>US Dollar (USD)</td><td>Use $ only</td><td>$99</td></tr>
+      <tr><td>British Pound (GBP)</td><td>Use &pound;</td><td>&pound;99</td></tr>
+      <tr><td>Euro (EUR)</td><td>Use &euro;</td><td>&euro;99</td></tr>
+      <tr><td>Other Dollar Currencies (CAD, AUD, HKD, SGD, NZD, etc.)</td><td>Use $ followed by the currency code</td><td>$99 CAD; $99 AUD; $99 HKD; $99 SGD; $99 NZD</td></tr>
+      <tr><td>Other Non-Dollar Currencies</td><td>Use the standard local currency symbol or ISO currency code as appropriate</td><td>&yen;99; CHF 99; SEK 99</td></tr>
+    </table>
   </div>
 </div>
 
@@ -353,11 +375,7 @@ a:hover { text-decoration: underline; }
 <div class="section" data-categories="amazon">
   <h2 class="section-header" onclick="toggleSection(this)">FSA / HSA Statement Template</h2>
   <div class="section-body">
-    <div class="template-block">
-      <strong>FSA / HSA Eligible Health Savings</strong><br><br>
-      RENPHO offers a range of wellness products that are eligible for purchase with most Flexible Spending Accounts (FSA) and Health Savings Accounts (HSA).<br><br>
-      Simply add your FSA or HSA card as a payment option in Your Payments when ordering.
-    </div>
+    <p><a href="https://liamava-dot.github.io/renpho-style-guide/raw/templates.html#fsa-hsa-template" onclick="openFsaHsaTemplate(event)">View FSA / HSA Statement in Templates</a></p>
   </div>
 </div>
 
@@ -536,7 +554,7 @@ a:hover { text-decoration: underline; }
 <!-- ==================== TEMPLATES ==================== -->
 
 <div class="section" data-categories="templates">
-  <h2 class="section-header" onclick="toggleSection(this)">FSA / HSA Statement</h2>
+  <h2 id="fsa-hsa-template" class="section-header" onclick="toggleSection(this)">FSA / HSA Statement</h2>
   <div class="section-body">
     <div class="template-block">
       <strong>FSA / HSA Eligible Health Savings</strong><br><br>
@@ -589,7 +607,7 @@ a:hover { text-decoration: underline; }
 <div class="section" data-categories="templates">
   <h2 class="section-header" onclick="toggleSection(this)">Community / Social Promo</h2>
   <div class="section-body">
-    <div class="template-block">Thank you for being part of the RENPHO Health App community.<br>To celebrate, we're offering a limited-time, first-come, first-served offer.<br>Enjoy it&mdash;and don't forget, your feedback helps us improve. So feel free to share your thoughts after purchase!</div>
+    <div class="template-block">Thank you for being part of the RENPHO Health App community.<br>To celebrate, we're offering a limited-time, first-come, first-served offer.<br>Enjoy it &mdash; and don't forget, your feedback helps us improve. So feel free to share your thoughts after purchase!</div>
   </div>
 </div>
 
@@ -635,21 +653,21 @@ a:hover { text-decoration: underline; }
     <table>
       <tr><th>Level</th><th>RPM</th><th>Term Type</th></tr>
       <tr><td>Kneading</td><td>300</td><td>Massage</td></tr>
-      <tr><td>Warm Up</td><td>1500-1800</td><td>Pre-exercise</td></tr>
-      <tr><td>Fascial Relief</td><td>1850-2100</td><td>Tissue layer</td></tr>
-      <tr><td>Deep Tissue Massage</td><td>2150-2350</td><td>Massage</td></tr>
-      <tr><td>Lactic Acid Break Down</td><td>2400-2550</td><td>Post-exercise</td></tr>
-      <tr><td>Muscle Mobility</td><td>2600-2900</td><td>Muscle layer</td></tr>
-      <tr><td>Professional Impact</td><td>3000-3200</td><td>High tolerance</td></tr>
+      <tr><td>Warm Up</td><td>1500 to 1800</td><td>Pre-exercise</td></tr>
+      <tr><td>Fascial Relief</td><td>1850 to 2100</td><td>Tissue layer</td></tr>
+      <tr><td>Deep Tissue Massage</td><td>2150 to 2350</td><td>Massage</td></tr>
+      <tr><td>Lactic Acid Break Down</td><td>2400 to 2550</td><td>Post-exercise</td></tr>
+      <tr><td>Muscle Mobility</td><td>2600 to 2900</td><td>Muscle layer</td></tr>
+      <tr><td>Professional Impact</td><td>3000 to 3200</td><td>High tolerance</td></tr>
     </table>
     <h3>RPM Levels &mdash; Micro / Weak</h3>
     <p style="margin-bottom:8px; color:#666;">Generalized for broader target audience (e.g. WMG16 Micro).</p>
     <table>
       <tr><th>Level</th><th>RPM</th></tr>
-      <tr><td>Warm Up</td><td>2200-2750</td></tr>
-      <tr><td>Relaxation</td><td>2800-3350</td></tr>
-      <tr><td>Strong / Firm</td><td>3400-3950</td></tr>
-      <tr><td>Intense Pulse</td><td>4000-4550</td></tr>
+      <tr><td>Warm Up</td><td>2200 to 2750</td></tr>
+      <tr><td>Relaxation</td><td>2800 to 3350</td></tr>
+      <tr><td>Strong / Firm</td><td>3400 to 3950</td></tr>
+      <tr><td>Intense Pulse</td><td>4000 to 4550</td></tr>
     </table>
     <h3>Standard Heads</h3>
     <table>
@@ -710,6 +728,16 @@ tabs.forEach(tab => {
 });
 
 showTab('general');
+
+function openFsaHsaTemplate(event) {
+  event.preventDefault();
+  searchBox.value = '';
+  searchBox.dispatchEvent(new Event('input'));
+  document.querySelector('.tab[data-tab="templates"]').click();
+  const heading = document.getElementById('fsa-hsa-template');
+  heading.parentElement.classList.remove('collapsed');
+  heading.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
 
 function toggleSection(header) {
   header.parentElement.classList.toggle('collapsed');
