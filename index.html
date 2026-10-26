@@ -15,107 +15,248 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #F0F2F5;
-  color: #1a1a1a;
-  line-height: 1.6;
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
+/* Native HTML adaptation of shadcn/ui Nova. See UI-SOURCES.md. */
+:root{
+  --background:#F0F2F5;--foreground:#20242b;
+  --card:#fff;--card-foreground:var(--foreground);
+  --primary:#4F46E5;--primary-foreground:#fff;
+  --muted:#F7F8FA;--muted-foreground:#667085;
+  --accent:#EEF2FF;--accent-foreground:var(--primary);
+  --border:#E3E7ED;--input:#D5DAE0;--ring:var(--primary);
+  --sidebar:#fff;--sidebar-foreground:#525866;
+  --sidebar-accent:var(--accent);--sidebar-accent-foreground:var(--primary);
+  --radius-sm:6px;--radius-md:8px;--radius-lg:12px;
+  --control-height:32px;--icon-size:16px;
+  --success-bg:#DCFCE7;--success-fg:#166534;
+  --danger-bg:#FEE2E2;--danger-fg:#991B1B;
 }
-.sticky-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #fff;
-  padding: 16px 20px 0;
-}
-#content { padding: 20px 20px 40px; max-width: 1280px; margin: 0 auto; }
-.header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 12px; }
-.header-row h1 { font-size: 19px; font-weight: 700; color: #111; letter-spacing: -0.01em; }
-.search-wrap { position: relative; width: 240px; }
-.search-wrap input { width: 100%; padding: 8px 12px 8px 34px; border: 1px solid #D5DAE0; border-radius: 8px; font-size: 13px; font-family: inherit; outline: none; background: #F7F8FA; transition: all 0.2s; }
-.search-wrap input:focus { border-color: #4F46E5; box-shadow: 0 0 0 3px rgba(79,70,229,0.1); background: #fff; }
-.search-wrap input::placeholder { color: #9CA3AF; }
-.search-icon { position: absolute; left: 10px; top: 0; bottom: 0; display: flex; align-items: center; pointer-events: none; }
-.search-icon svg { width: 15px; height: 15px; stroke: #9CA3AF; fill: none; stroke-width: 2; }
-.match-info { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #9CA3AF; pointer-events: none; }
-.section { background: #fff; border: 1px solid #E3E7ED; border-radius: 10px; padding: 20px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
-.section h2 { font-size: 15px; color: #111; margin-bottom: 12px; padding-left: 12px; border-left: 3px solid #4F46E5; border-bottom: none; padding-bottom: 0; }
-.section h3 { font-size: 13px; font-weight: 600; color: #4F46E5; margin: 16px 0 8px; }
-.rule { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px solid #F3F4F6; align-items: flex-start; }
-.rule:last-child { border-bottom: none; }
-.tag { display: inline-flex; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; flex-shrink: 0; }
-.tag-do { background: #DCFCE7; color: #166534; }
-.tag-dont { background: #FEE2E2; color: #991B1B; }
-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; table-layout: fixed; }
-th { background: #F7F8FA; text-align: left; padding: 8px 10px; border: 1px solid #E3E7ED; font-weight: 600; font-size: 12px; color: #6B7280; }
-th.col-do { color: #166534; }
-th.col-dont { color: #991B1B; }
-td { padding: 8px 10px; border: 1px solid #E3E7ED; }
-tr:hover td { background: #F7F8FA; }
-ul { padding-left: 18px; margin: 6px 0; }
-li { margin: 4px 0; }
-.chip { display: inline-block; background: #EEF2FF; color: #4338CA; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 12px; margin: 2px 4px 2px 0; }
-.collapsed .section-body { display: none; }
-.section-header { cursor: pointer; user-select: none; display: flex; align-items: center; }
-.section-header::before { content: none; }
-.section-header::after {
-  content: ''; margin-left: auto; flex-shrink: 0;
-  width: 7px; height: 7px;
-  border-right: 2px solid #9CA3AF; border-bottom: 2px solid #9CA3AF;
-  transform: rotate(45deg); transition: transform 0.2s;
-}
-.collapsed .section-header::after { transform: rotate(-45deg); }
-.tabs { display: flex; gap: 2px; border-bottom: 2px solid #E3E7ED; flex-wrap: wrap; }
-.tab { padding: 8px 16px; cursor: pointer; font-size: 13px; font-weight: 500; color: #6B7280; border-bottom: 2px solid transparent; margin-bottom: -2px; border-radius: 6px 6px 0 0; transition: all 0.15s; }
-.tab.active { color: #4F46E5; border-bottom-color: #4F46E5; }
-.tab:hover { color: #374151; }
-.callout-warn { background: #FFF1F2; border-left: 3px solid #F87171; border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: #BE123C; font-weight: 500; margin-bottom: 12px; }
-.template-block { background: #F7F8FA; border: 1px solid #E3E7ED; padding: 14px; border-radius: 8px; margin: 8px 0; font-size: 13px; line-height: 1.7; }
-mark { background: #FEF08A; color: inherit; padding: 1px 2px; border-radius: 2px; }
-a { color: #4F46E5; }
-a:hover { text-decoration: underline; }
-@media (max-width: 640px) {
-  .sticky-header { padding: 12px 14px 0; }
-  #content { padding: 14px 14px 32px; }
-  .header-row h1 { font-size: 17px; }
-  .search-wrap { width: 100%; order: 3; }
-  .tab { padding: 6px 12px; font-size: 12px; }
-  .section { padding: 16px; }
-  table { font-size: 12px; }
-  th, td { padding: 6px 8px; }
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{--nav-width:218px;background:var(--background);color:var(--foreground);font:14px/1.65 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--primary);text-underline-offset:3px}
+a:hover{text-decoration:underline}
+.lucide{display:block;width:var(--icon-size);height:var(--icon-size);flex-shrink:0}
+.sidebar{position:fixed;inset:0 auto 0 0;width:var(--nav-width);padding:20px 12px 16px;background:var(--sidebar);border-right:1px solid var(--border);z-index:20;display:flex;flex-direction:column;overflow:hidden}
+.sidebar-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-shrink:0;padding:0 8px}
+.brand{font-size:23px;font-weight:700;line-height:1.4;letter-spacing:-1px;color:var(--foreground)}
+.brand-sub{font-size:11px;color:var(--muted-foreground);margin-top:2px}
+.sidebar-toggle{display:flex;align-items:center;justify-content:center;width:var(--control-height);height:var(--control-height);flex-shrink:0;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);color:var(--muted-foreground)}
+.sidebar-toggle:hover{background:var(--muted);color:var(--foreground)}
+.tabs{display:flex;flex-direction:column;flex-wrap:nowrap;gap:2px;flex:1;min-height:0;margin-top:24px;padding-bottom:8px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin}
+.tab{display:flex;position:relative;align-items:center;gap:8px;width:100%;height:var(--control-height);padding:6px 10px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--sidebar-foreground);font-size:14px;font-weight:500;text-align:left;flex-shrink:0}
+.tab span{white-space:nowrap}
+.tab:hover{background:var(--muted)}
+.tab.active{background:var(--sidebar-accent);color:var(--sidebar-accent-foreground);font-weight:600}
+.tab.active::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:var(--primary)}
+.sidebar-toggle:focus-visible,.tab:focus-visible,.section-header:focus-visible{outline:0;box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 35%,transparent)}
+body.sidebar-collapsed{--nav-width:64px}
+.sidebar-collapsed .sidebar{padding:20px 8px 16px}
+.sidebar-collapsed .sidebar-top{justify-content:center;padding:0}
+.sidebar-collapsed .brand-lockup,.sidebar-collapsed .tab span{display:none}
+.sidebar-collapsed .tabs{margin-top:24px}
+.sidebar-collapsed .tab{justify-content:center;padding:8px;gap:0}
+.sticky-header{position:sticky;top:0;z-index:10;height:64px;margin-left:var(--nav-width);padding:0 32px;background:var(--card);border-bottom:1px solid var(--border)}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:20px;height:100%}
+.breadcrumb{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted-foreground);white-space:nowrap}
+.breadcrumb span{color:#b6bdc9}
+.breadcrumb strong{font-weight:500;color:var(--foreground)}
+.search-wrap{position:relative;width:288px;flex-shrink:0}
+.search-wrap input{height:var(--control-height);width:100%;padding:4px 95px 4px 32px;border:1px solid var(--input);border-radius:var(--radius-md);background:var(--card);font-size:14px;outline:0}
+.search-wrap input::placeholder{color:var(--muted-foreground)}
+.search-wrap input:focus-visible{border-color:var(--ring);box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 25%,transparent)}
+.search-icon{position:absolute;left:10px;top:0;bottom:0;display:flex;align-items:center;pointer-events:none;color:var(--muted-foreground)}
+.match-info{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:10px;color:var(--muted-foreground);pointer-events:none}
+.workspace{margin-left:var(--nav-width);padding:28px 32px 60px;max-width:1720px}
+.page-intro{padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid var(--border)}
+.page-intro h1{font-size:28px;font-weight:600;line-height:1.2;letter-spacing:-.6px;margin:0 0 10px;color:var(--foreground)}
+.page-intro p{font-size:14px;color:var(--muted-foreground)}
+.reading-layout{display:grid;grid-template-columns:minmax(0,1fr);align-items:start}
+#content{padding:0;margin:0;max-width:none;min-width:0}
+.section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:20px;scroll-margin-top:80px}
+.section h2{font-size:16px;font-weight:600;line-height:1.5;color:var(--card-foreground);margin-bottom:16px}
+.section-header{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;border-radius:var(--radius-md)}
+.section-header::before{content:"";width:3px;height:15px;border-radius:2px;background:var(--primary);flex-shrink:0}
+.section-chevron{margin-left:auto;color:var(--muted-foreground)}
+.collapsed .section-chevron{transform:rotate(-90deg)}
+.collapsed .section-body{display:none}
+.section h3{font-size:14px;font-weight:600;color:var(--primary);margin:20px 0 10px}
+.section-body{color:var(--foreground)}
+ul{padding-left:18px;margin:6px 0}li{margin:4px 0}
+table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px;line-height:1.6;margin:8px 0}
+th,td{padding:8px;border:1px solid var(--border);text-align:left;vertical-align:top}
+th{height:40px;background:var(--muted);font-size:12px;font-weight:600;color:var(--sidebar-foreground)}
+td{font-weight:400;color:var(--foreground)}
+tr:hover td{background:var(--muted)}
+th.col-do{color:var(--success-fg)}th.col-dont{color:var(--danger-fg)}
+.rule{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+.rule:last-child{border-bottom:0}
+.tag{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;min-height:20px;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600;line-height:1.6}
+.tag-do{background:var(--success-bg);color:var(--success-fg)}
+.tag-dont{background:var(--danger-bg);color:var(--danger-fg)}
+.chip{display:inline-block;margin:2px 4px 2px 0;padding:2px 8px;border-radius:999px;background:var(--accent);color:var(--accent-foreground);font-size:12px;font-weight:500}
+.template-block{background:var(--muted);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px;margin:8px 0;font-size:14px;line-height:1.75}
+.callout-warn{background:#FFF1F2;border:1px solid #FECDD3;border-left:3px solid #F87171;border-radius:var(--radius-md);padding:8px 10px;color:#BE123C;margin-bottom:12px}
+mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
+.toc{display:none;position:sticky;top:88px;padding-top:4px}
+.toc-label{font-size:10px;letter-spacing:1.4px;font-weight:600;color:var(--muted-foreground);margin-bottom:14px}
+.toc a{display:block;padding:8px 0 8px 14px;border-left:2px solid var(--border);font-size:12px;line-height:1.6;color:var(--muted-foreground);text-decoration:none}
+.toc a.active{border-left-color:var(--primary);color:var(--primary);font-weight:500}
+.toc a:hover{color:var(--primary)}
+@media(min-width:1200px){.reading-layout{grid-template-columns:minmax(0,1fr) 168px;gap:24px}.toc{display:block}}
+@media(max-width:700px){.workspace{padding:24px 16px 40px}.sticky-header{padding:0 16px}.breadcrumb{display:none}.search-wrap{width:100%;min-width:0}.section{padding:16px}th,td{font-size:12px;padding:8px}.page-intro h1{font-size:28px}}
+@media(prefers-reduced-motion:no-preference){.tab,.sidebar-toggle,a,input{transition:color 120ms,background-color 120ms,border-color 120ms}}
 </style>
 </head>
 <body>
 
-<div class="sticky-header">
-  <div class="header-row">
-    <h1>RENPHO Style Guide</h1>
-    <div class="search-wrap">
-      <span class="search-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
-      <input type="text" id="searchBox" placeholder="Search...">
-      <span class="match-info" id="matchInfo"></span>
-    </div>
-  </div>
-  <div class="tabs">
-    <div class="tab active" data-tab="general">General</div>
-    <div class="tab" data-tab="packaging">Packaging</div>
-    <div class="tab" data-tab="amazon">Amazon</div>
-    <div class="tab" data-tab="compliance">Compliance</div>
-    <div class="tab" data-tab="templates">Templates</div>
-    <div class="tab" data-tab="products">Products</div>
-  </div>
-</div>
-
-<div id="content">
+<aside class="sidebar">
+ <div class="sidebar-top">
+   <div class="brand-lockup"><div class="brand">RENPHO</div><div class="brand-sub">Style Guide</div></div>
+   <button class="sidebar-toggle" type="button" aria-label="Collapse sidebar" aria-expanded="true" aria-controls="category-navigation" title="Collapse sidebar"><svg class="lucide lucide-panel-left" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="18" x="3" y="3" rx="2" />
+  <path d="M9 3v18" />
+</svg></button>
+ </div>
+ <nav class="tabs" aria-label="Guide categories"><button type="button" class="tab active" data-tab="general"><svg class="lucide lucide-book-open-text" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 5v16" />
+  <path d="M16 13h2" />
+  <path d="M16 9h2" />
+  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
+  <path d="M6 13h2" />
+  <path d="M6 9h2" />
+</svg><span>General</span></button>
+<button type="button" class="tab " data-tab="packaging"><svg class="lucide lucide-package" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" />
+  <path d="M12 22V12" />
+  <polyline points="3.29 7 12 12 20.71 7" />
+  <path d="m7.5 4.27 9 5.15" />
+</svg><span>Packaging</span></button>
+<button type="button" class="tab " data-tab="amazon"><svg class="lucide lucide-shopping-bag" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 10a4 4 0 0 1-8 0" />
+  <path d="M3.103 6.034h17.794" />
+  <path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z" />
+</svg><span>Amazon</span></button>
+<button type="button" class="tab " data-tab="compliance"><svg class="lucide lucide-shield-check" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" />
+</svg><span>Compliance</span></button>
+<button type="button" class="tab " data-tab="templates"><svg class="lucide lucide-files" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 2h-4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8" />
+  <path d="M16.706 2.706A2.4 2.4 0 0 0 15 2v5a1 1 0 0 0 1 1h5a2.4 2.4 0 0 0-.706-1.706z" />
+  <path d="M5 7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h8a2 2 0 0 0 1.732-1" />
+</svg><span>Templates</span></button>
+<button type="button" class="tab " data-tab="products"><svg class="lucide lucide-layout-grid" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="7" height="7" x="3" y="3" rx="1" />
+  <rect width="7" height="7" x="14" y="3" rx="1" />
+  <rect width="7" height="7" x="14" y="14" rx="1" />
+  <rect width="7" height="7" x="3" y="14" rx="1" />
+</svg><span>Products</span></button></nav>
+</aside>
+<header class="sticky-header"><div class="header-row"><div class="breadcrumb">Style Guide <span>/</span> <strong id="crumb">General</strong></div><div class="search-wrap"><span class="search-icon"><svg class="lucide lucide-search" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg></span><input type="text" id="searchBox" placeholder="Search the guide…" aria-label="Search the guide"><span class="match-info" id="matchInfo"></span></div></div></header>
+<main class="workspace">
+ <div class="page-intro"><h1 id="page-title">General</h1><p id="page-subtitle">The essentials for clear, consistent RENPHO copy.</p></div>
+ <div class="reading-layout"><div id="content">
 
 <!-- ==================== GENERAL ==================== -->
 
-<div class="section" data-categories="general">
-  <h2 class="section-header" onclick="toggleSection(this)">Quick Reference: Spacing Rules</h2>
+<div class="section" data-categories="general" id="guide-section-1">
+  <h2 class="section-header" onclick="toggleSection(this)">Quick Reference: Spacing Rules<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <table>
       <tr><th>Unit</th><th>Space?</th><th>Example</th></tr>
@@ -133,8 +274,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="general">
-  <h2 class="section-header" onclick="toggleSection(this)">Grammar & Style</h2>
+<div class="section" data-categories="general" id="guide-section-2">
+  <h2 class="section-header" onclick="toggleSection(this)">Grammar & Style<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Voice & Person</h3>
     <ul>
@@ -163,8 +316,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="general">
-  <h2 class="section-header" onclick="toggleSection(this)">Capitalization & Format</h2>
+<div class="section" data-categories="general" id="guide-section-3">
+  <h2 class="section-header" onclick="toggleSection(this)">Capitalization & Format<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Titles vs Sub-headers</h3>
     <table>
@@ -184,8 +349,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="general">
-  <h2 class="section-header" onclick="toggleSection(this)">Units & Measurements</h2>
+<div class="section" data-categories="general" id="guide-section-4">
+  <h2 class="section-header" onclick="toggleSection(this)">Units & Measurements<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Time</h3>
     <table>
@@ -227,8 +404,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="general">
-  <h2 class="section-header" onclick="toggleSection(this)">Currency Formatting &mdash; Editorial Only</h2>
+<div class="section" data-categories="general" id="guide-section-5">
+  <h2 class="section-header" onclick="toggleSection(this)">Currency Formatting &mdash; Editorial Only<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <table>
       <tr><th>Currency Type</th><th>Format Rule</th><th>Example</th></tr>
@@ -241,8 +430,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="general">
-  <h2 class="section-header" onclick="toggleSection(this)">Instruction Terminology</h2>
+<div class="section" data-categories="general" id="guide-section-6">
+  <h2 class="section-header" onclick="toggleSection(this)">Instruction Terminology<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Button Actions</h3>
     <table>
@@ -262,8 +463,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="general">
-  <h2 class="section-header" onclick="toggleSection(this)">Technical Terminology</h2>
+<div class="section" data-categories="general" id="guide-section-7">
+  <h2 class="section-header" onclick="toggleSection(this)">Technical Terminology<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Connectors & Connectivity</h3>
     <table>
@@ -305,8 +518,20 @@ a:hover { text-decoration: underline; }
 
 <!-- ==================== PACKAGING ==================== -->
 
-<div class="section" data-categories="packaging">
-  <h2 class="section-header" onclick="toggleSection(this)">Writing Principles</h2>
+<div class="section" data-categories="packaging" id="guide-section-8">
+  <h2 class="section-header" onclick="toggleSection(this)">Writing Principles<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <ul>
       <li><strong>Show, Don't Tell</strong> &mdash; Use product design images and specs, not emotional slogans</li>
@@ -317,8 +542,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="packaging">
-  <h2 class="section-header" onclick="toggleSection(this)">Front of Box</h2>
+<div class="section" data-categories="packaging" id="guide-section-9">
+  <h2 class="section-header" onclick="toggleSection(this)">Front of Box<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <table>
       <tr><th>Element</th><th>Description</th></tr>
@@ -336,8 +573,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="packaging">
-  <h2 class="section-header" onclick="toggleSection(this)">Back of Box</h2>
+<div class="section" data-categories="packaging" id="guide-section-10">
+  <h2 class="section-header" onclick="toggleSection(this)">Back of Box<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <table>
       <tr><th>Element</th><th>Description</th></tr>
@@ -357,8 +606,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="packaging">
-  <h2 class="section-header" onclick="toggleSection(this)">Front vs Back &mdash; Quick Rules</h2>
+<div class="section" data-categories="packaging" id="guide-section-11">
+  <h2 class="section-header" onclick="toggleSection(this)">Front vs Back &mdash; Quick Rules<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <table>
       <tr><th>Location</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
@@ -372,15 +633,39 @@ a:hover { text-decoration: underline; }
 
 <!-- ==================== AMAZON ==================== -->
 
-<div class="section" data-categories="amazon">
-  <h2 class="section-header" onclick="toggleSection(this)">FSA / HSA Statement Template</h2>
+<div class="section" data-categories="amazon" id="guide-section-12">
+  <h2 class="section-header" onclick="toggleSection(this)">FSA / HSA Statement Template<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <p><a href="https://liamava-dot.github.io/renpho-style-guide/raw/templates.html#fsa-hsa-template" onclick="openFsaHsaTemplate(event)">View FSA / HSA Statement in Templates</a></p>
   </div>
 </div>
 
-<div class="section" data-categories="amazon">
-  <h2 class="section-header" onclick="toggleSection(this)">Prohibited Keywords</h2>
+<div class="section" data-categories="amazon" id="guide-section-13">
+  <h2 class="section-header" onclick="toggleSection(this)">Prohibited Keywords<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <table>
       <tr><th>Banned</th><th>Replacement</th></tr>
@@ -409,8 +694,20 @@ a:hover { text-decoration: underline; }
 
 <!-- ==================== COMPLIANCE ==================== -->
 
-<div class="section" data-categories="compliance">
-  <h2 class="section-header" onclick="toggleSection(this)">Product-Specific Restricted Phrases</h2>
+<div class="section" data-categories="compliance" id="guide-section-14">
+  <h2 class="section-header" onclick="toggleSection(this)">Product-Specific Restricted Phrases<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <p style="margin-bottom:10px; font-size:13px;">RED = high risk. Products under FDA clearance may use phrases consistent with "FDA Summary - indication for use" only.</p>
     <h3>Body Composition Scale</h3>
@@ -481,8 +778,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="compliance">
-  <h2 class="section-header" onclick="toggleSection(this)">Banned Medical Terms</h2>
+<div class="section" data-categories="compliance" id="guide-section-15">
+  <h2 class="section-header" onclick="toggleSection(this)">Banned Medical Terms<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <div class="callout-warn">These terms can classify a product as a medical device, losing exemption qualification. Avoid completely.</div>
     <table>
@@ -503,8 +812,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="compliance">
-  <h2 class="section-header" onclick="toggleSection(this)">FDA Terminology</h2>
+<div class="section" data-categories="compliance" id="guide-section-16">
+  <h2 class="section-header" onclick="toggleSection(this)">FDA Terminology<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <p style="margin-bottom:10px;">Reference: <a href="https://www.fda.gov/medical-devices/consumers-medical-devices/are-there-fda-registered-or-fda-certified-medical-devices-how-do-i-know-what-fda-approved" target="_blank">FDA Official Guidance</a></p>
     <h3>What We CAN Say</h3>
@@ -520,8 +841,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="compliance">
-  <h2 class="section-header" onclick="toggleSection(this)">LED Mask &mdash; Regional Naming Rules</h2>
+<div class="section" data-categories="compliance" id="guide-section-17">
+  <h2 class="section-header" onclick="toggleSection(this)">LED Mask &mdash; Regional Naming Rules<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <table>
       <tr><th>Region</th><th>Product Name</th><th>LED Description</th></tr>
@@ -532,8 +865,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="compliance">
-  <h2 class="section-header" onclick="toggleSection(this)">Scales, Wearables & Non-Medical Devices</h2>
+<div class="section" data-categories="compliance" id="guide-section-18">
+  <h2 class="section-header" onclick="toggleSection(this)">Scales, Wearables & Non-Medical Devices<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Permitted (under FDA General Wellness guidance)</h3>
     <div class="rule"><span class="tag tag-do">Do</span> "Track your trends. Take control of your wellness."</div>
@@ -553,8 +898,20 @@ a:hover { text-decoration: underline; }
 
 <!-- ==================== TEMPLATES ==================== -->
 
-<div class="section" data-categories="templates">
-  <h2 id="fsa-hsa-template" class="section-header" onclick="toggleSection(this)">FSA / HSA Statement</h2>
+<div class="section" data-categories="templates" id="guide-section-19">
+  <h2 id="fsa-hsa-template" class="section-header" onclick="toggleSection(this)">FSA / HSA Statement<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <div class="template-block">
       <strong>FSA / HSA Eligible Health Savings</strong><br><br>
@@ -565,8 +922,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="templates">
-  <h2 class="section-header" onclick="toggleSection(this)">2-Year Warranty</h2>
+<div class="section" data-categories="templates" id="guide-section-20">
+  <h2 class="section-header" onclick="toggleSection(this)">2-Year Warranty<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Long Version</h3>
     <div class="template-block">2-Year Warranty: Extended coverage provides twice the standard protection for extra peace of mind.</div>
@@ -575,8 +944,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="templates">
-  <h2 class="section-header" onclick="toggleSection(this)">IMA Endorsement</h2>
+<div class="section" data-categories="templates" id="guide-section-21">
+  <h2 class="section-header" onclick="toggleSection(this)">IMA Endorsement<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Long Version</h3>
     <div class="template-block">Recommended by IMA: RENPHO partners with IMA, reinforcing its commitment to bringing professional-grade recovery tools for daily wellness. With direct insights from IMA's therapist network, RENPHO massage products delivers technology that meets real needs and provides a relaxing at-home comfort.<br><br><em>Note: IMA = International Massage Association</em></div>
@@ -585,15 +966,39 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="templates">
-  <h2 class="section-header" onclick="toggleSection(this)">Climate Pledge Friendly</h2>
+<div class="section" data-categories="templates" id="guide-section-22">
+  <h2 class="section-header" onclick="toggleSection(this)">Climate Pledge Friendly<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <div class="template-block">Climate Pledge Friendly: RENPHO massage guns are certified Climate Pledge Friendly, meeting standards for Recycled Materials, Safer Chemicals, and Worker Well-being. Wellness goes hand in hand with caring for the planet, which is why we're committed to fostering a more sustainable future.</div>
   </div>
 </div>
 
-<div class="section" data-categories="templates">
-  <h2 class="section-header" onclick="toggleSection(this)">App Download & Scale Connection</h2>
+<div class="section" data-categories="templates" id="guide-section-23">
+  <h2 class="section-header" onclick="toggleSection(this)">App Download & Scale Connection<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>App Download Instruction</h3>
     <div class="template-block">Scan the QR code or search "RENPHO Health" in the App Store or Google Play to download the app.</div>
@@ -604,8 +1009,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="templates">
-  <h2 class="section-header" onclick="toggleSection(this)">Community / Social Promo</h2>
+<div class="section" data-categories="templates" id="guide-section-24">
+  <h2 class="section-header" onclick="toggleSection(this)">Community / Social Promo<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <div class="template-block">Thank you for being part of the RENPHO Health App community.<br>To celebrate, we're offering a limited-time, first-come, first-served offer.<br>Enjoy it &mdash; and don't forget, your feedback helps us improve. So feel free to share your thoughts after purchase!</div>
   </div>
@@ -613,8 +1030,20 @@ a:hover { text-decoration: underline; }
 
 <!-- ==================== PRODUCTS ==================== -->
 
-<div class="section" data-categories="products">
-  <h2 class="section-header" onclick="toggleSection(this)">Eye Massager</h2>
+<div class="section" data-categories="products" id="guide-section-25">
+  <h2 class="section-header" onclick="toggleSection(this)">Eye Massager<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Standard Terms</h3>
     <p><span class="chip">Ambient tracks</span><span class="chip">Freezable Gel Mask</span><span class="chip">Acupressure</span><span class="chip">Auto-save Memory</span></p>
@@ -626,8 +1055,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="products">
-  <h2 class="section-header" onclick="toggleSection(this)">Scale</h2>
+<div class="section" data-categories="products" id="guide-section-26">
+  <h2 class="section-header" onclick="toggleSection(this)">Scale<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Bluetooth Connectivity</h3>
     <div class="template-block">Access the RENPHO Health App on your phone to sync your readings. Connect to the scale and chart your body health in daily, weekly, monthly or yearly increments.</div>
@@ -636,8 +1077,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="products">
-  <h2 class="section-header" onclick="toggleSection(this)">Foot Massager</h2>
+<div class="section" data-categories="products" id="guide-section-27">
+  <h2 class="section-header" onclick="toggleSection(this)">Foot Massager<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>Key Terms</h3>
     <p><span class="chip">Foot Enabled On/Off Pressure Trigger</span></p>
@@ -645,8 +1098,20 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-<div class="section" data-categories="products">
-  <h2 class="section-header" onclick="toggleSection(this)">Massage Gun</h2>
+<div class="section" data-categories="products" id="guide-section-28">
+  <h2 class="section-header" onclick="toggleSection(this)">Massage Gun<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg></h2>
   <div class="section-body">
     <h3>RPM Levels &mdash; Standard</h3>
     <p style="margin-bottom:8px; color:#666;">For performance and recovery products.</p>
@@ -699,8 +1164,7 @@ a:hover { text-decoration: underline; }
   </div>
 </div>
 
-</div>
-
+</div><aside class="toc"><div class="toc-label">ON THIS PAGE</div><div id="toc-links"></div></aside></div></main>
 <script>
 const tabs = document.querySelectorAll('.tab');
 const sections = document.querySelectorAll('.section');
@@ -720,14 +1184,20 @@ function showTab(category) {
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
+    searchBox.value = '';
+    clearHighlights();
+    searchKeywords = []; searchMatchTabs = []; searchMatchIndex = -1; searchTabIndex = 0;
+    matchInfoEl.textContent = '';
     tabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     lastActiveTab = tab;
     showTab(tab.dataset.tab);
+    updateOverview(tab.dataset.tab);
+    tab.scrollIntoView({ block: 'nearest' });
+    window.scrollTo(0, 0);
   });
 });
 
-showTab('general');
 
 function openFsaHsaTemplate(event) {
   event.preventDefault();
@@ -782,6 +1252,7 @@ function showTabForSearch(tabName) {
   const count = document.querySelectorAll('.section-body mark').length;
   matchInfoEl.textContent = count ? count + ' in ' + tabName.charAt(0).toUpperCase() + tabName.slice(1) : '';
   window.scrollTo(0, 0);
+  updateOverview(tabName);
 }
 
 searchBox.addEventListener('keydown', function(e) {
@@ -816,8 +1287,69 @@ searchBox.addEventListener('input', function() {
     if (has) searchMatchTabs.push(t.dataset.tab);
   });
   if (searchMatchTabs.length) showTabForSearch(searchMatchTabs[0]);
-  else { sections.forEach(s => s.style.display = 'none'); matchInfoEl.textContent = 'No results'; }
+  else { sections.forEach(s => s.style.display = 'none'); matchInfoEl.textContent = 'No results'; updateOverview(document.querySelector('.tab.active').dataset.tab); }
 });
+
+const titles={general:['General','The essentials for clear, consistent RENPHO copy.'],packaging:['Packaging','Structure, language and details for every box.'],amazon:['Amazon','Channel-specific guidance for Amazon content.'],compliance:['Compliance','Claims, terminology and regional requirements.'],templates:['Templates','Reusable copy for consistent communication.'],products:['Products','Category-specific terminology and product details.']};
+function updateOverview(cat){
+ const info=titles[cat];document.getElementById('page-title').textContent=info[0];document.getElementById('page-subtitle').textContent=info[1];document.getElementById('crumb').textContent=info[0];
+ const list=[...sections].filter(s=>s.dataset.categories===cat && s.style.display!=='none');
+ document.getElementById('toc-links').innerHTML=list.map(s=>'<a href="#'+s.id+'">'+s.querySelector('h2').textContent.replace('Quick Reference: ','').replace('Currency Formatting — Editorial Only','Currency Formatting')+'</a>').join('');
+ updateTocHighlight();
+}
+function updateTocHighlight(){
+ const links=[...document.querySelectorAll('#toc-links a')];
+ if(!links.length)return;
+ const threshold=document.querySelector('.sticky-header').getBoundingClientRect().bottom+36;
+ let current=links[0];
+ for(const link of links){
+   const section=document.getElementById(link.hash.slice(1));
+   if(section.getBoundingClientRect().top<=threshold)current=link;
+ }
+ if(window.scrollY>0 && window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-2)current=links[links.length-1];
+ links.forEach(link=>{
+   const active=link===current;
+   link.classList.toggle('active',active);
+   if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
+ });
+}
+let tocFrame=0;
+window.addEventListener('scroll',()=>{
+ if(!tocFrame)tocFrame=requestAnimationFrame(()=>{tocFrame=0;updateTocHighlight();});
+},{passive:true});
+window.addEventListener('resize',updateTocHighlight);
+document.getElementById('toc-links').addEventListener('click',event=>{
+ const link=event.target.closest('a');
+ if(!link)return;
+ event.preventDefault();
+ const section=document.getElementById(link.hash.slice(1));
+ section.classList.remove('collapsed');
+ section.scrollIntoView({block:'start'});
+ updateTocHighlight();
+});
+tabs.forEach(tab=>{
+ tab.setAttribute('title',tab.textContent.trim());
+ tab.setAttribute('role','button');
+ tab.tabIndex=0;
+ tab.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();tab.click();}});
+});
+const sidebarToggle=document.querySelector('.sidebar-toggle');
+document.querySelector('.tabs').id='category-navigation';
+function setSidebarCollapsed(collapsed){
+ document.body.classList.toggle('sidebar-collapsed',collapsed);
+ sidebarToggle.setAttribute('aria-expanded',String(!collapsed));
+ const label=collapsed?'Expand sidebar':'Collapse sidebar';
+ sidebarToggle.setAttribute('aria-label',label);
+ sidebarToggle.title=label;
+}
+const narrowSidebar=window.matchMedia('(max-width:700px)');
+setSidebarCollapsed(narrowSidebar.matches);
+sidebarToggle.addEventListener('click',()=>setSidebarCollapsed(!document.body.classList.contains('sidebar-collapsed')));
+narrowSidebar.addEventListener('change',event=>setSidebarCollapsed(event.matches));
+showTab('general');
+updateOverview('general');
+
 </script>
 </body>
 </html>
+

@@ -4,8 +4,8 @@ Internal style guide for the RENPHO packaging and content writing team. Covers t
 
 ## Live Page
 
-After enabling GitHub Pages, the guide is available at:  
-`https://YOUR-USERNAME.github.io/REPO-NAME/`
+The guide is available at:  
+https://liamava-dot.github.io/renpho-style-guide/
 
 ## What's Inside
 
@@ -18,7 +18,9 @@ After enabling GitHub Pages, the guide is available at:
 
 ## Features
 
-- Tab-based navigation
+- Compact, collapsible sidebar navigation
+- Responsive layout with a page contents directory
+- Active section tracking while scrolling
 - Full-text search with keyword highlighting
 - Multi-keyword support (space-separated, AND logic)
 - Press Enter to jump between matches
@@ -35,3 +37,4 @@ No build step required. Just a single `index.html` file.
 ## Maintenance
 
 Edit `index.html` directly to add or update rules. Each section uses `data-categories="tabname"` to control which tab it appears under.
+

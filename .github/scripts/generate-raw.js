@@ -9,15 +9,22 @@ const styleMatch = src.match(/<style>([\s\S]*?)<\/style>/);
 const css = styleMatch ? styleMatch[1] : '';
 
 const tabs = ['general', 'packaging', 'amazon', 'compliance', 'templates', 'products'];
-const sectionRe = /<div class="section" data-categories="(\w+)">([\s\S]*?)(?=<div class="section" data-categories="|<\/div>\s*<script>)/g;
-
+// Match section starts, then balance divs so navigation wrappers are never exported.
+const sectionRe = /<div class="section" data-categories="(\w+)"[^>]*>/g;
 const sectionsByTab = {};
 tabs.forEach(t => sectionsByTab[t] = []);
 
 let m;
 while ((m = sectionRe.exec(src)) !== null) {
-  const cat = m[1];
-  if (sectionsByTab[cat]) sectionsByTab[cat].push(m[0]);
+  const divRe = /<\/?div\b[^>]*>/g;
+  divRe.lastIndex = sectionRe.lastIndex;
+  let depth = 1, token;
+  while (depth && (token = divRe.exec(src))) {
+    depth += token[0].startsWith('</') ? -1 : 1;
+  }
+  if (depth) throw new Error('Unclosed section: ' + m[1]);
+  if (sectionsByTab[m[1]]) sectionsByTab[m[1]].push(src.slice(m.index, divRe.lastIndex));
+  sectionRe.lastIndex = divRe.lastIndex;
 }
 
 const tabLabels = {
@@ -33,6 +40,7 @@ tabs.forEach(tab => {
     s.replace(/ onclick="toggleSection\(this\)"/g, '')
      .replace(/class="section-header"/g, 'class="section-header" style="cursor:default"')
      .replace(/class="collapsed /g, 'class="')
+     .replace(/ onclick="openFsaHsaTemplate\(event\)"/g, '')
   ).join('\n\n');
 
   const html = `<!DOCTYPE html>
@@ -46,6 +54,7 @@ tabs.forEach(tab => {
 .tabs, .search-wrap { display: none; }
 #content { padding: 20px; }
 .section-header::before { display: none; }
+.section-chevron { display: none; }
 .collapsed .section-body { display: block; }
 </style>
 </head>
@@ -62,3 +71,4 @@ ${cleaned}
   fs.writeFileSync(path.join(outDir, tab + '.html'), html);
   console.log('Generated raw/' + tab + '.html');
 });
+
