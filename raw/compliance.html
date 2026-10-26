@@ -78,7 +78,6 @@ ul{padding-left:18px;margin:6px 0}li{margin:4px 0}
 table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px;line-height:1.6;margin:8px 0}
 .table-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
 .table-scroll:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
-.mobile-section-jump{display:none}
 th,td{padding:8px;border:1px solid var(--border);text-align:left;vertical-align:top}
 th{height:40px;background:var(--muted);font-size:12px;font-weight:600;color:var(--sidebar-foreground)}
 td{font-weight:400;color:var(--foreground)}
@@ -112,6 +111,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   .sidebar .tabs .tab{width:auto;height:44px;justify-content:center;gap:0;padding:10px 12px}
   .sidebar .tab span{display:inline}
   .sidebar .tab svg{display:none}
+  .sidebar .tab.active{background:transparent}
   .tab.active::before{top:auto;bottom:2px;left:12px;right:12px;width:auto;height:2px;border-radius:2px}
   .sticky-header{position:fixed;top:calc(var(--mobile-brand-height) + var(--mobile-nav-height) + var(--mobile-safe-top));left:0;right:0;height:var(--mobile-search-height);margin-left:0;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
   .breadcrumb{display:none}.search-wrap{width:100%;min-width:0}.search-wrap input{height:44px;font-size:16px}
@@ -120,10 +120,6 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   .section-toggle{min-height:44px}
   .table-scroll table{min-width:var(--table-min-width,320px)}
   th,td{font-size:13px;padding:8px;overflow-wrap:break-word}
-  .mobile-section-jump{display:block;margin-top:16px}
-  .mobile-section-jump label{display:block;font-size:12px;font-weight:500;color:var(--muted-foreground);margin-bottom:6px}
-  .mobile-section-jump select{width:100%;min-height:44px;padding:8px 10px;border:1px solid var(--input);border-radius:var(--radius-md);background:var(--card);color:var(--foreground);font:inherit;font-size:16px}
-  .mobile-section-jump select:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
   .page-intro{margin-bottom:20px;padding-bottom:16px}.page-intro h1{font-size:24px}
 }
 @media(max-width:1000px) and (max-height:500px){body,body.sidebar-collapsed{--mobile-brand-height:40px;--mobile-nav-height:48px;--mobile-search-height:48px}.workspace{padding-top:12px}.page-intro{margin-bottom:16px}}
