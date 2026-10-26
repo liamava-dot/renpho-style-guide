@@ -38,6 +38,7 @@ tabs.forEach(tab => {
 
   const cleaned = sections.map(s =>
     s.replace(/ onclick="toggleSection\(this\)"/g, '')
+     .replace(/<button class="section-toggle"[^>]*>([\s\S]*?)<\/button>/g, '$1')
      .replace(/class="section-header"/g, 'class="section-header" style="cursor:default"')
      .replace(/class="collapsed /g, 'class="')
      .replace(/ onclick="openFsaHsaTemplate\(event\)"/g, '')
@@ -50,6 +51,8 @@ tabs.forEach(tab => {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RENPHO Style Guide — ${tabLabels[tab]}</title>
 <style>${css}
+html, body { height: auto; overflow: visible; }
+body { padding-top: 0; }
 .sticky-header { position: static; border-bottom: none; }
 .tabs, .search-wrap { display: none; }
 #content { padding: 20px; }

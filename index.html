@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="icon" type="image/png" href="favicon.png?v=2">
 <link rel="shortcut icon" type="image/png" href="favicon.png?v=2">
 <title>RENPHO Style Guide (2026)</title>
@@ -75,8 +75,10 @@ body.sidebar-collapsed{--nav-width:64px}
 #content{padding:0;margin:0;max-width:none;min-width:0}
 .section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:20px;scroll-margin-top:80px}
 .section h2{font-size:16px;font-weight:600;line-height:1.5;color:var(--card-foreground);margin-bottom:16px}
-.section-header{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;border-radius:var(--radius-md)}
-.section-header::before{content:"";width:3px;height:15px;border-radius:2px;background:var(--primary);flex-shrink:0}
+.section-header{display:block;user-select:none;border-radius:var(--radius-md)}
+.section-toggle{display:flex;align-items:center;gap:10px;width:100%;border:0;border-radius:var(--radius-md);padding:0;background:transparent;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.section-toggle::before{content:"";width:3px;height:15px;border-radius:2px;background:var(--primary);flex-shrink:0}
+.section-toggle:focus-visible{outline:2px solid var(--ring);outline-offset:4px}
 .section-chevron{margin-left:auto;color:var(--muted-foreground)}
 .collapsed .section-chevron{transform:rotate(-90deg)}
 .collapsed .section-body{display:none}
@@ -84,6 +86,9 @@ body.sidebar-collapsed{--nav-width:64px}
 .section-body{color:var(--foreground)}
 ul{padding-left:18px;margin:6px 0}li{margin:4px 0}
 table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px;line-height:1.6;margin:8px 0}
+.table-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.table-scroll:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.mobile-section-jump{display:none}
 th,td{padding:8px;border:1px solid var(--border);text-align:left;vertical-align:top}
 th{height:40px;background:var(--muted);font-size:12px;font-weight:600;color:var(--sidebar-foreground)}
 td{font-weight:400;color:var(--foreground)}
@@ -104,7 +109,34 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 .toc a.active{border-left-color:var(--primary);color:var(--primary);font-weight:500}
 .toc a:hover{color:var(--primary)}
 @media(min-width:1200px){.reading-layout{grid-template-columns:minmax(0,1fr) 168px;gap:24px}.toc{display:block}}
-@media(max-width:700px){.workspace{padding:24px 16px 40px}.sticky-header{padding:0 16px}.breadcrumb{display:none}.search-wrap{width:100%;min-width:0}.section{padding:16px}th,td{font-size:12px;padding:8px}.page-intro h1{font-size:28px}}
+@media(max-width:700px),(max-width:1000px) and (max-height:500px){
+  html{height:100%;overflow:hidden}
+  body,body.sidebar-collapsed{--nav-width:0px;--mobile-brand-height:48px;--mobile-nav-height:52px;--mobile-search-height:52px;--mobile-safe-top:env(safe-area-inset-top,0px);--mobile-top-height:calc(var(--mobile-brand-height) + var(--mobile-nav-height) + var(--mobile-search-height) + var(--mobile-safe-top));height:100vh;height:100dvh;overflow:hidden;padding-top:var(--mobile-top-height)}
+  .sidebar,.sidebar-collapsed .sidebar{inset:0 0 auto;width:100%;height:calc(var(--mobile-brand-height) + var(--mobile-nav-height) + var(--mobile-safe-top));padding:var(--mobile-safe-top) 0 0;border-right:0;border-bottom:1px solid var(--border)}
+  .sidebar .sidebar-top{height:var(--mobile-brand-height);min-height:var(--mobile-brand-height);padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));justify-content:flex-start}
+  .sidebar .brand-lockup{display:flex;align-items:baseline;gap:10px}
+  .brand{font-size:21px}.brand-sub{margin:0;font-size:11px}
+  .sidebar-toggle{display:none}
+  .sidebar .tabs{flex:none;flex-direction:row;align-items:center;gap:4px;height:var(--mobile-nav-height);min-height:var(--mobile-nav-height);margin:0;padding:2px max(12px,env(safe-area-inset-right,0px)) 2px max(12px,env(safe-area-inset-left,0px));overflow-x:auto;overflow-y:hidden;scroll-padding-inline:12px;scrollbar-width:none}
+  .sidebar .tabs::-webkit-scrollbar{display:none}
+  .sidebar .tabs .tab{width:auto;height:44px;justify-content:center;gap:0;padding:10px 12px}
+  .sidebar .tab span{display:inline}
+  .sidebar .tab svg{display:none}
+  .tab.active::before{top:auto;bottom:2px;left:12px;right:12px;width:auto;height:2px;border-radius:2px}
+  .sticky-header{position:fixed;top:calc(var(--mobile-brand-height) + var(--mobile-nav-height) + var(--mobile-safe-top));left:0;right:0;height:var(--mobile-search-height);margin-left:0;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
+  .breadcrumb{display:none}.search-wrap{width:100%;min-width:0}.search-wrap input{height:44px;font-size:16px}
+  .workspace{height:calc(100vh - var(--mobile-top-height));height:calc(100dvh - var(--mobile-top-height));margin-left:0;padding:20px max(12px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:thin}
+  .section{padding:16px;scroll-margin-top:16px}
+  .section-toggle{min-height:44px}
+  .table-scroll table{min-width:var(--table-min-width,320px)}
+  th,td{font-size:13px;padding:8px;overflow-wrap:break-word}
+  .mobile-section-jump{display:block;margin-top:16px}
+  .mobile-section-jump label{display:block;font-size:12px;font-weight:500;color:var(--muted-foreground);margin-bottom:6px}
+  .mobile-section-jump select{width:100%;min-height:44px;padding:8px 10px;border:1px solid var(--input);border-radius:var(--radius-md);background:var(--card);color:var(--foreground);font:inherit;font-size:16px}
+  .mobile-section-jump select:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+  .page-intro{margin-bottom:20px;padding-bottom:16px}.page-intro h1{font-size:24px}
+}
+@media(max-width:1000px) and (max-height:500px){body,body.sidebar-collapsed{--mobile-brand-height:40px;--mobile-nav-height:48px;--mobile-search-height:48px}.workspace{padding-top:12px}.page-intro{margin-bottom:16px}}
 @media(prefers-reduced-motion:no-preference){.tab,.sidebar-toggle,a,input{transition:color 120ms,background-color 120ms,border-color 120ms}}
 </style>
 </head>
@@ -238,13 +270,13 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   <circle cx="11" cy="11" r="8" />
 </svg></span><input type="text" id="searchBox" placeholder="Search the guide…" aria-label="Search the guide"><span class="match-info" id="matchInfo"></span></div></div></header>
 <main class="workspace">
- <div class="page-intro"><h1 id="page-title">General</h1><p id="page-subtitle">The essentials for clear, consistent RENPHO copy.</p></div>
+ <div class="page-intro"><h1 id="page-title">General</h1><p id="page-subtitle">The essentials for clear, consistent RENPHO copy.</p><div class="mobile-section-jump"><label for="section-jump">On this page</label><select id="section-jump"><option value="">Jump to a section</option></select></div></div>
  <div class="reading-layout"><div id="content">
 
 <!-- ==================== GENERAL ==================== -->
 
 <div class="section" data-categories="general" id="guide-section-1">
-  <h2 class="section-header" onclick="toggleSection(this)">Quick Reference: Spacing Rules<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Quick Reference: Spacing Rules<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -256,9 +288,9 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
-    <table>
+    <div class="table-scroll" role="region" aria-label="Quick Reference: Spacing Rules table" tabindex="0" style="--table-min-width:320px"><table>
       <tr><th>Unit</th><th>Space?</th><th>Example</th></tr>
       <tr><td>Time (min, hrs, h, secs, s)</td><td>Yes</td><td>20 min; 2 h</td></tr>
       <tr><td>Dimensions (cm, in, mm, nm)</td><td>Yes</td><td>10 cm; 2 in; 850 nm</td></tr>
@@ -270,12 +302,12 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
       <tr><td>Electrical (V, A)</td><td>No (within) / Yes (between)</td><td>5V 1A; 12V 2A</td></tr>
       <tr><td>Decibels (dB)</td><td>No</td><td>55dB</td></tr>
       <tr><td>Temperature (&deg;F, &deg;C)</td><td>No</td><td>4&deg;F-131&deg;F</td></tr>
-    </table>
+    </table></div>
   </div>
 </div>
 
 <div class="section" data-categories="general" id="guide-section-2">
-  <h2 class="section-header" onclick="toggleSection(this)">Grammar & Style<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Grammar & Style<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -287,7 +319,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Voice & Person</h3>
     <ul>
@@ -299,25 +331,25 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
     <div class="rule"><span class="tag tag-do">Do</span> <span>Knee, shoulder<strong>, and</strong> elbow</span></div>
     <div class="rule"><span class="tag tag-dont">Don't</span> <span>Knee, shoulder and elbow</span></div>
     <h3>Hyphens &amp; Dashes</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Hyphens &amp; Dashes table" tabindex="0" style="--table-min-width:480px"><table>
       <tr><th>Mark</th><th>Use</th><th class="col-do">Do</th></tr>
       <tr><td>Hyphen (-)</td><td>Join words; non-date ranges. No spaces around the mark.</td><td>user-centric; 6-12; 10-20 min</td></tr>
       <tr><td>En dash (&ndash;)</td><td>Date ranges. No spaces around the mark.</td><td>Jan 6&ndash;Jan 7; 1/6&ndash;1/7</td></tr>
       <tr><td>Em dash (&mdash;)</td><td>Pause or emphasis. One space on each side.</td><td>Enjoy it &mdash; and share your feedback.</td></tr>
-    </table>
+    </table></div>
     <p><strong>Exceptions:</strong> Use <em>to</em> in negative temperature ranges and all RPM ranges.</p>
     <h3>Inclusive Language</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Inclusive Language table" tabindex="0" style="--table-min-width:500px"><table>
       <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>...persons (including children) with reduced physical, sensory or mental capabilities...</td><td>invalids, mental disorder, disabled people, reduced cognitive capabilities</td></tr>
       <tr><td>...children or persons with disabilities</td><td>children, invalids, and disabled persons</td></tr>
       <tr><td>Persons with skin infections and/or have sensitive skin</td><td>People with skin infections...</td></tr>
-    </table>
+    </table></div>
   </div>
 </div>
 
 <div class="section" data-categories="general" id="guide-section-3">
-  <h2 class="section-header" onclick="toggleSection(this)">Capitalization & Format<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Capitalization & Format<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -329,20 +361,20 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Titles vs Sub-headers</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Titles vs Sub-headers table" tabindex="0" style="--table-min-width:480px"><table>
       <tr><th>Context</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>Main Title</td><td>Long-Term / Wide-Angle Oscillation</td><td>Long-term / Wide-angle Oscillation</td></tr>
       <tr><td>Sub-header</td><td>Long-term</td><td>Long-Term</td></tr>
-    </table>
+    </table></div>
     <h3>Descriptive Text</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Descriptive Text table" tabindex="0" style="--table-min-width:480px"><table>
       <tr><th class="col-do">Do</th><th class="col-dont">Don't</th><th>Rule</th></tr>
       <tr><td>6 Different combs for xyz</td><td>6 different combs for xyz</td><td>Feature name = capitalize</td></tr>
       <tr><td>3 heat levels to...</td><td>3 Heat levels to...</td><td>Generic descriptor = lowercase</td></tr>
-    </table>
+    </table></div>
     <h3>Button / Function Names</h3>
     <div class="rule"><span class="tag tag-do">Do</span> Press the Power button</div>
     <div class="rule"><span class="tag tag-dont">Don't</span> Press the Power Button / Press the power button</div>
@@ -350,7 +382,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="general" id="guide-section-4">
-  <h2 class="section-header" onclick="toggleSection(this)">Units & Measurements<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Units & Measurements<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -362,15 +394,15 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Time</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Time table" tabindex="0" style="--table-min-width:480px"><table>
       <tr><th>Unit</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>Minutes</td><td>Specs: 20 min; Body: 20 minutes</td><td>20 mins</td></tr>
       <tr><td>Hours</td><td>Specs: 2 hrs or 2 h; Body: 2 hours</td><td>2 hr or 2h</td></tr>
       <tr><td>Seconds</td><td>Specs: 2 secs or 2 s; Body: 2 seconds</td><td>2 sec or 2s</td></tr>
-    </table>
+    </table></div>
     <h3>Dimensions (incl. amplitude)</h3>
     <div class="rule"><span class="tag tag-do">Do</span> 10 cm / 2 in / 10 mm (space between number and unit)</div>
     <div class="rule"><span class="tag tag-dont">Don't</span> 10cm / 2in</div>
@@ -378,13 +410,13 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
     <div class="rule"><span class="tag tag-do">Do</span> 5 lbs / 2.4 kg; 100 lbs</div>
     <div class="rule"><span class="tag tag-dont">Don't</span> 5lb/2.4kg; 100lbs</div>
     <h3>Temperature</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Temperature table" tabindex="0" style="--table-min-width:480px"><table>
       <tr><th>Scenario</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>Range</td><td>4&deg;F-131&deg;F</td><td>4-131&deg;F</td></tr>
       <tr><td>Negative range</td><td>-4&deg;F to 131&deg;F</td><td>-4-131&deg;F</td></tr>
       <tr><td>Dual units</td><td>15&deg;C (59&deg;F)</td><td>15&deg;C / 59&deg;F</td></tr>
       <tr><td>Dual range</td><td>59&deg;F-66&deg;F (15&deg;C-19&deg;C)</td><td>59&deg;F-66&deg;F / 15&deg;C-19&deg;C</td></tr>
-    </table>
+    </table></div>
     <h3>Speed (RPM)</h3>
     <p>Use <em>to</em> for RPM ranges in text and tables.</p>
     <div class="rule"><span class="tag tag-do">Do</span> 3200 RPM; 1600 to 2800 RPM</div>
@@ -405,7 +437,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="general" id="guide-section-5">
-  <h2 class="section-header" onclick="toggleSection(this)">Currency Formatting &mdash; Editorial Only<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Currency Formatting &mdash; Editorial Only<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -417,21 +449,21 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
-    <table>
+    <div class="table-scroll" role="region" aria-label="Currency Formatting &mdash; Editorial Only table" tabindex="0" style="--table-min-width:520px"><table>
       <tr><th>Currency Type</th><th>Format Rule</th><th>Example</th></tr>
       <tr><td>US Dollar (USD)</td><td>Use $ only</td><td>$99</td></tr>
       <tr><td>British Pound (GBP)</td><td>Use &pound;</td><td>&pound;99</td></tr>
       <tr><td>Euro (EUR)</td><td>Use &euro;</td><td>&euro;99</td></tr>
       <tr><td>Other Dollar Currencies (CAD, AUD, HKD, SGD, NZD, etc.)</td><td>Use $ followed by the currency code</td><td>$99 CAD; $99 AUD; $99 HKD; $99 SGD; $99 NZD</td></tr>
       <tr><td>Other Non-Dollar Currencies</td><td>Use the standard local currency symbol or ISO currency code as appropriate</td><td>&yen;99; CHF 99; SEK 99</td></tr>
-    </table>
+    </table></div>
   </div>
 </div>
 
 <div class="section" data-categories="general" id="guide-section-6">
-  <h2 class="section-header" onclick="toggleSection(this)">Instruction Terminology<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Instruction Terminology<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -443,28 +475,28 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Button Actions</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Button Actions table" tabindex="0" style="--table-min-width:480px"><table>
       <tr><th>Action</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>Long press</td><td>Press and hold to...</td><td>Long press to...</td></tr>
       <tr><td>Short press</td><td>Press to...</td><td>Short press to...</td></tr>
       <tr><td>Touch double-tap</td><td>Double tap</td><td>Double press</td></tr>
       <tr><td>Physical double-press</td><td>Double press</td><td>Double tap</td></tr>
-    </table>
+    </table></div>
     <h3>Word Choices</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Word Choices table" tabindex="0" style="--table-min-width:360px"><table>
       <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>Seek technical assistance</td><td>Get professional help</td></tr>
       <tr><td>Batteries are weak or depleted</td><td>Batteries have run out / are dead</td></tr>
       <tr><td>Simulate</td><td>Mimic</td></tr>
-    </table>
+    </table></div>
   </div>
 </div>
 
 <div class="section" data-categories="general" id="guide-section-7">
-  <h2 class="section-header" onclick="toggleSection(this)">Technical Terminology<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Technical Terminology<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -476,40 +508,40 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Connectors & Connectivity</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Connectors & Connectivity table" tabindex="0" style="--table-min-width:360px"><table>
       <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>USB-C</td><td>Type-C</td></tr>
       <tr><td>USB-C Charging Cable (other end is USB-A)</td><td>USB C / USB A-C / USB-C to USB-A</td></tr>
       <tr><td>USB-C to USB-C Charging Cable (both ends)</td><td>USB C / USB A-C</td></tr>
       <tr><td>Wi-Fi</td><td>Wifi</td></tr>
       <tr><td>Bluetooth / Wireless Connectivity</td><td>Wireless Connection / BT / BlueTooth</td></tr>
-    </table>
+    </table></div>
     <h3>Functions</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Functions table" tabindex="0" style="--table-min-width:360px"><table>
       <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>Heating function / Heat level</td><td>Heat function / Heating level</td></tr>
       <tr><td>Cooling function / Cooling level</td><td>Cool function / Cool heat</td></tr>
       <tr><td>Auto-mode</td><td>Auto mode</td></tr>
       <tr><td>RENPHO Health App</td><td>Renpho Health app / RENPHO Health app</td></tr>
       <tr><td>Well-being</td><td>Wellbeing</td></tr>
-    </table>
+    </table></div>
     <h3>Materials & Accessories</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Materials & Accessories table" tabindex="0" style="--table-min-width:360px"><table>
       <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>Hook-and-loop fastener</td><td>Velcro</td></tr>
       <tr><td>2-chain zipper</td><td>Double-zipper</td></tr>
       <tr><td>Spandex</td><td>Lycra</td></tr>
-    </table>
+    </table></div>
     <h3>Compliance Terms</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Compliance Terms table" tabindex="0" style="--table-min-width:360px"><table>
       <tr><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>Limited Liability Warranty</td><td>Warranty</td></tr>
       <tr><td>FSA Eligible HSA</td><td>FSA/HSA Eligible</td></tr>
       <tr><td>Meets FDA Standards / Pharmaceutical-Grade / Laboratory Tested / Clinically Tested</td><td>FDA-Approved</td></tr>
-    </table>
+    </table></div>
     <h3>Quantity Format</h3>
     <div class="rule"><span class="tag tag-do">Do</span> Eye Massager x 1 (space around x)</div>
     <div class="rule"><span class="tag tag-dont">Don't</span> Eye Massager x1</div>
@@ -519,7 +551,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 <!-- ==================== PACKAGING ==================== -->
 
 <div class="section" data-categories="packaging" id="guide-section-8">
-  <h2 class="section-header" onclick="toggleSection(this)">Writing Principles<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Writing Principles<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -531,7 +563,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <ul>
       <li><strong>Show, Don't Tell</strong> &mdash; Use product design images and specs, not emotional slogans</li>
@@ -543,7 +575,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="packaging" id="guide-section-9">
-  <h2 class="section-header" onclick="toggleSection(this)">Front of Box<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Front of Box<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -555,14 +587,14 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
-    <table>
+    <div class="table-scroll" role="region" aria-label="Front of Box table" tabindex="0" style="--table-min-width:360px"><table>
       <tr><th>Element</th><th>Description</th></tr>
       <tr><td>Marketing Name</td><td>From product design team, trademarked, for brand TOMA</td></tr>
       <tr><td>Product Name</td><td>From PM, for SKU certification before marketing name finalized</td></tr>
       <tr><td>USP Summary</td><td><strong>5 words max</strong> &mdash; instant summary of stand-out features</td></tr>
-    </table>
+    </table></div>
     <p style="margin-top:10px"><strong>Symbol rule:</strong> Front uses <strong>&amp;</strong>, not <strong>and</strong></p>
     <h3>USP Summary Examples</h3>
     <div class="rule"><span class="tag tag-do">Do</span> Silent Ultrasonic Motor (Eyeris Zen)</div>
@@ -574,7 +606,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="packaging" id="guide-section-10">
-  <h2 class="section-header" onclick="toggleSection(this)">Back of Box<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Back of Box<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -586,14 +618,14 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
-    <table>
+    <div class="table-scroll" role="region" aria-label="Back of Box table" tabindex="0" style="--table-min-width:360px"><table>
       <tr><th>Element</th><th>Description</th></tr>
       <tr><td>Short Description</td><td>Expand key features; remove emotion/storytelling; add light benefit if too short</td></tr>
       <tr><td>Icons Quick Reference</td><td>From Sales Sheet; must be generic enough to reuse across products</td></tr>
       <tr><td>USP Modules</td><td>Plug-and-play from Sales Sheet; distill into short clear title</td></tr>
-    </table>
+    </table></div>
     <p style="margin-top:10px"><strong>Symbol rule:</strong> Back uses <strong>and</strong>, not <strong>&amp;</strong></p>
     <h3>Short Description Examples</h3>
     <div class="rule"><span class="tag tag-do">Do</span> Focused mist and adjustable temple massage to enhance comfort (Eyeris Zen)</div>
@@ -607,7 +639,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="packaging" id="guide-section-11">
-  <h2 class="section-header" onclick="toggleSection(this)">Front vs Back &mdash; Quick Rules<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Front vs Back &mdash; Quick Rules<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -619,14 +651,14 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
-    <table>
+    <div class="table-scroll" role="region" aria-label="Front vs Back &mdash; Quick Rules table" tabindex="0" style="--table-min-width:480px"><table>
       <tr><th>Location</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
       <tr><td>Front of Box</td><td><strong>&amp;</strong></td><td>and</td></tr>
       <tr><td>Back of Box (text)</td><td><strong>and</strong></td><td>&amp;</td></tr>
       <tr><td>Back of Box (icons)</td><td><strong>&amp;</strong></td><td>&mdash;</td></tr>
-    </table>
+    </table></div>
     <p style="margin-top:8px; font-size:12px; color:#666;">Note: Icon text on back of box may use <strong>&amp;</strong> for brevity.</p>
   </div>
 </div>
@@ -634,7 +666,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 <!-- ==================== AMAZON ==================== -->
 
 <div class="section" data-categories="amazon" id="guide-section-12">
-  <h2 class="section-header" onclick="toggleSection(this)">FSA / HSA Statement Template<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">FSA / HSA Statement Template<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -646,14 +678,14 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <p><a href="https://liamava-dot.github.io/renpho-style-guide/raw/templates.html#fsa-hsa-template" onclick="openFsaHsaTemplate(event)">View FSA / HSA Statement in Templates</a></p>
   </div>
 </div>
 
 <div class="section" data-categories="amazon" id="guide-section-13">
-  <h2 class="section-header" onclick="toggleSection(this)">Prohibited Keywords<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Prohibited Keywords<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -665,9 +697,9 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
-    <table>
+    <div class="table-scroll" role="region" aria-label="Prohibited Keywords table" tabindex="0" style="--table-min-width:360px"><table>
       <tr><th>Banned</th><th>Replacement</th></tr>
       <tr><td>99.97%</td><td>High-efficiency</td></tr>
       <tr><td>Air / Air compression</td><td>Air-compress / compress</td></tr>
@@ -687,7 +719,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
       <tr><td>Tube</td><td>Hose</td></tr>
       <tr><td>Warranty</td><td>Guarantee / Service agreement</td></tr>
       <tr><td>FDA-Approved</td><td>Meets FDA Standards</td></tr>
-    </table>
+    </table></div>
   </div>
 </div>
 
@@ -695,7 +727,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 <!-- ==================== COMPLIANCE ==================== -->
 
 <div class="section" data-categories="compliance" id="guide-section-14">
-  <h2 class="section-header" onclick="toggleSection(this)">Product-Specific Restricted Phrases<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Product-Specific Restricted Phrases<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -707,19 +739,19 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <p style="margin-bottom:10px; font-size:13px;">RED = high risk. Products under FDA clearance may use phrases consistent with "FDA Summary - indication for use" only.</p>
     <h3>Body Composition Scale</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Body Composition Scale table" tabindex="0" style="--table-min-width:640px"><table>
       <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
       <tr><td>DEXA</td><td style="color:#be123c">High</td><td>Provides advanced body composition analysis and metrics tracking</td></tr>
       <tr><td>High Precision Measurements</td><td style="color:#d97706">Medium</td><td>Consistent and reliable measurement tracking</td></tr>
       <tr><td>high-precision / Accurate</td><td style="color:#d97706">Medium</td><td>Reliable / Consistent monitoring</td></tr>
       <tr><td>accurate health overview</td><td style="color:#be123c">Med-High</td><td>Comprehensive body trend insights and metric overview</td></tr>
-    </table>
+    </table></div>
     <h3>Eye Massager</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Eye Massager table" tabindex="0" style="--table-min-width:640px"><table>
       <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
       <tr><td>xerophthalmus / xeroma</td><td style="color:#be123c">High</td><td>Soothes and comforts severe dryness around the eye area</td></tr>
       <tr><td>dry eyes</td><td style="color:#be123c">Med-High</td><td>Refreshes tired eyes and soothes eye area dryness</td></tr>
@@ -730,16 +762,16 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
       <tr><td>reduce dark circles</td><td style="color:#be123c">Med-High</td><td>Refreshes and revitalizes the appearance of under-eye skin</td></tr>
       <tr><td>promote better sleep</td><td style="color:#be123c">Med-High</td><td>Supports a relaxing bedtime routine and helps soothe the mind</td></tr>
       <tr><td>help ease puffiness</td><td style="color:#16a34a">Low</td><td>Diminishes the look of puffiness and revitalizes tired-looking skin</td></tr>
-    </table>
+    </table></div>
     <h3>Foot Massager</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Foot Massager table" tabindex="0" style="--table-min-width:640px"><table>
       <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
       <tr><td>Plantar Fasciitis</td><td style="color:#be123c">High</td><td>Eases everyday foot tension and soothes intense sole discomfort</td></tr>
       <tr><td>relieve pain / pain relief</td><td style="color:#be123c">Med-High</td><td>Soothes muscle stiffness and alleviates daily muscle tension</td></tr>
       <tr><td>improving sleep quality</td><td style="color:#be123c">Med-High</td><td>Promotes full-body relaxation to prepare you for a restful sleep</td></tr>
-    </table>
+    </table></div>
     <h3>Heating Pad</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Heating Pad table" tabindex="0" style="--table-min-width:640px"><table>
       <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
       <tr><td>cramp</td><td style="color:#be123c">Med-High</td><td>Eases sudden muscle tightness and comforts tense muscles</td></tr>
       <tr><td>menstrual soreness</td><td style="color:#be123c">High</td><td>Provides comforting warmth and deeply relaxing relief for lower body tension</td></tr>
@@ -748,9 +780,9 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
       <tr><td>Helps relieve back pain, menstrual cramps</td><td style="color:#be123c">Med-High</td><td>Soothes lower back tension and alleviates deep muscle stiffness</td></tr>
       <tr><td>improves blood circulation</td><td style="color:#be123c">High</td><td>Invigorates and refreshes the body with a stimulating massage experience</td></tr>
       <tr><td>promotes healing of injured tissue</td><td style="color:#be123c">High</td><td>Supports post-workout recovery and helps soothe overworked muscles</td></tr>
-    </table>
+    </table></div>
     <h3>Massage Gun</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Massage Gun table" tabindex="0" style="--table-min-width:640px"><table>
       <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
       <tr><td>accelerate recovery</td><td style="color:#be123c">High</td><td>Assists with post-activity downtime and supports your daily physical routine</td></tr>
       <tr><td>accelerate lactic acid release, promote body circulation</td><td style="color:#be123c">High</td><td>Eases post-workout muscle tightness and helps revive tired muscles</td></tr>
@@ -764,22 +796,22 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
       <tr><td>speed up recovery</td><td style="color:#be123c">Med-High</td><td>&mdash;</td></tr>
       <tr><td>reduce stiffness</td><td style="color:#16a34a">Low-Med</td><td>&mdash;</td></tr>
       <tr><td>deep tissue percussion</td><td style="color:#16a34a">Low</td><td>&mdash;</td></tr>
-    </table>
+    </table></div>
     <h3>Yoga Roller</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Yoga Roller table" tabindex="0" style="--table-min-width:640px"><table>
       <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
       <tr><td>for Back Pain / backache</td><td style="color:#be123c">Med-High</td><td>Soothes lower back tightness and targets deep muscle stiffness in the back</td></tr>
-    </table>
+    </table></div>
     <h3>Beauty Wand</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Beauty Wand table" tabindex="0" style="--table-min-width:640px"><table>
       <tr><th>Restricted</th><th>Risk</th><th>Suggested Replacement</th></tr>
       <tr><td>electroporation</td><td style="color:#be123c">Med-High</td><td>&mdash; (professional medical/biology term, avoid)</td></tr>
-    </table>
+    </table></div>
   </div>
 </div>
 
 <div class="section" data-categories="compliance" id="guide-section-15">
-  <h2 class="section-header" onclick="toggleSection(this)">Banned Medical Terms<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Banned Medical Terms<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -791,10 +823,10 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <div class="callout-warn">These terms can classify a product as a medical device, losing exemption qualification. Avoid completely.</div>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Banned Medical Terms table" tabindex="0" style="--table-min-width:360px"><table>
       <tr><th>Banned Term</th><th>Reason</th></tr>
       <tr><td>Treat / Treatment</td><td>Implies medical use</td></tr>
       <tr><td>Pain treatment</td><td>Medical claim</td></tr>
@@ -808,12 +840,12 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
       <tr><td>Clinically proven</td><td>Requires Global Marketing approval</td></tr>
       <tr><td>Physiotherapy device</td><td>Defines as medical device</td></tr>
       <tr><td>FDA approved</td><td>Product uses FDA exemption, not certification</td></tr>
-    </table>
+    </table></div>
   </div>
 </div>
 
 <div class="section" data-categories="compliance" id="guide-section-16">
-  <h2 class="section-header" onclick="toggleSection(this)">FDA Terminology<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">FDA Terminology<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -825,7 +857,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <p style="margin-bottom:10px;">Reference: <a href="https://www.fda.gov/medical-devices/consumers-medical-devices/are-there-fda-registered-or-fda-certified-medical-devices-how-do-i-know-what-fda-approved" target="_blank">FDA Official Guidance</a></p>
     <h3>What We CAN Say</h3>
@@ -842,7 +874,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="compliance" id="guide-section-17">
-  <h2 class="section-header" onclick="toggleSection(this)">LED Mask &mdash; Regional Naming Rules<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">LED Mask &mdash; Regional Naming Rules<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -854,19 +886,19 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
-    <table>
+    <div class="table-scroll" role="region" aria-label="LED Mask &mdash; Regional Naming Rules table" tabindex="0" style="--table-min-width:480px"><table>
       <tr><th>Region</th><th>Product Name</th><th>LED Description</th></tr>
       <tr><td>US / CA / AU only</td><td>LED Light Therapy Mask</td><td>Medical-grade LEDs</td></tr>
       <tr><td>All other regions</td><td>LED Light Soft Mask</td><td>Multi-wavelength LEDs</td></tr>
-    </table>
+    </table></div>
     <p style="margin-top:8px; font-size:13px; color:#666;">Since this equipment is not used in professional medical-grade hospitals, claims about pharmacological effects should be avoided.</p>
   </div>
 </div>
 
 <div class="section" data-categories="compliance" id="guide-section-18">
-  <h2 class="section-header" onclick="toggleSection(this)">Scales, Wearables & Non-Medical Devices<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Scales, Wearables & Non-Medical Devices<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -878,7 +910,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Permitted (under FDA General Wellness guidance)</h3>
     <div class="rule"><span class="tag tag-do">Do</span> "Track your trends. Take control of your wellness."</div>
@@ -899,7 +931,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 <!-- ==================== TEMPLATES ==================== -->
 
 <div class="section" data-categories="templates" id="guide-section-19">
-  <h2 id="fsa-hsa-template" class="section-header" onclick="toggleSection(this)">FSA / HSA Statement<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 id="fsa-hsa-template" class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">FSA / HSA Statement<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -911,7 +943,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <div class="template-block">
       <strong>FSA / HSA Eligible Health Savings</strong><br><br>
@@ -923,7 +955,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="templates" id="guide-section-20">
-  <h2 class="section-header" onclick="toggleSection(this)">2-Year Warranty<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">2-Year Warranty<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -935,7 +967,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Long Version</h3>
     <div class="template-block">2-Year Warranty: Extended coverage provides twice the standard protection for extra peace of mind.</div>
@@ -945,7 +977,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="templates" id="guide-section-21">
-  <h2 class="section-header" onclick="toggleSection(this)">IMA Endorsement<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">IMA Endorsement<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -957,7 +989,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Long Version</h3>
     <div class="template-block">Recommended by IMA: RENPHO partners with IMA, reinforcing its commitment to bringing professional-grade recovery tools for daily wellness. With direct insights from IMA's therapist network, RENPHO massage products delivers technology that meets real needs and provides a relaxing at-home comfort.<br><br><em>Note: IMA = International Massage Association</em></div>
@@ -967,7 +999,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="templates" id="guide-section-22">
-  <h2 class="section-header" onclick="toggleSection(this)">Climate Pledge Friendly<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Climate Pledge Friendly<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -979,14 +1011,14 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <div class="template-block">Climate Pledge Friendly: RENPHO massage guns are certified Climate Pledge Friendly, meeting standards for Recycled Materials, Safer Chemicals, and Worker Well-being. Wellness goes hand in hand with caring for the planet, which is why we're committed to fostering a more sustainable future.</div>
   </div>
 </div>
 
 <div class="section" data-categories="templates" id="guide-section-23">
-  <h2 class="section-header" onclick="toggleSection(this)">App Download & Scale Connection<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">App Download & Scale Connection<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -998,7 +1030,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>App Download Instruction</h3>
     <div class="template-block">Scan the QR code or search "RENPHO Health" in the App Store or Google Play to download the app.</div>
@@ -1010,7 +1042,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="templates" id="guide-section-24">
-  <h2 class="section-header" onclick="toggleSection(this)">Community / Social Promo<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Community / Social Promo<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -1022,7 +1054,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <div class="template-block">Thank you for being part of the RENPHO Health App community.<br>To celebrate, we're offering a limited-time, first-come, first-served offer.<br>Enjoy it &mdash; and don't forget, your feedback helps us improve. So feel free to share your thoughts after purchase!</div>
   </div>
@@ -1031,7 +1063,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 <!-- ==================== PRODUCTS ==================== -->
 
 <div class="section" data-categories="products" id="guide-section-25">
-  <h2 class="section-header" onclick="toggleSection(this)">Eye Massager<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Eye Massager<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -1043,7 +1075,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Standard Terms</h3>
     <p><span class="chip">Ambient tracks</span><span class="chip">Freezable Gel Mask</span><span class="chip">Acupressure</span><span class="chip">Auto-save Memory</span></p>
@@ -1056,7 +1088,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="products" id="guide-section-26">
-  <h2 class="section-header" onclick="toggleSection(this)">Scale<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Scale<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -1068,7 +1100,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Bluetooth Connectivity</h3>
     <div class="template-block">Access the RENPHO Health App on your phone to sync your readings. Connect to the scale and chart your body health in daily, weekly, monthly or yearly increments.</div>
@@ -1078,7 +1110,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="products" id="guide-section-27">
-  <h2 class="section-header" onclick="toggleSection(this)">Foot Massager<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Foot Massager<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -1090,7 +1122,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>Key Terms</h3>
     <p><span class="chip">Foot Enabled On/Off Pressure Trigger</span></p>
@@ -1099,7 +1131,7 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
 </div>
 
 <div class="section" data-categories="products" id="guide-section-28">
-  <h2 class="section-header" onclick="toggleSection(this)">Massage Gun<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
+  <h2 class="section-header" onclick="toggleSection(this)"><button class="section-toggle" type="button" aria-expanded="true">Massage Gun<svg class="lucide lucide-chevron-down section-chevron" aria-hidden="true" focusable="false"
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -1111,11 +1143,11 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
   stroke-linejoin="round"
 >
   <path d="m6 9 6 6 6-6" />
-</svg></h2>
+</svg></button></h2>
   <div class="section-body">
     <h3>RPM Levels &mdash; Standard</h3>
     <p style="margin-bottom:8px; color:#666;">For performance and recovery products.</p>
-    <table>
+    <div class="table-scroll" role="region" aria-label="RPM Levels &mdash; Standard table" tabindex="0" style="--table-min-width:300px"><table>
       <tr><th>Level</th><th>RPM</th><th>Term Type</th></tr>
       <tr><td>Kneading</td><td>300</td><td>Massage</td></tr>
       <tr><td>Warm Up</td><td>1500 to 1800</td><td>Pre-exercise</td></tr>
@@ -1124,40 +1156,40 @@ mark{background:#FEF08A;color:inherit;padding:1px 2px;border-radius:2px}
       <tr><td>Lactic Acid Break Down</td><td>2400 to 2550</td><td>Post-exercise</td></tr>
       <tr><td>Muscle Mobility</td><td>2600 to 2900</td><td>Muscle layer</td></tr>
       <tr><td>Professional Impact</td><td>3000 to 3200</td><td>High tolerance</td></tr>
-    </table>
+    </table></div>
     <h3>RPM Levels &mdash; Micro / Weak</h3>
     <p style="margin-bottom:8px; color:#666;">Generalized for broader target audience (e.g. WMG16 Micro).</p>
-    <table>
+    <div class="table-scroll" role="region" aria-label="RPM Levels &mdash; Micro / Weak table" tabindex="0" style="--table-min-width:300px"><table>
       <tr><th>Level</th><th>RPM</th></tr>
       <tr><td>Warm Up</td><td>2200 to 2750</td></tr>
       <tr><td>Relaxation</td><td>2800 to 3350</td></tr>
       <tr><td>Strong / Firm</td><td>3400 to 3950</td></tr>
       <tr><td>Intense Pulse</td><td>4000 to 4550</td></tr>
-    </table>
+    </table></div>
     <h3>Standard Heads</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Standard Heads table" tabindex="0" style="--table-min-width:420px"><table>
       <tr><th>Head</th><th>Use</th></tr>
       <tr><td>Flat Head</td><td>For all body parts</td></tr>
       <tr><td>Ball Head</td><td>For large muscle groups like quads, glutes, extreme muscles, and joint soreness</td></tr>
       <tr><td>Bullet Head</td><td>For joints, deep tissues, trigger points, and small muscle areas like feet and wrists</td></tr>
       <tr><td>U-shaped Head</td><td>For spine, neck, and Achilles tendon</td></tr>
       <tr><td>Air Cushion Head</td><td>For sensitive muscles</td></tr>
-    </table>
+    </table></div>
     <p style="margin-top:8px; font-size:13px; color:#666;">Rubber Sleeve: Each massage head is pre-installed with a rubber sleeve that ensures the massage head is securely attached to the massage gun. If it is damaged, replace it with a spare one.</p>
     <h3>Specialty Heads</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Specialty Heads table" tabindex="0" style="--table-min-width:420px"><table>
       <tr><th>Head</th><th>Use</th></tr>
       <tr><td>Infrared Heating Head</td><td>For all body parts</td></tr>
       <tr><td>Heating &amp; Cooling Head</td><td>For all body parts</td></tr>
-    </table>
+    </table></div>
     <h3>Silicone Head Casings</h3>
-    <table>
+    <div class="table-scroll" role="region" aria-label="Silicone Head Casings table" tabindex="0" style="--table-min-width:420px"><table>
       <tr><th>Casing</th><th>Use</th></tr>
       <tr><td>Conical Head Casing</td><td>For deep tissues, trigger points, and small muscle groups</td></tr>
       <tr><td>Spherical Head Casing</td><td>For quads, glutes, large muscle groups, and general areas of soreness</td></tr>
       <tr><td>Claw-shaped Head Casing</td><td>For sensitive muscle areas like spine, neck, and Achilles tendon</td></tr>
       <tr><td>Flat Head Casing</td><td>For the shoulder blades and IT bands or for a relaxing full-body massage</td></tr>
-    </table>
+    </table></div>
     <h3>Terminology</h3>
     <div class="rule"><span class="tag tag-do">Do</span> Realistically simulates a hand-kneaded massage</div>
     <div class="rule"><span class="tag tag-dont">Don't</span> Human-like kneading</div>
@@ -1172,6 +1204,12 @@ const searchBox = document.getElementById('searchBox');
 const matchInfoEl = document.getElementById('matchInfo');
 const originalHTML = new Map();
 document.querySelectorAll('.section-body').forEach(b => originalHTML.set(b, b.innerHTML));
+sections.forEach((section,index)=>{
+  const body=section.querySelector('.section-body');
+  const button=section.querySelector('.section-toggle');
+  body.id='section-body-'+(index+1);
+  button.setAttribute('aria-controls',body.id);
+});
 
 let lastActiveTab = document.querySelector('.tab.active');
 let searchKeywords = [], searchMatchTabs = [], searchMatchIndex = -1, searchTabIndex = 0;
@@ -1193,8 +1231,8 @@ tabs.forEach(tab => {
     lastActiveTab = tab;
     showTab(tab.dataset.tab);
     updateOverview(tab.dataset.tab);
-    tab.scrollIntoView({ block: 'nearest' });
-    window.scrollTo(0, 0);
+    tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    scrollContentToTop();
   });
 });
 
@@ -1205,12 +1243,18 @@ function openFsaHsaTemplate(event) {
   searchBox.dispatchEvent(new Event('input'));
   document.querySelector('.tab[data-tab="templates"]').click();
   const heading = document.getElementById('fsa-hsa-template');
-  heading.parentElement.classList.remove('collapsed');
+  setSectionCollapsed(heading.parentElement,false);
   heading.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
+function setSectionCollapsed(section,collapsed) {
+  section.classList.toggle('collapsed',collapsed);
+  section.querySelector('.section-toggle').setAttribute('aria-expanded',String(!collapsed));
+}
 function toggleSection(header) {
-  header.parentElement.classList.toggle('collapsed');
+  const section=header.parentElement;
+  setSectionCollapsed(section,!section.classList.contains('collapsed'));
+  queueTocHighlight();
 }
 
 function clearHighlights() {
@@ -1242,7 +1286,7 @@ function showTabForSearch(tabName) {
     const cat = section.dataset.categories || '';
     if (cat === tabName && searchKeywords.every(kw => section.textContent.toLowerCase().includes(kw))) {
       section.style.display = 'block';
-      section.classList.remove('collapsed');
+      setSectionCollapsed(section,false);
       const body = section.querySelector('.section-body');
       if (body) highlightText(body, searchKeywords);
     } else {
@@ -1251,7 +1295,8 @@ function showTabForSearch(tabName) {
   });
   const count = document.querySelectorAll('.section-body mark').length;
   matchInfoEl.textContent = count ? count + ' in ' + tabName.charAt(0).toUpperCase() + tabName.slice(1) : '';
-  window.scrollTo(0, 0);
+  scrollContentToTop();
+  document.querySelector('.tab.active').scrollIntoView({ block: 'nearest', inline: 'nearest' });
   updateOverview(tabName);
 }
 
@@ -1294,7 +1339,12 @@ const titles={general:['General','The essentials for clear, consistent RENPHO co
 function updateOverview(cat){
  const info=titles[cat];document.getElementById('page-title').textContent=info[0];document.getElementById('page-subtitle').textContent=info[1];document.getElementById('crumb').textContent=info[0];
  const list=[...sections].filter(s=>s.dataset.categories===cat && s.style.display!=='none');
- document.getElementById('toc-links').innerHTML=list.map(s=>'<a href="#'+s.id+'">'+s.querySelector('h2').textContent.replace('Quick Reference: ','').replace('Currency Formatting — Editorial Only','Currency Formatting')+'</a>').join('');
+ const sectionLabel=s=>s.querySelector('h2').textContent.replace('Quick Reference: ','').replace('Currency Formatting — Editorial Only','Currency Formatting').replace(/\s+/g,' ').trim();
+ document.getElementById('toc-links').innerHTML=list.map(s=>'<a href="#'+s.id+'">'+sectionLabel(s)+'</a>').join('');
+ const jump=document.getElementById('section-jump');
+ jump.replaceChildren(new Option(list.length?'Jump to a section':'No matching sections',''));
+ list.forEach(s=>jump.add(new Option(sectionLabel(s),s.id)));
+ jump.disabled=!list.length;
  updateTocHighlight();
 }
 function updateTocHighlight(){
@@ -1306,27 +1356,43 @@ function updateTocHighlight(){
    const section=document.getElementById(link.hash.slice(1));
    if(section.getBoundingClientRect().top<=threshold)current=link;
  }
- if(window.scrollY>0 && window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-2)current=links[links.length-1];
+ const scroller=window.matchMedia('(max-width:700px), (max-width:1000px) and (max-height:500px)').matches?document.querySelector('.workspace'):document.scrollingElement;
+ if(scroller.scrollTop>0 && scroller.clientHeight+scroller.scrollTop>=scroller.scrollHeight-2)current=links[links.length-1];
  links.forEach(link=>{
    const active=link===current;
    link.classList.toggle('active',active);
    if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
  });
+ document.getElementById('section-jump').value=current.hash.slice(1);
 }
 let tocFrame=0;
-window.addEventListener('scroll',()=>{
+function queueTocHighlight(){
  if(!tocFrame)tocFrame=requestAnimationFrame(()=>{tocFrame=0;updateTocHighlight();});
-},{passive:true});
+}
+window.addEventListener('scroll',queueTocHighlight,{passive:true});
+document.querySelector('.workspace').addEventListener('scroll',queueTocHighlight,{passive:true});
+function scrollContentToTop(){
+ document.querySelector('.workspace').scrollTop=0;
+ window.scrollTo(0,0);
+}
 window.addEventListener('resize',updateTocHighlight);
 document.getElementById('toc-links').addEventListener('click',event=>{
  const link=event.target.closest('a');
  if(!link)return;
  event.preventDefault();
  const section=document.getElementById(link.hash.slice(1));
- section.classList.remove('collapsed');
+ setSectionCollapsed(section,false);
  section.scrollIntoView({block:'start'});
  updateTocHighlight();
 });
+document.getElementById('section-jump').addEventListener('change',event=>{
+ const section=document.getElementById(event.target.value);
+ if(!section)return;
+ setSectionCollapsed(section,false);
+ section.scrollIntoView({block:'start'});
+ updateTocHighlight();
+});
+
 tabs.forEach(tab=>{
  tab.setAttribute('title',tab.textContent.trim());
  tab.setAttribute('role','button');
@@ -1342,10 +1408,10 @@ function setSidebarCollapsed(collapsed){
  sidebarToggle.setAttribute('aria-label',label);
  sidebarToggle.title=label;
 }
-const narrowSidebar=window.matchMedia('(max-width:700px)');
-setSidebarCollapsed(narrowSidebar.matches);
+const narrowSidebar=window.matchMedia('(max-width:700px), (max-width:1000px) and (max-height:500px)');
+setSidebarCollapsed(false);
 sidebarToggle.addEventListener('click',()=>setSidebarCollapsed(!document.body.classList.contains('sidebar-collapsed')));
-narrowSidebar.addEventListener('change',event=>setSidebarCollapsed(event.matches));
+narrowSidebar.addEventListener('change',updateTocHighlight);
 showTab('general');
 updateOverview('general');
 
