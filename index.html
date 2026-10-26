@@ -43,12 +43,12 @@ a:hover{text-decoration:underline}
 .brand-sub{font-size:11px;color:var(--muted-foreground);margin-top:2px}
 .sidebar-toggle{display:flex;align-items:center;justify-content:center;width:var(--control-height);height:var(--control-height);flex-shrink:0;border:1px solid var(--border);border-radius:var(--radius-md);background:var(--card);color:var(--muted-foreground)}
 .sidebar-toggle:hover{background:var(--muted);color:var(--foreground)}
-.tabs{display:flex;flex-direction:column;flex-wrap:nowrap;gap:2px;flex:1;min-height:0;margin-top:24px;padding-bottom:8px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin}
-.tab{display:flex;position:relative;align-items:center;gap:8px;width:100%;height:var(--control-height);padding:6px 10px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--sidebar-foreground);font-size:14px;font-weight:500;text-align:left;flex-shrink:0}
+.tabs{display:flex;flex-direction:column;flex-wrap:nowrap;gap:6px;flex:1;min-height:0;margin-top:28px;padding-bottom:8px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin}
+.tab{display:flex;position:relative;align-items:center;gap:10px;width:100%;height:42px;padding:10px 12px;border:0;border-radius:var(--radius-sm);background:transparent;color:var(--sidebar-foreground);font-size:14px;font-weight:500;text-align:left;flex-shrink:0}
 .tab span{white-space:nowrap}
 .tab:hover{background:var(--muted)}
 .tab.active{background:var(--sidebar-accent);color:var(--sidebar-accent-foreground);font-weight:600}
-.tab.active::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background:var(--primary)}
+.tab.active::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:0 3px 3px 0;background:var(--primary)}
 .sidebar-toggle:focus-visible,.tab:focus-visible,.section-header:focus-visible{outline:0;box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 35%,transparent)}
 body.sidebar-collapsed{--nav-width:64px}
 .sidebar-collapsed .sidebar{padding:20px 8px 16px}
