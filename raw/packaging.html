@@ -82,9 +82,12 @@ th,td{padding:8px;border:1px solid var(--border);text-align:left;vertical-align:
 th{height:40px;background:var(--muted);font-size:12px;font-weight:600;color:var(--sidebar-foreground)}
 td{font-weight:400;color:var(--foreground)}
 tr:hover td{background:var(--muted)}
-th.col-do{color:var(--success-fg)}th.col-dont{color:var(--danger-fg)}
 .rule{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
 .rule:last-child{border-bottom:0}
+.rule-group{flex-direction:column;gap:8px;padding:12px 0}
+.rule-list{list-style:disc;margin:0;padding-left:20px;min-width:0;width:100%}
+.rule-list li{margin:0 0 8px;padding:0}
+.rule-list li:last-child{margin-bottom:0}
 .tag{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;min-height:20px;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600;line-height:1.6}
 .tag-do{background:var(--success-bg);color:var(--success-fg)}
 .tag-dont{background:var(--danger-bg);color:var(--danger-fg)}
@@ -187,11 +190,15 @@ body { padding-top: 0; }
     </table></div>
     <p style="margin-top:10px"><strong>Symbol rule:</strong> Front uses <strong>&amp;</strong>, not <strong>and</strong></p>
     <h3>USP Summary Examples</h3>
-    <div class="rule"><span class="tag tag-do">Do</span> Silent Ultrasonic Motor (Eyeris Zen)</div>
-    <div class="rule"><span class="tag tag-do">Do</span> Customizable Warmth & Comfort (Solheel Slim Thermal)</div>
-    <div class="rule"><span class="tag tag-do">Do</span> 50+ Body Metrics, 8 Electrodes, LED Display Readings</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> Relaxation for Your Eyes (too abstract)</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> The Scale for Modern Travelers (benefit-focused)</div>
+    <div class="rule rule-group"><span class="tag tag-do">Do</span><ul class="rule-list">
+      <li>Silent Ultrasonic Motor (Eyeris Zen)</li>
+      <li>Customizable Warmth & Comfort (Solheel Slim Thermal)</li>
+      <li>50+ Body Metrics, 8 Electrodes, LED Display Readings</li>
+    </ul></div>
+    <div class="rule rule-group"><span class="tag tag-dont">Don't</span><ul class="rule-list">
+      <li>Relaxation for Your Eyes (too abstract)</li>
+      <li>The Scale for Modern Travelers (benefit-focused)</li>
+    </ul></div>
   </div>
 </div>
 
@@ -218,13 +225,17 @@ body { padding-top: 0; }
     </table></div>
     <p style="margin-top:10px"><strong>Symbol rule:</strong> Back uses <strong>and</strong>, not <strong>&amp;</strong></p>
     <h3>Short Description Examples</h3>
-    <div class="rule"><span class="tag tag-do">Do</span> Focused mist and adjustable temple massage to enhance comfort (Eyeris Zen)</div>
-    <div class="rule"><span class="tag tag-do">Do</span> Smart-app connectivity with dial control for creating and storing 8 offline user profiles on the scale directly. (Elis 3X)</div>
+    <div class="rule rule-group"><span class="tag tag-do">Do</span><ul class="rule-list">
+      <li>Focused mist and adjustable temple massage to enhance comfort (Eyeris Zen)</li>
+      <li>Smart-app connectivity with dial control for creating and storing 8 offline user profiles on the scale directly. (Elis 3X)</li>
+    </ul></div>
     <div class="rule"><span class="tag tag-dont">Don't</span> Refresh your eyes with a massage designed to target your acupoints with a gentle combination of soothing massage... (too story-like)</div>
     <h3>Icons Quick Reference</h3>
     <div class="rule"><span class="tag tag-do">Do</span> Amplitude Adjustable (Active Evo, Ascend) &mdash; generic, reusable</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> Amplitude Dial (Active Evo) &mdash; too product-specific</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> Amplitude Adjust Nub (Ascend) &mdash; too product-specific</div>
+    <div class="rule rule-group"><span class="tag tag-dont">Don't</span><ul class="rule-list">
+      <li>Amplitude Dial (Active Evo) &mdash; too product-specific</li>
+      <li>Amplitude Adjust Nub (Ascend) &mdash; too product-specific</li>
+    </ul></div>
   </div>
 </div>
 
@@ -244,7 +255,7 @@ body { padding-top: 0; }
 </svg></h2>
   <div class="section-body">
     <div class="table-scroll" role="region" aria-label="Front vs Back &mdash; Quick Rules table" tabindex="0" style="--table-min-width:480px"><table>
-      <tr><th>Location</th><th class="col-do">Do</th><th class="col-dont">Don't</th></tr>
+      <tr><th>Location</th><th><span class="tag tag-do">Do</span></th><th><span class="tag tag-dont">Don't</span></th></tr>
       <tr><td>Front of Box</td><td><strong>&amp;</strong></td><td>and</td></tr>
       <tr><td>Back of Box (text)</td><td><strong>and</strong></td><td>&amp;</td></tr>
       <tr><td>Back of Box (icons)</td><td><strong>&amp;</strong></td><td>&mdash;</td></tr>

@@ -82,9 +82,12 @@ th,td{padding:8px;border:1px solid var(--border);text-align:left;vertical-align:
 th{height:40px;background:var(--muted);font-size:12px;font-weight:600;color:var(--sidebar-foreground)}
 td{font-weight:400;color:var(--foreground)}
 tr:hover td{background:var(--muted)}
-th.col-do{color:var(--success-fg)}th.col-dont{color:var(--danger-fg)}
 .rule{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
 .rule:last-child{border-bottom:0}
+.rule-group{flex-direction:column;gap:8px;padding:12px 0}
+.rule-list{list-style:disc;margin:0;padding-left:20px;min-width:0;width:100%}
+.rule-list li{margin:0 0 8px;padding:0}
+.rule-list li:last-child{margin-bottom:0}
 .tag{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;min-height:20px;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600;line-height:1.6}
 .tag-do{background:var(--success-bg);color:var(--success-fg)}
 .tag-dont{background:var(--danger-bg);color:var(--danger-fg)}
@@ -277,10 +280,12 @@ body { padding-top: 0; }
     <h3>What We CAN Say</h3>
     <div class="rule"><span class="tag tag-do">Do</span> FDA clearance &mdash; ONLY for products with 510(k) clearance</div>
     <h3>What We CANNOT Say</h3>
-    <div class="rule"><span class="tag tag-dont">Don't</span> FDA-approval (PMA generally refers to Class III devices &mdash; not our products)</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> FDA Registered / FDA Registration</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> FDA Certified</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> Printing the FDA LOGO on packaging</div>
+    <div class="rule rule-group"><span class="tag tag-dont">Don't</span><ul class="rule-list">
+      <li>FDA-approval (PMA generally refers to Class III devices &mdash; not our products)</li>
+      <li>FDA Registered / FDA Registration</li>
+      <li>FDA Certified</li>
+      <li>Printing the FDA LOGO on packaging</li>
+    </ul></div>
     <div class="callout-warn" style="margin-top:12px;">FDA does NOT issue device registration certificates. Firms that display "FDA registration certificates" alongside products to imply FDA review/approval are in violation of the Federal Food, Drug, and Cosmetic Act. Do not use FDA logo on any materials.</div>
     <h3>"Clinically Proven" Guidance</h3>
     <p style="font-size:13px;">What it sounds like: strict clinical trials on large samples. What it actually means: anywhere from 1 person to a million have tested the product. Compliance Team rejects this term; seek <strong>Global Marketing approval first</strong> if you wish to use it.</p>
@@ -327,16 +332,20 @@ body { padding-top: 0; }
 </svg></h2>
   <div class="section-body">
     <h3>Permitted (under FDA General Wellness guidance)</h3>
-    <div class="rule"><span class="tag tag-do">Do</span> "Track your trends. Take control of your wellness."</div>
-    <div class="rule"><span class="tag tag-do">Do</span> "Empowers healthy aging through daily cardiovascular tracking."</div>
-    <div class="rule"><span class="tag tag-do">Do</span> "Proactive wellness management for a balanced lifestyle."</div>
+    <div class="rule rule-group"><span class="tag tag-do">Do</span><ul class="rule-list">
+      <li>"Track your trends. Take control of your wellness."</li>
+      <li>"Empowers healthy aging through daily cardiovascular tracking."</li>
+      <li>"Proactive wellness management for a balanced lifestyle."</li>
+    </ul></div>
     <h3>Not Permitted</h3>
-    <div class="rule"><span class="tag tag-dont">Don't</span> Diagnose hypertension / high blood pressure</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> Detect heart disease or cardiovascular issues</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> Determine if you have a medical condition</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> "Longevity" claims</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> Medical-grade accuracy / Clinical precision</div>
-    <div class="rule"><span class="tag tag-dont">Don't</span> "98% accuracy of a DEXA scan" (cannot conflate correlation with accuracy)</div>
+    <div class="rule rule-group"><span class="tag tag-dont">Don't</span><ul class="rule-list">
+      <li>Diagnose hypertension / high blood pressure</li>
+      <li>Detect heart disease or cardiovascular issues</li>
+      <li>Determine if you have a medical condition</li>
+      <li>"Longevity" claims</li>
+      <li>Medical-grade accuracy / Clinical precision</li>
+      <li>"98% accuracy of a DEXA scan" (cannot conflate correlation with accuracy)</li>
+    </ul></div>
     <h3>General Rule</h3>
     <p style="font-size:13px;">Claims must remain broad (e.g. "track trends for heart health") and must NOT diagnose conditions. Confirm all promotional documents with PM and compliance department.</p>
   </div>
